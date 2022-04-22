@@ -2,17 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Constant : MonoBehaviour
+public class Define : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static Transform playerTrnasform;
+    public static Transform PlayerTransform
     {
-        
+        get
+        {
+            if (playerTrnasform == null)
+            {
+                playerTrnasform = GameObject.FindGameObjectWithTag(Constant.PLAYER_TAG).transform;
+            }
+
+            return playerTrnasform;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public static Camera mainCam;
+    public static Camera MainCam
     {
-        
+        get
+        {
+            if (mainCam == null)
+            {
+                mainCam = Camera.main;
+            }
+
+            return mainCam;
+        }
     }
 }
