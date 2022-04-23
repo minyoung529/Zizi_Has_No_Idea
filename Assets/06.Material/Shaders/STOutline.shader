@@ -7,7 +7,7 @@ Shader "Universal Render Pipeline/Simple Toon/SToon Outline"
         [Header(Colorize)][Space(5)]  //colorize
 		_Color ("Color", COLOR) = (1,1,1,1)
 
-		[HideInInspector] _ColIntense ("Intensity", Range(0,3)) = 1
+		_ColIntense ("Intensity", Range(0,3)) = 1
         [HideInInspector] _ColBright ("Brightness", Range(-1,1)) = 0
 		_AmbientCol ("Ambient", Range(0,1)) = 0
 
@@ -22,6 +22,7 @@ Shader "Universal Render Pipeline/Simple Toon/SToon Outline"
         _MinLight ("Min Light", Range(0,1)) = 0
         _MaxLight ("Max Light", Range(0,1)) = 1
         _Lumin ("Luminocity", Range(0,2)) = 0
+        _LightColor ("Light Color", COLOR) = (0,0,0,1)
 
 		[Header(Outline)][Space(5)]  //outline
 		_OtlColor ("Color", COLOR) = (0,0,0,1)
@@ -53,6 +54,8 @@ Shader "Universal Render Pipeline/Simple Toon/SToon Outline"
             #include "UnityLightingCommon.cginc"
             #include "AutoLight.cginc"
             #include "STCore.cginc"
+
+            fixed4 _LightColor;
 
             struct appdata
             {
@@ -88,7 +91,7 @@ Shader "Universal Render Pipeline/Simple Toon/SToon Outline"
                 _Steps = _Segmented ? _Steps : 1;
                 _StpSmooth = _Segmented ? _StpSmooth : 1;
 
-				_DarkColor = fixed4(0,0,0,1);
+				_DarkColor = _LightColor;
 				_MaxAtten = 1.0;
 
 				float3 normal = normalize(i.worldNormal);
