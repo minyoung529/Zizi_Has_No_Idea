@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoSingleton<GameManager>
 {
+    public static GameState GameState { get; private set; }
     public UIManager UIManager { get; private set; }
     public DataManager Data { get; private set; }
 
@@ -11,10 +12,18 @@ public class GameManager : MonoSingleton<GameManager>
     {
         UIManager = FindObjectOfType<UIManager>();
         Data = FindObjectOfType<DataManager>();
+
+        EventManager.StartListening(Constant.START_PLAY_EVENT, StartPlay);
     }
 
-    void Update()
+    private void StartPlay()
     {
-        
+        Debug.Log("Play Start");
+        GameState = GameState.Play;
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.StopListening(Constant.START_PLAY_EVENT, StartPlay);
     }
 }

@@ -16,7 +16,6 @@ public class FloatEffect : MonoBehaviour
             curAngle = 0f;
 
         float y = Mathf.Sin(curAngle * Mathf.Deg2Rad);
-        Debug.Log(y);
         transform.position += (Vector3.up * y * height) * Time.deltaTime;
     }
 }
