@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a86e987a7100184880c276b5c30a841, type: 3}
   m_Name: PlayerMovement
   m_EditorClassIdentifier: 
-  speed: 0
-  jumpForce: 0
-  acceleration: 0
-  deacceleration: 0
+  speed: 3
+  jumpForce: 10
+  acceleration: 2
+  deacceleration: 2

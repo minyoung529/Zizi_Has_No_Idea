@@ -7,7 +7,9 @@ public class AgentMovement : MonoBehaviour
 {
     private Rigidbody2D rigid;
 
-    protected float speed = 3f;
+    [SerializeField]
+    private MovementSO movementData;
+
     protected float currentVelocity = 3f;
     protected Vector2 movementDirection;
 
@@ -34,7 +36,7 @@ public class AgentMovement : MonoBehaviour
             }
             else
             {
-                currentVelocity = speed;
+                currentVelocity = movementData.speed;
             }
         }
         else
@@ -43,6 +45,12 @@ public class AgentMovement : MonoBehaviour
         }
 
         movementDirection = movementInput.normalized * currentVelocity;
+    }
+
+
+    public void Jump()
+    {
+
     }
 
     //넉백 구현 때 사용 예정
