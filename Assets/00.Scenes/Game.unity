@@ -574,6 +574,7 @@ GameObject:
   - component: {fileID: 1002067649}
   - component: {fileID: 1002067652}
   - component: {fileID: 1002067653}
+  - component: {fileID: 1002067654}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -711,6 +712,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4334f5170ef8b684ab2701a8b39e073c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1002067654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002067647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 239e3aeadc926ed46b4059711aa601cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementType: 1
+  duration: 0.5
 --- !u!1 &1092142316
 GameObject:
   m_ObjectHideFlags: 0
@@ -746,7 +761,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 35, y: -11.179}
+  m_AnchoredPosition: {x: 35, y: -11.178986}
   m_SizeDelta: {x: 414.0889, y: 77.6417}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1092142318
@@ -1001,11 +1016,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1821417793}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e40f8fcd7a940134f9de12a5d147532c, type: 3}
+  m_Script: {fileID: 11500000, guid: 239e3aeadc926ed46b4059711aa601cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   movementType: 0
-  speed: 0
+  duration: 0.5
 --- !u!1 &2044957357
 GameObject:
   m_ObjectHideFlags: 0
