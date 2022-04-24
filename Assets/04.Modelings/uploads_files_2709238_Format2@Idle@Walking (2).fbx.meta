@@ -8,7 +8,7 @@ ModelImporter:
     second: Idle@Walking (2)
   - first:
       74: 18352398547152363
-    second: Idle@Walking
+    second: Walk
   - first:
       74: -203655887218126122
     second: Idle@Walking (2)
@@ -42,7 +42,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Idle@Walking
+      name: Walk
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0

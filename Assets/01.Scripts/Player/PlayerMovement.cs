@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 curDirection = Vector3.forward;
 
     [SerializeField]
-    private UnityEvent<float> OnRigidVelocity;
+    private UnityEvent<Vector3> OnRigidVelocity;
 
     private void Start()
     {
@@ -26,6 +26,6 @@ public class PlayerMovement : MonoBehaviour
             rigid.velocity = curDirection * speed;
         }
 
-        OnRigidVelocity.Invoke(rigid.velocity.sqrMagnitude);
+        OnRigidVelocity.Invoke(rigid.velocity);
     }
 }

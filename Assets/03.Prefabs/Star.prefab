@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1808659566923325049}
   - component: {fileID: 2164561595818985560}
+  - component: {fileID: 1716260830278958458}
+  - component: {fileID: 141554990025691112}
   m_Layer: 0
   m_Name: Star
   m_TagString: Star
@@ -41,11 +43,37 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1808659566923325054}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.27
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1716260830278958458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808659566923325054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa4cbc6fa313ccd40922be802be281c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  height: 0.3
+  speed: 180
+--- !u!114 &141554990025691112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808659566923325054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d82321f8c1ebd1e45890b10b5fdc820a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6435981780340191892
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,7 +85,6 @@ GameObject:
   - component: {fileID: 5336495714862673669}
   - component: {fileID: 8454368637294275543}
   - component: {fileID: 3479323928765737766}
-  - component: {fileID: 5162411126414983768}
   m_Layer: 0
   m_Name: Render
   m_TagString: Star
@@ -130,17 +157,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5162411126414983768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6435981780340191892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa4cbc6fa313ccd40922be802be281c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  height: 0.3
-  speed: 180

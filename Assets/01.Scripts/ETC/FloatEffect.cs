@@ -12,7 +12,7 @@ public class FloatEffect : MonoBehaviour
     {
         curAngle += Time.deltaTime * speed;
 
-        if(curAngle >= 360f)
+        if (curAngle >= 360f)
             curAngle = 0f;
 
         float y = Mathf.Sin(curAngle * Mathf.Deg2Rad);

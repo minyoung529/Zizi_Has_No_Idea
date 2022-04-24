@@ -11,6 +11,9 @@ public class DataManager : MonoBehaviour
     private string SAVE_PATH = "";
     private const string SAVE_FILE = "/SaveFile.Json";
 
+    [SerializeField]
+    private List<StagesSO> chapterDatas;
+
     void Start()
     {
         DontDestroyOnLoad(this);
@@ -25,6 +28,7 @@ public class DataManager : MonoBehaviour
         LoadFromJson(user);
     }
 
+    #region Json
     private void LoadFromJson<T>(T data)
     {
         if (File.Exists(SAVE_PATH + SAVE_FILE))
@@ -44,6 +48,29 @@ public class DataManager : MonoBehaviour
     {
         string stringJson = JsonUtility.ToJson(data, true);
         File.WriteAllText(SAVE_PATH + SAVE_FILE, stringJson, System.Text.Encoding.UTF8);
+    }
+    #endregion
+
+    public GameObject LoadStage(ref int chapter, ref int stage)
+    {
+        int c = chapter;
+        int s = 0;
+
+        List<Stage> stages = chapterDatas.Find(x => x.chapter == c).stages;
+
+        if(stage >= stages.Count)
+        {
+            stage = 0;
+            chapter++;
+        }
+        else
+        {
+            stage++;
+        }
+
+        s = stage;
+
+        return stages.Find(x => x.stageNum == s).stagePrefab;
     }
 
     private void OnDestroy()

@@ -7,6 +7,7 @@ public class PlayerAnimation : MonoBehaviour
 {
     private readonly int walkHash = Animator.StringToHash("Walk");
     private readonly int idleHash = Animator.StringToHash("Idle");
+    private readonly int fallHash = Animator.StringToHash("Fall");
 
     private Animator animator;
 
@@ -15,8 +16,13 @@ public class PlayerAnimation : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    public void SetWalkAnimation(float velocity)
+    public void SetWalkAnimation(Vector3 velocity)
     {
-        animator.SetBool(walkHash, velocity > 0.1f);
+        animator.SetBool(walkHash, velocity.x > 0.1f || velocity.z > 0.1f);
+    }
+
+    public void SetFallAnimation(Vector3 velocity)
+    {
+        animator.SetBool(fallHash, velocity.y < Physics.gravity.y + 1f);
     }
 }
