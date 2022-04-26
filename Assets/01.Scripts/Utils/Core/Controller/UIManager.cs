@@ -14,18 +14,13 @@ public class UIManager : MonoBehaviour
         EventManager<bool>.StartListening(Constant.CLICK_PLAYER_EVENT, ActiveChartImage);
     }
 
-    private void GenerateVerbs()
-    {
-
-    }
-
     private void ActiveChartImage(bool isActive)
     {
         float delay = 0.3f;
 
         if (isActive == chartImage.gameObject.activeSelf) return;
 
-        if (chartImage.gameObject.activeSelf)
+        if (isActive)
         {
             chartImage.transform.DOScale(0f, delay).SetEase(Ease.InOutQuad)
                 .OnComplete(() => chartImage.gameObject.SetActive(false));

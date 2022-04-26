@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class VerbSystemController : MonoBehaviour
 {
-    [SerializeField]
-    private VerbPanel verbPanelPrefab;
+    [SerializeField] private VerbPanel verbPanelPrefab;
+
+    private static Verb currentVerb;
+    public static Verb CurrentVerb { get { return currentVerb; } set { currentVerb = value; } }
 
     void Start()
     {
