@@ -709,6 +709,7 @@ GameObject:
   - component: {fileID: 549483862}
   - component: {fileID: 549483861}
   - component: {fileID: 549483864}
+  - component: {fileID: 549483865}
   m_Layer: 5
   m_Name: Verbs Scroll View
   m_TagString: Untagged
@@ -734,8 +735,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 65.3679, y: -50}
-  m_SizeDelta: {x: 130.7379, y: 800}
+  m_AnchoredPosition: {x: -65.37109, y: -49.999973}
+  m_SizeDelta: {x: 130.73792, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &549483861
 MonoBehaviour:
@@ -818,6 +819,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   verbPanelPrefab: {fileID: 439875217}
+--- !u!114 &549483865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549483859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90486fbbd9b569549a60a8b2a48ecfd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementType: 3
+  duration: 0.3
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

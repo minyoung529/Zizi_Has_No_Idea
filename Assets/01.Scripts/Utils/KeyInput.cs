@@ -27,7 +27,6 @@ public class KeyInput : MonoBehaviour
                 EventManager<bool>.TriggerEvent(Constant.CLICK_PLAYER_EVENT, false);
             }
         }
-
     }
 
     private bool Raycast()

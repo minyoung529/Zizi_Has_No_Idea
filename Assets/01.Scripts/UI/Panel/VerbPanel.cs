@@ -27,7 +27,7 @@ public class VerbPanel : PanelBase
     {
         image.transform.localScale = Vector3.zero;
         yield return animationDelay;
-        image.transform.DOScale(1f, 0.3f);
+        image.transform.DOScale(1f, 0.3f).SetEase(Ease.InOutQuad);
     }
 
     private void OnEnable()

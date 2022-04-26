@@ -21,11 +21,16 @@ public class UIManager : MonoBehaviour
 
     private void ActiveChartImage(bool isActive)
     {
-        float delay = 0.5f;
+        float delay = 0.3f;
 
-        if (chartImage.gameObject.activeSelf == isActive) return;
+        if (isActive == chartImage.gameObject.activeSelf) return;
 
-        if (isActive)
+        if (chartImage.gameObject.activeSelf)
+        {
+            chartImage.transform.DOScale(0f, delay).SetEase(Ease.InOutQuad)
+                .OnComplete(() => chartImage.gameObject.SetActive(false));
+        }
+        else
         {
             Vector3 pos = Input.mousePosition;
             pos.x -= 100f;
@@ -36,11 +41,7 @@ public class UIManager : MonoBehaviour
 
             chartImage.gameObject.SetActive(true);
             chartImage.transform.localScale = Vector3.zero;
-            chartImage.transform.DOScale(1f, delay);
-        }
-        else
-        {
-            chartImage.transform.DOScale(0f, delay).OnComplete(() => chartImage.gameObject.SetActive(false));
+            chartImage.transform.DOScale(1f, delay).SetEase(Ease.InOutQuad);
         }
     }
 
