@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class EventManager
 {
@@ -97,4 +98,6 @@ public class EventManager<T>
 
 public struct EventParam
 {
+    public bool boolParam;
+    public Vector3 vec3Param;
 }

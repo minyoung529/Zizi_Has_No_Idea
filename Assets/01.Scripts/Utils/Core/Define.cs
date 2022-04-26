@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Define : MonoBehaviour
 {
-    public static Camera mainCam;
+    private static Camera mainCam;
     public static Camera MainCam
     {
         get
@@ -15,6 +15,15 @@ public class Define : MonoBehaviour
             }
 
             return mainCam;
+        }
+    }
+
+    public static Vector3 MousePosition
+    {
+        get
+        {
+            return MainCam.ScreenToWorldPoint
+            (new Vector3(Input.mousePosition.x, Input.mousePosition.y, MainCam.farClipPlane));
         }
     }
 }

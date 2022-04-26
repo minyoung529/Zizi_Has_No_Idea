@@ -11,8 +11,10 @@ public class DataManager : MonoBehaviour
     private string SAVE_PATH = "";
     private const string SAVE_FILE = "/SaveFile.Json";
 
-    [SerializeField]
-    private List<StagesSO> chapterDatas;
+    [SerializeField] private List<StagesSO> chapterDatas;
+
+    [SerializeField] private VerbsSO verbs;
+    public VerbsSO Verbs { get { return verbs; } }
 
     void Start()
     {

@@ -14,7 +14,7 @@ public class GameManager : MonoSingleton<GameManager>
     [SerializeField]
     private GameObject currentStagePrefab;
 
-    void Start()
+    void Awake()
     {
         UIManager = FindObjectOfType<UIManager>();
         Data = FindObjectOfType<DataManager>();
