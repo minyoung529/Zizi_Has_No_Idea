@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 
-public class WordImage : MonoBehaviour, IPointerEnterHandler, IPointerExitHandlerE
+public class WordImage : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerUpHandler
 { 
     [SerializeField] private Image image;
     private Sprite firstSprite;
@@ -31,9 +31,15 @@ public class WordImage : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (image.transform.localScale.sqrMagnitude < 0.01f) return;
+        if (Input.GetMouseButton(0))
+        {
+            image.sprite = firstSprite;
+            image.transform.DOScale(0f, 0.2f);
+        }
+    }
 
-        image.transform.DOScale(0f, 0.2f);
-        image.sprite = firstSprite;
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        Debug.Log("호출되나 보죠");
     }
 }
