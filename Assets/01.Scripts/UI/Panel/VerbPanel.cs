@@ -62,9 +62,7 @@ public class VerbPanel : PanelBase, IBeginDragHandler, IDragHandler, IEndDragHan
         VerbSystemController.CurrentVerb = verb;
     }
 
-    public void OnDrag(PointerEventData eventData)
-    {
-    }
+    public void OnDrag(PointerEventData eventData) { }
 
     public void OnEndDrag(PointerEventData eventData)
     {

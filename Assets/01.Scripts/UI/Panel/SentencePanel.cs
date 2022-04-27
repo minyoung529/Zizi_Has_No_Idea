@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class SentencePanel : MonoBehaviour
+public class SentencePanel : PanelBase
 {
-    // Start is called before the first frame update
+    private WordImage wordImage;
+    [SerializeField] private Text sentenceText;
+
     void Start()
     {
-        
+        wordImage = GetComponentInChildren<WordImage>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void AdjustUIDetail()
     {
-        
+
     }
 }

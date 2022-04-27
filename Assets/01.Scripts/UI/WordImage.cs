@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 
-public class WordImage : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerUpHandler
+public class WordImage : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 { 
     [SerializeField] private Image image;
     private Sprite firstSprite;
@@ -16,12 +16,9 @@ public class WordImage : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         image.transform.localScale = Vector3.zero;
     }
 
-    //이 구조는 나중에 고치기
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (image.transform.localScale.sqrMagnitude > 0.01f || VerbSystemController.CurrentVerb == null) return;
-
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && VerbSystemController.CurrentVerb != null)
         {
             image.transform.localScale = Vector3.zero;
             image.transform.DOScale(1f, 0.2f);
@@ -31,15 +28,10 @@ public class WordImage : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && VerbSystemController.CurrentVerb != null)
         {
             image.sprite = firstSprite;
             image.transform.DOScale(0f, 0.2f);
         }
-    }
-
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        Debug.Log("호출되나 보죠");
     }
 }

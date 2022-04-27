@@ -7,21 +7,32 @@ public class CameraMovement : MonoBehaviour
     private float mouseX;
     private float mouseY;
 
-    private float rotY = 0f;
+    [SerializeField] private float rotationSpeed = 3f;
+    [SerializeField] private float deacceleration = 3f;
 
-    [SerializeField] float speed = 3f;
+    private const float minAngle = 0f;
+    private const float maxAngle = 90f;
 
     private void Update()
     {
         if (VerbSystemController.CurrentVerb != null) return;
+
         if (Input.GetMouseButton(0))
         {
             mouseX = Input.GetAxisRaw("Mouse X");
             mouseY = Input.GetAxisRaw("Mouse Y");
-
-            //Lerp ½áµµ ±¦ÂúÀ» µí
-            transform.RotateAround(Vector3.zero, Vector3.up, mouseX * Time.deltaTime * speed);
-            transform.Rotate(new Vector3(-mouseY, 0f, 0f) * Time.deltaTime * speed);
         }
+        else
+        {
+            mouseX = Mathf.Lerp(mouseX, 0f, Time.deltaTime * deacceleration);
+            mouseY = Mathf.Lerp(mouseY, 0f, Time.deltaTime * deacceleration);
+        }
+
+        transform.RotateAround(Vector3.zero, Vector3.up, mouseX * Time.deltaTime * rotationSpeed);
+        transform.Rotate(new Vector3(-mouseY, 0f, 0f) * Time.deltaTime * rotationSpeed);
+
+        transform.rotation = Quaternion.Euler(Mathf.Clamp(  transform.rotation.eulerAngles.x, minAngle, maxAngle),
+                                                            transform.rotation.eulerAngles.y,
+                                                            transform.rotation.eulerAngles.z);
     }
 }
