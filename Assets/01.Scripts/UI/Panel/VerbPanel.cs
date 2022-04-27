@@ -12,9 +12,21 @@ public class VerbPanel : PanelBase, IBeginDragHandler, IDragHandler, IEndDragHan
     private WaitForSeconds animationDelay;
 
     [SerializeField] private Image dragObject;
+    private bool isSelecting = false;
+
     private void Awake()
     {
         image ??= GetComponent<Image>();
+    }
+
+    private void Update()
+    {
+        if (isSelecting)
+        {
+            Vector3 mousePos = Input.mousePosition;
+            mousePos.z = transform.localPosition.z;
+            dragObject.transform.position = Vector3.Lerp(dragObject.transform.position, mousePos, Time.deltaTime * 10f);
+        }
     }
 
     public void Initialize(Verb verb)
@@ -40,17 +52,28 @@ public class VerbPanel : PanelBase, IBeginDragHandler, IDragHandler, IEndDragHan
     #region Drag
     public void OnBeginDrag(PointerEventData eventData)
     {
+        isSelecting = true;
+
+        dragObject.transform.localScale = Vector3.zero;
+        dragObject.gameObject.SetActive(true);
+        dragObject.transform.DOScale(1f, 0.3f);
+        dragObject.sprite = image.sprite;
+
         VerbSystemController.CurrentVerb = verb;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        dragObject.transform.position = Define.MousePosition;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        dragObject.gameObject.SetActive(false);
+        isSelecting = false;
+        dragObject.sprite = null;
+
         VerbSystemController.CurrentVerb = null;
     }
+
     #endregion
 }
