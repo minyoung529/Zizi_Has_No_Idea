@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class GameManager : MonoSingleton<GameManager>
 {
-    public static GameState GameState { get; private set; }
+    public static GameState GameState { get; private set; } = GameState.Play;
     public UIManager UIManager { get; private set; }
     public DataManager Data { get; private set; }
 
     private int currentChapter = 1;
-    private int currentStage = 1;
+    private int currentStage = 0;
 
     [SerializeField]
     private GameObject currentStagePrefab;
+
+    private Item[] currentItems;
 
     void Awake()
     {
@@ -21,6 +23,8 @@ public class GameManager : MonoSingleton<GameManager>
 
         EventManager.StartListening(Constant.START_PLAY_EVENT, StartPlay);
         EventManager.StartListening(Constant.GET_STAR_EVENT, ClearStage);
+
+        ClearStage();
     }
 
     private void StartPlay()
@@ -33,11 +37,29 @@ public class GameManager : MonoSingleton<GameManager>
     {
         if (GameState != GameState.Play) return;
 
-        Destroy(currentStagePrefab);
+        if (currentStagePrefab != null)
+            Destroy(currentStagePrefab);
+
+        Debug.Log("Clear Stage");
         GameState = GameState.Ready;
 
         GameObject prefab = Data.LoadStage(ref currentChapter, ref currentStage);
         currentStagePrefab = Instantiate(prefab, Vector3.zero, Quaternion.identity);
+
+        RegisterCurrentItem();
+    }
+
+    public void RegisterCurrentItem()
+    {
+        ItemObject[] itemObjects = currentStagePrefab.GetComponentsInChildren<ItemObject>();
+        Item[] items = new Item[itemObjects.Length];
+
+        for (int i = 0; i < itemObjects.Length; i++)
+        {
+            items[i] = itemObjects[i].Item;
+        }
+
+        currentItems = items;
     }
 
     private void OnDestroy()
@@ -45,4 +67,5 @@ public class GameManager : MonoSingleton<GameManager>
         EventManager.StopListening(Constant.START_PLAY_EVENT, StartPlay);
         EventManager.StopListening(Constant.GET_STAR_EVENT, ClearStage);
     }
+
 }
