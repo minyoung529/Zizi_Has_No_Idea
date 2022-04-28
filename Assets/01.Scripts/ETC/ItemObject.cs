@@ -6,4 +6,9 @@ public class ItemObject : MonoBehaviour
 {
     [SerializeField] private Item item;
     public Item Item { get { return item; } }
+
+    private void Start()
+    {
+        item.ItemPosition = transform.position;
+    }
 }

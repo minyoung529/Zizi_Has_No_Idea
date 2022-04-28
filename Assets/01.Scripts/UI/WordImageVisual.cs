@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.Events;
 using DG.Tweening;
 
-public class WordImage : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class WordImageVisual : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 { 
     [SerializeField] private Image image;
     private Sprite firstSprite;
+
+    [SerializeField] private UnityEvent onPanelSelected;
 
     private void Start()
     {

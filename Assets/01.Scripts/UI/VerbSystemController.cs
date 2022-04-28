@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class VerbSystemController : MonoBehaviour
 {
-    [SerializeField] private VerbPanel verbPanelPrefab;
+    [SerializeField] private VerbPanelEvent verbPanelPrefab;
 
     private static Verb currentVerb;
     public static Verb CurrentVerb { get { return currentVerb; } set { currentVerb = value; } }
@@ -21,7 +21,7 @@ public class VerbSystemController : MonoBehaviour
 
         for (int i = 0; i < verbs.Count; i++)
         {
-            VerbPanel panel = Instantiate(verbPanelPrefab, verbPanelPrefab.transform.parent);
+            VerbPanelEvent panel = Instantiate(verbPanelPrefab, verbPanelPrefab.transform.parent);
             panel.Initialize(verbs[i]);
             panel.gameObject.SetActive(true);
         }

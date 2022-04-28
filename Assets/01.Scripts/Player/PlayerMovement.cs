@@ -9,7 +9,6 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rigid;
     [SerializeField]
     private float speed = 1f;
-    private Vector3 curDirection = Vector3.forward;
 
     [SerializeField]
     private UnityEvent<Vector3> OnRigidVelocity;
@@ -23,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (GameManager.GameState == GameState.Play)
         {
-            rigid.velocity = curDirection * speed;
+            rigid.velocity = transform.forward * speed;
         }
 
         OnRigidVelocity.Invoke(rigid.velocity);

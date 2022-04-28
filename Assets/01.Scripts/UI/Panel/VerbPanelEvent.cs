@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using DG.Tweening;
 
-public class VerbPanel : PanelBase, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class VerbPanelEvent : PanelBase, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     private Verb verb;
     private Image image;

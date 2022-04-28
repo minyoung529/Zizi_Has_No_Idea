@@ -9,11 +9,7 @@ public class Define : MonoBehaviour
     {
         get
         {
-            if (mainCam == null)
-            {
-                mainCam = Camera.main;
-            }
-
+            mainCam ??= Camera.main;
             return mainCam;
         }
     }
@@ -24,6 +20,16 @@ public class Define : MonoBehaviour
         {
             return MainCam.ScreenToWorldPoint
             (new Vector3(Input.mousePosition.x, Input.mousePosition.y, MainCam.farClipPlane));
+        }
+    }
+
+    private static Transform playerTransform;
+    public static Transform PlayerTransform
+    {
+        get
+        {
+            playerTransform ??= FindObjectOfType<PlayerMovement>().transform;
+            return playerTransform;
         }
     }
 }

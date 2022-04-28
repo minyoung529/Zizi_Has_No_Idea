@@ -11,9 +11,22 @@ public class PlayerAnimation : MonoBehaviour
 
     private Animator animator;
 
+    private LayerMask platformLayer;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
+        platformLayer = LayerMask.GetMask("Platform");
+    }
+
+    private void Update()
+    {
+        Ray ray = new Ray(transform.position, -transform.up);
+
+        if(Physics.Raycast(ray, 5f, platformLayer))
+        {
+            // TODO: 애니메이션 멈추는 코드 작성
+        }
     }
 
     public void SetWalkAnimation(Vector3 velocity)
