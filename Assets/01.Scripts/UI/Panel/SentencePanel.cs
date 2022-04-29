@@ -19,7 +19,10 @@ public class SentencePanel : PanelBase
 
     public void ChangeVerbType(VerbType verbType)
     {
-        item.VerbType = VerbSystemController.CurrentVerb.verbType;
+        Debug.Log(item.Name);
+        Debug.Log(verbType);
+        item.VerbType = verbType;
+        VerbSystemController.CurrentVerb = null;
     }
 
     void AdjustUIDetail()

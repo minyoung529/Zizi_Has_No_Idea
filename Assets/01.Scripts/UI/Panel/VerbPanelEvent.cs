@@ -70,7 +70,8 @@ public class VerbPanelEvent : PanelBase, IBeginDragHandler, IDragHandler, IEndDr
         isSelecting = false;
         dragObject.sprite = null;
 
-        VerbSystemController.CurrentVerb = null;
+        if (!WordImageVisual.isSelect)
+            VerbSystemController.CurrentVerb = null;
     }
 
     #endregion

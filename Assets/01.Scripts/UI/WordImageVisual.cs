@@ -11,7 +11,9 @@ public class WordImageVisual : MonoBehaviour, IPointerEnterHandler, IPointerExit
     [SerializeField] private Image image;
     private Sprite firstSprite;
 
-    [SerializeField] private UnityEvent onPanelSelected;
+    [SerializeField] private UnityEvent<VerbType> onPanelSelected;
+
+    static public bool isSelect;
 
     private void Start()
     {
@@ -26,6 +28,7 @@ public class WordImageVisual : MonoBehaviour, IPointerEnterHandler, IPointerExit
             image.transform.localScale = Vector3.zero;
             image.transform.DOScale(1f, 0.2f);
             image.sprite = VerbSystemController.CurrentVerb.verbSprites;
+            isSelect = true;
         }
     }
 
@@ -35,6 +38,12 @@ public class WordImageVisual : MonoBehaviour, IPointerEnterHandler, IPointerExit
         {
             image.sprite = firstSprite;
             image.transform.DOScale(0f, 0.2f);
+            isSelect = false;
+        }
+
+        else if(isSelect)
+        {
+            onPanelSelected.Invoke(VerbSystemController.CurrentVerb.verbType);
         }
     }
 }
