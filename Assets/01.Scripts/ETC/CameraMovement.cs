@@ -12,17 +12,14 @@ public class CameraMovement : MonoBehaviour
     private float rotX;
     private float rotY;
 
-    private const float minAngle = 0f;
-    private const float maxAngle = 90f;
-
+    MinMax minMaxAngle = new MinMax(0, 90);
 
     [Header("줌")]
     [SerializeField] private float zoomSpeed = 3f;
     [SerializeField] private float zoomAcceleration = 3f;
     private float wheel;
 
-    private const float minCameraZoom = 2f;
-    private const float maxCameraZoom = 15f;
+    MinMax minMaxZoom = new MinMax(2, 15);
 
     [Header("이동")]
     [SerializeField] private float moveSpeed = 3f;
@@ -30,7 +27,6 @@ public class CameraMovement : MonoBehaviour
 
     private float moveX;
     private float moveY;
-
 
     private Camera cam;
 
@@ -63,11 +59,6 @@ public class CameraMovement : MonoBehaviour
 
         transform.RotateAround(Vector3.zero, Vector3.up, rotX * Time.deltaTime * rotationSpeed);
         transform.Rotate(new Vector3(-rotY, 0f, 0f) * Time.deltaTime * rotationSpeed);
-
-        //TODO: 카메라 이상한 움직임 고치기
-        transform.rotation = Quaternion.Euler(Mathf.Clamp(transform.rotation.eulerAngles.x, minAngle, maxAngle),
-                                                          transform.rotation.eulerAngles.y,
-                                                          transform.rotation.eulerAngles.z);
     }
 
     private void MouseScrollWheelZoom()
@@ -91,7 +82,7 @@ public class CameraMovement : MonoBehaviour
         }
 
         cam.orthographicSize -= wheel;
-        cam.orthographicSize = Mathf.Clamp(cam.orthographicSize, minCameraZoom, maxCameraZoom);
+        cam.orthographicSize = Mathf.Clamp(cam.orthographicSize, minMaxZoom.min, minMaxZoom.max);
     }
 
     private void CarryCamera()
@@ -99,7 +90,7 @@ public class CameraMovement : MonoBehaviour
         if (Input.GetMouseButton(2))
         {
             moveX = Input.GetAxisRaw("Mouse X");
-            moveY= Input.GetAxisRaw("Mouse Y");
+            moveY = Input.GetAxisRaw("Mouse Y");
         }
         else
         {

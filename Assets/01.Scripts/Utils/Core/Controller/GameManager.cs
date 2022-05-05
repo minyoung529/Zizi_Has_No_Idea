@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -41,8 +42,7 @@ public class GameManager : MonoSingleton<GameManager>
     {
         Debug.Log("Play Start");
         GameState = GameState.Play;
-
-        playerBrainTransform.forward = CalculatorPlayerDirection();
+        SetPlayerDirection();
     }
 
     private void ClearStage()
@@ -69,43 +69,27 @@ public class GameManager : MonoSingleton<GameManager>
         Item[] items = new Item[itemObjects.Length];
 
         for (int i = 0; i < itemObjects.Length; i++)
-        {
             items[i] = itemObjects[i].Item;
-        }
 
         currentItems = items;
     }
 
-    public Vector3 CalculatorPlayerDirection()
+    public void SetPlayerDirection()
     {
-        Vector3 direction = Vector3.zero;
+        PlayerMovement.CurrentDirection = Vector3.zero;
 
         for (int i = 0; i < currentItems.Length; i++)
         {
             if (currentItems[i].VerbType == VerbType.None) continue;
-            direction += SetDirection(currentItems[i].VerbType, currentItems[i].ItemPosition);
+            SetDirection(currentItems[i].VerbType, currentItems[i].ItemPosition);
         }
-
-        if (direction.magnitude < 0.1f)
-            return Vector3.forward;
-
-        else
-            return direction;
     }
 
-    private Vector3 SetDirection(VerbType type, Vector3 itemPos)
+    private void SetDirection(VerbType type, Vector3 itemPos)
     {
-        Vector3 playerPosition = playerBrainTransform.position;
-
-        switch (type)
-        {
-            case VerbType.Like:
-                return (itemPos - playerPosition).normalized;
-            case VerbType.Dislike:
-                return (playerPosition - itemPos).normalized;
-        }
-
-        return Vector3.forward;
+        SettingDirection settingDirection = playerBrainTransform.GetComponent(type.ToString()) as SettingDirection;
+        settingDirection ??= playerBrainTransform.gameObject.AddComponent(Type.GetType(type.ToString())) as SettingDirection;
+        settingDirection.SetDirection(itemPos);
     }
 
     private void OnDestroy()

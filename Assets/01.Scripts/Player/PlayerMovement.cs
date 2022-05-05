@@ -13,6 +13,20 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private UnityEvent<Vector3> OnRigidVelocity;
 
+    private static Vector3 currentDirection;
+    public static Vector3 CurrentDirection
+    {
+        get
+        {
+            return currentDirection;
+        }
+        set
+        {
+            currentDirection = value;
+            currentDirection.Normalize();
+        }
+    }
+
     private void Start()
     {
         rigid = GetComponent<Rigidbody>();
@@ -22,7 +36,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (GameManager.GameState == GameState.Play)
         {
-            rigid.velocity = transform.forward * speed;
+            if (CurrentDirection.sqrMagnitude < 0.01f)
+                CurrentDirection = Vector3.forward;
+
+            rigid.velocity = CurrentDirection * speed;
         }
 
         OnRigidVelocity.Invoke(rigid.velocity);

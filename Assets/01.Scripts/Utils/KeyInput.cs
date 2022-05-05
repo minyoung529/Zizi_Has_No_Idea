@@ -33,7 +33,7 @@ public class KeyInput : MonoBehaviour
     {
         Ray ray = Define.MainCam.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, 999f, playerMask))
+        if (Physics.Raycast(ray, 999f, playerMask) && GameManager.GameState == GameState.Ready)
         {
             EventManager<bool>.TriggerEvent(Constant.CLICK_PLAYER_EVENT, true);
             return true;

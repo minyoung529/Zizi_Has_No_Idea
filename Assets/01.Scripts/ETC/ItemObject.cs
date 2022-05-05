@@ -9,6 +9,11 @@ public class ItemObject : MonoBehaviour
 
     private void Start()
     {
+        Vector3 position = transform.position;
+        position.x = Mathf.RoundToInt(position.x);
+        position.z = Mathf.RoundToInt(position.z);
+
+        transform.position = position;
         item.ItemPosition = transform.position;
     }
 }

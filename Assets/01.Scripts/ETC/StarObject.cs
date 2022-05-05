@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class StarObject : MonoBehaviour
 {
+    private void Start()
+    {
+        Vector3 position = transform.position;
+        position.x = Mathf.RoundToInt(position.x);
+        position.z = Mathf.RoundToInt(position.z);
+
+        transform.position = position;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(Constant.PLAYER_TAG) && GameManager.GameState == GameState.Play)
