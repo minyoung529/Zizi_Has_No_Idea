@@ -8,6 +8,13 @@ public class FloatEffect : MonoBehaviour
     public float height;
     public float speed;
 
+    Rigidbody rigid;
+
+    private void Start()
+    {
+        rigid = GetComponent<Rigidbody>();
+    }
+
     void Update()
     {
         curAngle += Time.deltaTime * speed;
@@ -16,6 +23,6 @@ public class FloatEffect : MonoBehaviour
             curAngle = 0f;
 
         float y = Mathf.Sin(curAngle * Mathf.Deg2Rad);
-        transform.position += (Vector3.up * y * height) * Time.deltaTime;
+        rigid.position += (Vector3.up * y * height) * Time.deltaTime;
     }
 }

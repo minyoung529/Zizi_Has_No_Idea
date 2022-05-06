@@ -9,13 +9,13 @@ public class Platform : MonoBehaviour
 
     void Start()
     {
-        meshRenderer = GetComponent<MeshRenderer>();
+        meshRenderer = transform.GetChild(0).GetComponent<MeshRenderer>();
         SetUpGrid();
     }
 
     void SetUpGrid()
     {
         Vector2 newOffset = new Vector2(transform.localScale.x, transform.localScale.z);
-        meshRenderer.material.SetTextureScale("_MainTex", new Vector2(newOffset.x, newOffset.y));
+        meshRenderer.material.mainTextureScale = new Vector2(newOffset.x, newOffset.y);
     }
 }
