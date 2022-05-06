@@ -39,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
             if (CurrentDirection.sqrMagnitude < 0.01f)
                 CurrentDirection = Vector3.forward;
 
+            transform.forward = CurrentDirection;
             rigid.velocity = CurrentDirection * speed;
         }
 
