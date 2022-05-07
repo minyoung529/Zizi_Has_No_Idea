@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Like : SettingDirection
 {
-    public override void SetDirection(Vector3 targets)
+    public override void SetDirection()
     {
-        PlayerMovement.CurrentDirection += (targets - transform.position).normalized;
+        currentCharacter.CurrentDirection += (target.ItemPosition - transform.position).normalized;
     }
 }

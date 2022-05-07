@@ -16,15 +16,15 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         Debug.Log("UI Manager Start");
-        EventManager<bool>.StartListening(Constant.CLICK_PLAYER_EVENT, ActiveChartImage);
+        EventManager<EventParam>.StartListening(Constant.CLICK_PLAYER_EVENT, ActiveChartImage);
     }
 
-    private void ActiveChartImage(bool isActive)
+    private void ActiveChartImage(EventParam param)
     {
         float delay = 0.3f;
-        if (isActive == chartImage.gameObject.activeSelf) return;
+        if (param.boolean == chartImage.gameObject.activeSelf) return;
 
-        if (isActive)
+        if (param.boolean)
         {
             Vector3 pos = Input.mousePosition;
             pos.x -= 100f;

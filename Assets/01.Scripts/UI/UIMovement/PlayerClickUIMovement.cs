@@ -5,12 +5,12 @@ public class PlayerClickUIMovement : UIMovement
     protected override void Start()
     {
         base.Start();
-        EventManager<bool>.StartListening(Constant.CLICK_PLAYER_EVENT, OnMove);
+        EventManager<EventParam>.StartListening(Constant.CLICK_PLAYER_EVENT, OnMove);
     }
 
-    private void OnMove(bool isActive)
+    private void OnMove(EventParam param)
     {
-        if (isActive)
+        if (param.boolean)
         {
             rectTransform.DOAnchorPos(targetPosition, duration).SetEase(Ease.InOutQuad);
         }
@@ -22,6 +22,6 @@ public class PlayerClickUIMovement : UIMovement
 
     private void OnDestroy()
     {
-        EventManager<bool>.StopListening(Constant.CLICK_PLAYER_EVENT, OnMove);
+        EventManager<EventParam>.StopListening(Constant.CLICK_PLAYER_EVENT, OnMove);
     }
 }

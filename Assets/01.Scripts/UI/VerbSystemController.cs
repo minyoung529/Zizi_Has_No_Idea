@@ -10,6 +10,10 @@ public class VerbSystemController : MonoBehaviour
     private static Verb currentVerb;
     public static Verb CurrentVerb { get { return currentVerb; } set { currentVerb = value; } }
 
+    private static Character currentCharacter;
+    public static Character CurrentCharacter { get { return currentCharacter; } set { currentCharacter = value; } }
+
+
     void Start()
     {
         GenerateVerbPanels();

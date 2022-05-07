@@ -98,6 +98,7 @@ public class EventManager<T>
 
 public struct EventParam
 {
-    public bool boolParam;
-    public Vector3 vec3Param;
+    public bool boolean;
+    public Character character;
+    public VerbType verbType;
 }

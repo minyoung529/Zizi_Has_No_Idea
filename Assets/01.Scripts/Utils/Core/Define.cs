@@ -28,7 +28,7 @@ public class Define : MonoBehaviour
     {
         get
         {
-            playerTransform ??= FindObjectOfType<PlayerMovement>().transform;
+            playerTransform ??= FindObjectOfType<CharacterMovement>().transform;
             return playerTransform;
         }
     }

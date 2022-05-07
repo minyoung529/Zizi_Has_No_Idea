@@ -1653,9 +1653,10 @@ GameObject:
   - component: {fileID: 7769210649699652974}
   - component: {fileID: 2324190114077050578}
   - component: {fileID: 2139395586476966529}
+  - component: {fileID: 919132148053092557}
   - component: {fileID: 2005086666769593616}
   - component: {fileID: 7913183442328795701}
-  - component: {fileID: 919132148053092557}
+  - component: {fileID: 543450652528407160}
   m_Layer: 6
   m_Name: BubbaSuit
   m_TagString: Player
@@ -1692,7 +1693,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6960901741360959444}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 0.1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -1720,6 +1721,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &919132148053092557
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6960901741360959444}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.52, y: 0.7, z: 0.41}
+  m_Center: {x: 0, y: 0.36, z: 0}
 --- !u!114 &2005086666769593616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1775,19 +1789,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b1408c558a614149a9c632bf4707ec5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &919132148053092557
-BoxCollider:
+--- !u!114 &543450652528407160
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6960901741360959444}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.52, y: 0.7, z: 0.41}
-  m_Center: {x: 0, y: 0.36, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed174b7fccbc48c4d98141e0e9d84a44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterName: "\uBC84\uBC14\uC528"
 --- !u!1 &7244767514854528749
 GameObject:
   m_ObjectHideFlags: 0

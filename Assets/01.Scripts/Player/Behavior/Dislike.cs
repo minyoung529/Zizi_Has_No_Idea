@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Dislike : SettingDirection
 {
-    public override void SetDirection(Vector3 targets)
+    public override void SetDirection()
     {
-        PlayerMovement.CurrentDirection += (transform.position - targets).normalized;
+        currentCharacter.CurrentDirection += -(target.ItemPosition - transform.position).normalized;
     }
 }

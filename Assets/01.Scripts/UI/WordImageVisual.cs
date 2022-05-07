@@ -5,9 +5,10 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using DG.Tweening;
+using System;
 
 public class WordImageVisual : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
-{ 
+{
     [SerializeField] private Image image;
     private Sprite firstSprite;
 
@@ -19,6 +20,8 @@ public class WordImageVisual : MonoBehaviour, IPointerEnterHandler, IPointerExit
     {
         firstSprite = image.sprite;
         image.transform.localScale = Vector3.zero;
+
+        EventManager.StartListening(Constant.RESET_GAME_EVENT, ResetData);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -34,16 +37,21 @@ public class WordImageVisual : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (Input.GetMouseButton(0) && VerbSystemController.CurrentVerb != null)
+        if (Input.GetMouseButton(0))
         {
-            image.sprite = firstSprite;
             image.transform.DOScale(0f, 0.2f);
-            isSelect = false;
+            ResetData();
         }
 
-        else if(isSelect)
+        else if (!Input.GetMouseButton(0) && isSelect && VerbSystemController.CurrentVerb != null)
         {
             onPanelSelected.Invoke(VerbSystemController.CurrentVerb.verbType);
         }
+    }
+
+    private void ResetData()
+    {
+        image.sprite = firstSprite;
+        isSelect = false;
     }
 }

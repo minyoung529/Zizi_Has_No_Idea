@@ -1,13 +1,13 @@
-using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+
 [System.Serializable]
 public class Item
 {
     [SerializeField] private string name;
     public string Name { get { return name; } }
-    
-    [SerializeField] private VerbType verbType;
-    public VerbType VerbType { get { return verbType; } set { verbType = value; } }
+
+    public Dictionary<Character, VerbType> verbPairs;
 
     private Vector3 itemPosition;
     public Vector3 ItemPosition { get { return itemPosition; } set { itemPosition = value; } }

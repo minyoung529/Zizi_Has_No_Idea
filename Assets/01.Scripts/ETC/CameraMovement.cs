@@ -90,7 +90,7 @@ public class CameraMovement : MonoBehaviour
         if (Input.GetMouseButton(2))
         {
             moveX = Input.GetAxisRaw("Mouse X");
-            moveY = Input.GetAxisRaw("Mouse Y");
+            moveY = -Input.GetAxisRaw("Mouse Y");
         }
         else
         {

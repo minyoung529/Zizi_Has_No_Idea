@@ -12,16 +12,21 @@ public class SentencePanel : PanelBase
     public void Init(Item item)
     {
         this.item = item;
-        string postposition = (item.Name[item.Name.Length - 1] - 0xAC00) % 28 > 0 ? "을" : "를";
+        EventManager<EventParam>.StartListening(Constant.CLICK_PLAYER_EVENT, UpdateUI);
+        UpdateUI(new EventParam());
+    }
 
-        sentenceText.text = $"{Constant.PLAYER_NAME}은 {item.Name}{postposition}";
+    private void UpdateUI(EventParam param)
+    {
+        string postposition = (item.Name[item.Name.Length - 1] - 0xAC00) % 28 > 0 ? "을" : "를";
+        sentenceText.text = $"{param.character?.characterName}은 {item.Name}{postposition}";
     }
 
     public void ChangeVerbType(VerbType verbType)
     {
         Debug.Log(item.Name);
         Debug.Log(verbType);
-        item.VerbType = verbType;
+        item.verbPairs[VerbSystemController.CurrentCharacter] = verbType;
         VerbSystemController.CurrentVerb = null;
     }
 

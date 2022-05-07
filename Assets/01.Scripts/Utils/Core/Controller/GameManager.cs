@@ -21,7 +21,7 @@ public class GameManager : MonoSingleton<GameManager>
     private GameObject currentStagePrefab;
 
     [SerializeField]
-    private Transform playerBrainTransform;
+    private Character player;
 
 
     private Item[] currentItems;
@@ -42,7 +42,6 @@ public class GameManager : MonoSingleton<GameManager>
     {
         Debug.Log("Play Start");
         GameState = GameState.Play;
-        SetPlayerDirection();
     }
 
     private void ClearStage()
@@ -70,36 +69,28 @@ public class GameManager : MonoSingleton<GameManager>
 
         RegisterCurrentItem();
         UIManager.ChangeStage(currentStage);
-        playerBrainTransform.position = currentStagePrefab.transform.GetChild(0).transform.position;
+        player.transform.position = currentStagePrefab.transform.GetChild(0).transform.position;
     }
 
     public void RegisterCurrentItem()
     {
         ItemObject[] itemObjects = currentStagePrefab.GetComponentsInChildren<ItemObject>();
+        Character[] characters = currentStagePrefab.GetComponentsInChildren<Character>();
         Item[] items = new Item[itemObjects.Length];
 
         for (int i = 0; i < itemObjects.Length; i++)
+        {
             items[i] = itemObjects[i].Item;
+            items[i].verbPairs = new Dictionary<Character, VerbType>();
+            items[i].verbPairs.Add(player, VerbType.None);
+
+            for (int j = 0; j < characters.Length; j++)
+            {
+                items[i].verbPairs.Add(characters[j], VerbType.None);
+            }
+        }
 
         currentItems = items;
-    }
-
-    public void SetPlayerDirection()
-    {
-        PlayerMovement.CurrentDirection = Vector3.zero;
-
-        for (int i = 0; i < currentItems.Length; i++)
-        {
-            if (currentItems[i].VerbType == VerbType.None) continue;
-            SetDirection(currentItems[i].VerbType, currentItems[i].ItemPosition);
-        }
-    }
-
-    private void SetDirection(VerbType type, Vector3 itemPos)
-    {
-        SettingDirection settingDirection = playerBrainTransform.GetComponent(type.ToString()) as SettingDirection;
-        settingDirection ??= playerBrainTransform.gameObject.AddComponent(Type.GetType(type.ToString())) as SettingDirection;
-        settingDirection.SetDirection(itemPos);
     }
 
     private void OnDestroy()

@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class KeyInput : MonoBehaviour
 {
     private LayerMask playerMask;
+    private EventParam eventParam;
 
     private void Start()
     {
@@ -24,7 +25,11 @@ public class KeyInput : MonoBehaviour
 
             if (!EventSystem.current.IsPointerOverGameObject())
             {
-                EventManager<bool>.TriggerEvent(Constant.CLICK_PLAYER_EVENT, false);
+                eventParam.character = null;
+                eventParam.verbType = VerbType.None;
+                eventParam.boolean = false;
+
+                EventManager<EventParam>.TriggerEvent(Constant.CLICK_PLAYER_EVENT, eventParam);
             }
         }
     }
@@ -32,10 +37,17 @@ public class KeyInput : MonoBehaviour
     private bool Raycast()
     {
         Ray ray = Define.MainCam.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hitInfo;
 
-        if (Physics.Raycast(ray, 999f, playerMask) && GameManager.GameState == GameState.Ready)
+        if (Physics.Raycast(ray, out hitInfo, 999f, playerMask) && GameManager.GameState == GameState.Ready)
         {
-            EventManager<bool>.TriggerEvent(Constant.CLICK_PLAYER_EVENT, true);
+            VerbSystemController.CurrentCharacter = hitInfo.transform.GetComponent<Character>();
+            eventParam.character = VerbSystemController.CurrentCharacter;
+            Debug.Log(eventParam.character.characterName);
+            eventParam.verbType = VerbType.None;
+            eventParam.boolean = true;
+
+            EventManager<EventParam>.TriggerEvent(Constant.CLICK_PLAYER_EVENT, eventParam);
             return true;
         }
 
