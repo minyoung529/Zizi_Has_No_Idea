@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 176901361}
   - component: {fileID: 176901363}
   - component: {fileID: 176901362}
+  - component: {fileID: 177337669}
   m_Layer: 6
   m_Name: Spot Light
   m_TagString: Untagged
@@ -42,13 +43,13 @@ Light:
   m_GameObject: {fileID: 176901360}
   m_Enabled: 1
   serializedVersion: 10
-  m_Type: 1
+  m_Type: 0
   m_Shape: 0
-  m_Color: {r: 0.9433962, g: 0.9433962, b: 0.9433962, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 1, g: 0.6361711, b: 0, a: 1}
+  m_Intensity: 600
   m_Range: 10
-  m_SpotAngle: 33.933487
-  m_InnerSpotAngle: 21.80208
+  m_SpotAngle: 10.332554
+  m_InnerSpotAngle: 9.021391
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -82,12 +83,12 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 2147483647
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
@@ -115,6 +116,20 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!114 &177337669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176901360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b16d07ed3d2ee58489d024cf2ffe11c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensity: 600
+  duration: 1
 --- !u!1 &343421317969567506
 GameObject:
   m_ObjectHideFlags: 0
@@ -1745,6 +1760,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &7913183442328795701
 MonoBehaviour:
   m_ObjectHideFlags: 0

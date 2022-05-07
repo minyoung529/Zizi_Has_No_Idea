@@ -199,25 +199,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 153614920}
   m_CullTransparentMesh: 1
---- !u!1 &177337665 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 176901360, guid: 81b90cdefc27e71479a2713fcf98a9b5, type: 3}
-  m_PrefabInstance: {fileID: 7807973542232811292}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &177337669
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 177337665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b16d07ed3d2ee58489d024cf2ffe11c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  intensity: 1500
-  duration: 1
 --- !u!1 &328425103
 GameObject:
   m_ObjectHideFlags: 0
@@ -7386,57 +7367,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 176901360, guid: 81b90cdefc27e71479a2713fcf98a9b5, type: 3}
-      propertyPath: m_IsActive
+    - target: {fileID: 2324190114077050578, guid: 81b90cdefc27e71479a2713fcf98a9b5, type: 3}
+      propertyPath: m_Mass
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2324190114077050578, guid: 81b90cdefc27e71479a2713fcf98a9b5, type: 3}
+      propertyPath: m_UseGravity
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 176901363, guid: 81b90cdefc27e71479a2713fcf98a9b5, type: 3}
-      propertyPath: m_Type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 176901363, guid: 81b90cdefc27e71479a2713fcf98a9b5, type: 3}
-      propertyPath: m_Range
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 176901363, guid: 81b90cdefc27e71479a2713fcf98a9b5, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 176901363, guid: 81b90cdefc27e71479a2713fcf98a9b5, type: 3}
-      propertyPath: m_Color.g
-      value: 0.6361711
-      objectReference: {fileID: 0}
-    - target: {fileID: 176901363, guid: 81b90cdefc27e71479a2713fcf98a9b5, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 176901363, guid: 81b90cdefc27e71479a2713fcf98a9b5, type: 3}
-      propertyPath: m_Intensity
-      value: 1500
-      objectReference: {fileID: 0}
-    - target: {fileID: 176901363, guid: 81b90cdefc27e71479a2713fcf98a9b5, type: 3}
-      propertyPath: m_SpotAngle
-      value: 10.332554
-      objectReference: {fileID: 0}
-    - target: {fileID: 176901363, guid: 81b90cdefc27e71479a2713fcf98a9b5, type: 3}
-      propertyPath: m_RenderMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 176901363, guid: 81b90cdefc27e71479a2713fcf98a9b5, type: 3}
-      propertyPath: m_Lightmapping
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 176901363, guid: 81b90cdefc27e71479a2713fcf98a9b5, type: 3}
-      propertyPath: m_InnerSpotAngle
-      value: 9.021391
-      objectReference: {fileID: 0}
-    - target: {fileID: 176901363, guid: 81b90cdefc27e71479a2713fcf98a9b5, type: 3}
-      propertyPath: m_BounceIntensity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 176901363, guid: 81b90cdefc27e71479a2713fcf98a9b5, type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6960901741360959444, guid: 81b90cdefc27e71479a2713fcf98a9b5, type: 3}
       propertyPath: m_Name

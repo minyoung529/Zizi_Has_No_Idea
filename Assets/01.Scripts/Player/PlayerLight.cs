@@ -13,6 +13,7 @@ public class PlayerLight : MonoBehaviour
     {
         light = GetComponent<Light>();
         EventManager.StartListening(Constant.START_PLAY_EVENT, ActiveLight);
+        EventManager.StartListening(Constant.RESET_GAME_EVENT, InactiveLight);
         gameObject.SetActive(false);
     }
 
@@ -21,5 +22,10 @@ public class PlayerLight : MonoBehaviour
         light.intensity = 0f;
         gameObject.SetActive(true);
         light.DOIntensity(intensity, 0f);
+    }
+
+    private void InactiveLight()
+    {
+        gameObject.SetActive(false);
     }
 }

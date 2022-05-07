@@ -50,14 +50,24 @@ public class GameManager : MonoSingleton<GameManager>
         if (GameState != GameState.Play) return;
 
         if (currentStagePrefab != null)
+        {
             Destroy(currentStagePrefab);
+        }
 
         Debug.Log("Clear Stage");
-        GameState = GameState.Ready;
 
         GameObject prefab = Data.LoadStage();
-
         currentStagePrefab = Instantiate(prefab, Vector3.zero, Quaternion.identity);
+
+        ResetStage();
+    }
+
+    public void ResetStage()
+    {
+        Debug.Log("Reset Stage");
+        EventManager.TriggerEvent(Constant.RESET_GAME_EVENT);
+        GameState = GameState.Ready;
+
         RegisterCurrentItem();
         UIManager.ChangeStage(currentStage);
         playerBrainTransform.position = currentStagePrefab.transform.GetChild(0).transform.position;

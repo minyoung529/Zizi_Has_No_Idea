@@ -19,4 +19,8 @@ public static class Constant
     #region CONSTANT STRING
     public const string PLAYER_NAME = "¹Î¿µ";
     #endregion
+
+    #region CONSTANT LEVEL
+    public const float DEAD_LINE_Y = -10f;
+    #endregion
 }

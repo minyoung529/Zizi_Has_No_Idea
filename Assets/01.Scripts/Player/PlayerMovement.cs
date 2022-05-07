@@ -27,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    [SerializeField] LayerMask groundLayer;
+
     private void Start()
     {
         rigid = GetComponent<Rigidbody>();
@@ -34,15 +36,35 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        OnPlay();
+        CheckDead();
+    }
+
+    private void OnPlay()
+    {
         if (GameManager.GameState == GameState.Play)
         {
             if (CurrentDirection.sqrMagnitude < 0.01f)
                 CurrentDirection = Vector3.forward;
 
             transform.forward = CurrentDirection;
-            rigid.velocity = CurrentDirection * speed;
+
+            Vector3 velocity = rigid.velocity;
+            velocity.x = CurrentDirection.x * speed;
+            velocity.z = CurrentDirection.z * speed;
+
+            rigid.velocity = velocity;
         }
 
         OnRigidVelocity.Invoke(rigid.velocity);
+    }
+
+    private void CheckDead()
+    {
+        if(transform.position.y < Constant.DEAD_LINE_Y)
+        {
+            GameManager.Instance.ResetStage();
+            Debug.Log("Fail");
+        }
     }
 }
