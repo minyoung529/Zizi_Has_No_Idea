@@ -6,7 +6,7 @@ public class PlayUIMovement : UIMovement
     {
         base.Start();
         EventManager.StartListening(Constant.START_PLAY_EVENT, OnMove);
-        EventManager.StartListening(Constant.GET_STAR_EVENT, OnMoveReverse);
+        EventManager.StartListening(Constant.RESET_GAME_EVENT, OnMoveReverse);
     }
 
     protected override void OnMove()
@@ -23,6 +23,6 @@ public class PlayUIMovement : UIMovement
     private void OnDestroy()
     {
         EventManager.StopListening(Constant.START_PLAY_EVENT, OnMove);
-        EventManager.StopListening(Constant.GET_STAR_EVENT, OnMoveReverse);
+        EventManager.StopListening(Constant.RESET_GAME_EVENT, OnMoveReverse);
     }
 }

@@ -30,16 +30,13 @@ public class CharacterMovement : MonoBehaviour
 
     private Character character;
 
-    private void Awake()
-    {
-        EventManager.StartListening(Constant.START_PLAY_EVENT, SetDirection);
-        EventManager.StartListening(Constant.RESET_GAME_EVENT, () => rigid.velocity = Vector3.zero);
-    }
-
     private void Start()
     {
         rigid = GetComponent<Rigidbody>();
         character = GetComponent<Character>();
+
+        EventManager.StartListening(Constant.START_PLAY_EVENT, SetDirection);
+        EventManager.StartListening(Constant.RESET_GAME_EVENT, ResetData);
     }
 
     private void Update()
@@ -52,10 +49,7 @@ public class CharacterMovement : MonoBehaviour
     {
         if (GameManager.GameState == GameState.Play)
         {
-            foreach (SettingDirection s in settingDirections)
-            {
-                s.SetDirection();
-            }
+            settingDirections.FindAll(x => x.IsActive).ForEach(x => x.SetDirection());
 
             if (currentDirection.sqrMagnitude < 0.01f)
             {
@@ -76,6 +70,8 @@ public class CharacterMovement : MonoBehaviour
 
     private void SetDirection()
     {
+        settingDirections.ForEach(x => x.IsActive = false);
+
         foreach (Item item in GameManager.Instance.CurrentItems)
         {
             if (item.verbPairs[character] == VerbType.None) return;
@@ -85,12 +81,14 @@ public class CharacterMovement : MonoBehaviour
 
     private void AddSettingDirection(VerbType type, Item item)
     {
+
         SettingDirection settingDirection = GetComponent(type.ToString()) as SettingDirection;
         settingDirection ??= gameObject.AddComponent(Type.GetType(type.ToString())) as SettingDirection;
         settingDirection.Init(item);
 
         if (!settingDirections.Contains(settingDirection))
         {
+            settingDirection.IsActive = true;
             settingDirections.Add(settingDirection);
         }
     }
@@ -101,5 +99,11 @@ public class CharacterMovement : MonoBehaviour
         {
             GameManager.Instance.ResetStage();
         }
+    }
+
+    private void ResetData()
+    {
+        currentDirection = Vector3.zero;
+        rigid.velocity = Vector3.zero;
     }
 }

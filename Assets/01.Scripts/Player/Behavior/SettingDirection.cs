@@ -6,6 +6,7 @@ public class SettingDirection : MonoBehaviour
 {
     protected CharacterMovement currentCharacter;
     protected Item target;
+    public bool IsActive { get; set; }
 
     private void Awake()
     {

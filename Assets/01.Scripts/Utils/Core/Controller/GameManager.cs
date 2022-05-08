@@ -14,10 +14,9 @@ public class GameManager : MonoSingleton<GameManager>
     private static int currentChapter = 1;
     public static int CurrentChapter { get { return currentChapter; } set { currentChapter = value; } }
 
-    private static int currentStage = 0;
+    private static int currentStage = 1;
     public static int CurrentStage { get { return currentStage; } set { currentStage = value; } }
 
-    [SerializeField]
     private GameObject currentStagePrefab;
 
     [SerializeField]

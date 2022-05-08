@@ -7070,7 +7070,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4193b383b4978b04dbfa29566b44c18c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentStagePrefab: {fileID: 0}
   player: {fileID: 543450652528407160}
 --- !u!114 &2044957360
 MonoBehaviour:
@@ -7135,6 +7134,10 @@ PrefabInstance:
     - target: {fileID: 543450652528407160, guid: 81b90cdefc27e71479a2713fcf98a9b5, type: 3}
       propertyPath: characterName
       value: "\uD1B0\uC564\uB85C\uC774"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2324190114077050578, guid: 81b90cdefc27e71479a2713fcf98a9b5, type: 3}
+      propertyPath: m_Constraints
+      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 6960901741360959444, guid: 81b90cdefc27e71479a2713fcf98a9b5, type: 3}
       propertyPath: m_Name
