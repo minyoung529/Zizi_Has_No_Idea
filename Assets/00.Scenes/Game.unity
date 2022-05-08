@@ -5589,7 +5589,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1b1630e6f91b01942a14ecc341524f21, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b04877b6289d6d242ab3d07f5ea02b53, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6173,7 +6173,6 @@ GameObject:
   - component: {fileID: 1097683620}
   - component: {fileID: 1097683622}
   - component: {fileID: 1097683621}
-  - component: {fileID: 1097683623}
   m_Layer: 5
   m_Name: ChartImage
   m_TagString: Untagged
@@ -6240,20 +6239,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1097683619}
   m_CullTransparentMesh: 1
---- !u!114 &1097683623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1097683619}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 239e3aeadc926ed46b4059711aa601cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementType: 2
-  duration: 0.5
 --- !u!1 &1307371798
 GameObject:
   m_ObjectHideFlags: 0
@@ -6482,7 +6467,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 0
+  m_Spacing: -20
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -6743,7 +6728,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1778640866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7127,7 +7112,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4193b383b4978b04dbfa29566b44c18c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 543450652528407160}
 --- !u!114 &2044957360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7170,17 +7154,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e31419b1ee2886468f1c825146dd475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &543450652528407160 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 543450652528407160, guid: 81b90cdefc27e71479a2713fcf98a9b5, type: 3}
-  m_PrefabInstance: {fileID: 7807973542232811292}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed174b7fccbc48c4d98141e0e9d84a44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &7807973542232811292
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7188,14 +7161,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 543450652528407160, guid: 81b90cdefc27e71479a2713fcf98a9b5, type: 3}
-      propertyPath: characterName
-      value: "\uC3D8\uD0A4"
-      objectReference: {fileID: 0}
-    - target: {fileID: 2324190114077050578, guid: 81b90cdefc27e71479a2713fcf98a9b5, type: 3}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
     - target: {fileID: 6960901741360959444, guid: 81b90cdefc27e71479a2713fcf98a9b5, type: 3}
       propertyPath: m_Name
       value: BubbaSuit

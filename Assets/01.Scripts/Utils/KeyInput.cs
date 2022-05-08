@@ -42,8 +42,8 @@ public class KeyInput : MonoBehaviour
         if (Physics.Raycast(ray, out hitInfo, 999f, playerMask) && GameManager.GameState == GameState.Ready)
         {
             VerbSystemController.CurrentCharacter = hitInfo.transform.GetComponent<Character>();
+            
             eventParam.character = VerbSystemController.CurrentCharacter;
-            Debug.Log(eventParam.character.characterName);
             eventParam.verbType = VerbType.None;
             eventParam.boolean = true;
 

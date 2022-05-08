@@ -6,6 +6,7 @@ public class PlayerClickUIMovement : UIMovement
     {
         base.Start();
         EventManager<EventParam>.StartListening(Constant.CLICK_PLAYER_EVENT, OnMove);
+        EventManager.StartListening(Constant.START_PLAY_EVENT, OnReverseMove);
     }
 
     private void OnMove(EventParam param)
@@ -21,6 +22,14 @@ public class PlayerClickUIMovement : UIMovement
         {
             rectTransform.DOAnchorPos(originPosition, duration).SetEase(Ease.InOutQuad);
         }
+    }
+
+    private void OnReverseMove()
+    {
+        EventParam e = new EventParam();
+        e.boolean = false;
+
+        OnMove(e);
     }
 
     private void OnDestroy()

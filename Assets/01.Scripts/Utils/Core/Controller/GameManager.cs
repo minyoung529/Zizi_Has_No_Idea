@@ -11,21 +11,22 @@ public class GameManager : MonoSingleton<GameManager>
     public DataManager Data { get; private set; }
 
 
-    private static int currentChapter = 1;
-    public static int CurrentChapter { get { return currentChapter; } set { currentChapter = value; } }
-
-    private static int currentStage = 1;
-    public static int CurrentStage { get { return currentStage; } set { currentStage = value; } }
+    public static int currentChapter { get; set; } = 1;
+    public static int currentStage { get; set; } = 3;
 
     private GameObject currentStagePrefab;
 
-    [SerializeField]
-    private Character player;
+    private List<Item> currentItems;
+    public List<Item> CurrentItems { get => currentItems; }
 
+    private List<Character> currentCharacters;
+    public List<Character> CurrentCharacters { get => currentCharacters; }
 
-    private Item[] currentItems;
-    public Item[] CurrentItems { get { return currentItems; } }
-
+    public Vector3 PlayerSpawnPosition
+    {
+        get => currentStagePrefab.transform.GetChild(0).position;
+    }
+    
     void Awake()
     {
         UIManager = FindObjectOfType<UIManager>();
@@ -34,6 +35,9 @@ public class GameManager : MonoSingleton<GameManager>
         EventManager.StartListening(Constant.START_PLAY_EVENT, StartPlay);
         EventManager.StartListening(Constant.GET_STAR_EVENT, ClearStage);
 
+    }
+    private void Start()
+    {
         ClearStage();
     }
 
@@ -52,12 +56,17 @@ public class GameManager : MonoSingleton<GameManager>
             Destroy(currentStagePrefab);
         }
 
-        Debug.Log("Clear Stage");
-
         GameObject prefab = Data.LoadStage();
         currentStagePrefab = Instantiate(prefab, Vector3.zero, Quaternion.identity);
 
+        currentItems = new List<Item>();
+        currentCharacters = new List<Character>();
+
+        EventManager.TriggerEvent(Constant.CLEAR_STAGE_EVENT);
+
         ResetStage();
+
+        Debug.Log("Clear Stage");
     }
 
     public void ResetStage()
@@ -68,28 +77,20 @@ public class GameManager : MonoSingleton<GameManager>
 
         RegisterCurrentItem();
         UIManager.ChangeStage(currentStage);
-        player.transform.position = currentStagePrefab.transform.GetChild(0).transform.position;
     }
 
     public void RegisterCurrentItem()
     {
-        ItemObject[] itemObjects = currentStagePrefab.GetComponentsInChildren<ItemObject>();
-        Character[] characters = currentStagePrefab.GetComponentsInChildren<Character>();
-        Item[] items = new Item[itemObjects.Length];
-
-        for (int i = 0; i < itemObjects.Length; i++)
+        for (int i = 0; i < currentItems.Count; i++)
         {
-            items[i] = itemObjects[i].Item;
-            items[i].verbPairs = new Dictionary<Character, VerbType>();
-            items[i].verbPairs.Add(player, VerbType.None);
+            currentItems[i].verbPairs = new Dictionary<Character, VerbType>();
 
-            for (int j = 0; j < characters.Length; j++)
+            for (int j = 0; j < currentCharacters.Count; j++)
             {
-                items[i].verbPairs.Add(characters[j], VerbType.None);
+                if (currentCharacters[j].characterName == currentItems[i].Name) continue;
+                currentItems[i].verbPairs.Add(currentCharacters[j], VerbType.None);
             }
         }
-
-        currentItems = items;
     }
 
     private void OnDestroy()

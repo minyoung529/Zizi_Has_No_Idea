@@ -17,6 +17,12 @@ public class UIManager : MonoBehaviour
     {
         Debug.Log("UI Manager Start");
         EventManager<EventParam>.StartListening(Constant.CLICK_PLAYER_EVENT, ActiveChartImage);
+        EventManager.StartListening(Constant.CLICK_PLAYER_EVENT,  () =>
+        {
+            EventParam e = new EventParam();
+            e.boolean = false;
+            ActiveChartImage(e);
+        });
     }
 
     private void ActiveChartImage(EventParam param)
@@ -45,16 +51,18 @@ public class UIManager : MonoBehaviour
 
     private void GenerateSentencePanels()
     {
-        Item[] items = GameManager.Instance.CurrentItems;
+        List<Item> items = GameManager.Instance.CurrentItems;
 
-        if (items == null || items.Length == 0) return;
+        if (items == null || items.Count == 0) return;
 
-        for (int i = 0; i < items.Length; i++)
+        for (int i = 0; i < items.Count; i++)
         {
             SentencePanel panel;
 
             if (i < sentencePanels.Count)
+            {
                 panel = sentencePanels[i];
+            }
 
             else
             {

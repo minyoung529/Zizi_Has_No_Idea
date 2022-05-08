@@ -16,11 +16,9 @@ public class WordImageVisual : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     static public bool isSelect;
 
-    private void Start()
+    private void Awake()
     {
         firstSprite = image.sprite;
-        image.transform.localScale = Vector3.zero;
-
         EventManager.StartListening(Constant.RESET_GAME_EVENT, ResetData);
     }
 
@@ -39,7 +37,6 @@ public class WordImageVisual : MonoBehaviour, IPointerEnterHandler, IPointerExit
     {
         if (Input.GetMouseButton(0))
         {
-            image.transform.DOScale(0f, 0.2f);
             ResetData();
         }
 
@@ -47,6 +44,14 @@ public class WordImageVisual : MonoBehaviour, IPointerEnterHandler, IPointerExit
         {
             onPanelSelected.Invoke(VerbSystemController.CurrentVerb.verbType);
         }
+    }
+
+    public void SetSprite(Item item)
+    {
+        VerbType type = item.verbPairs[VerbSystemController.CurrentCharacter];
+        Sprite sprite = GameManager.Instance.Data.Verbs.verbs.Find(x => x.verbType == type).verbSprites;
+       
+        image.sprite = sprite;
     }
 
     private void ResetData()

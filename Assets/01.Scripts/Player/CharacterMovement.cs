@@ -82,9 +82,10 @@ public class CharacterMovement : MonoBehaviour
 
     private void AddSettingDirection(VerbType type, Item item)
     {
+        Type scriptType = Type.GetType(type.ToString());
 
-        SettingDirection settingDirection = GetComponent(type.ToString()) as SettingDirection;
-        settingDirection ??= gameObject.AddComponent(Type.GetType(type.ToString())) as SettingDirection;
+        SettingDirection settingDirection = GetComponent(scriptType) as SettingDirection;
+        settingDirection ??= gameObject.AddComponent(scriptType) as SettingDirection;
         settingDirection.Init(item);
 
         if (!settingDirections.Contains(settingDirection))

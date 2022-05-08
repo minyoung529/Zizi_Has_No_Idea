@@ -35,8 +35,6 @@ public class CameraMovement : MonoBehaviour
     private Vector3 originalPosition;
     private float originalview;
 
-    private bool isMove = true;
-
     private void Start()
     {
         cam = GetComponent<Camera>();
@@ -50,7 +48,7 @@ public class CameraMovement : MonoBehaviour
 
     private void Update()
     {
-        if (VerbSystemController.CurrentVerb != null) return;
+        // TODO: UI On 상태일 때 막기
 
         MouseXYMove();
         MouseScrollWheelZoom();

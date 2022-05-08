@@ -7,17 +7,30 @@ public class ItemObject : MonoBehaviour
     [SerializeField] private Item item;
     public Item Item { get { return item; } }
 
-    private void Start()
+    private void Awake()
     {
         Vector3 position = transform.position;
         position.x = Mathf.RoundToInt(position.x);
         position.z = Mathf.RoundToInt(position.z);
 
         transform.position = position;
+
+        EventManager.StartListening(Constant.CLEAR_STAGE_EVENT, RegisterItem);
     }
 
     private void Update()
     {
         item.ItemPosition = transform.position;
+    }
+
+    private void RegisterItem()
+    {
+        GameManager.Instance.CurrentItems.Add(item);
+        Debug.Log($"{item.Name} µî·Ï");
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.StopListening(Constant.CLEAR_STAGE_EVENT, RegisterItem);
     }
 }
