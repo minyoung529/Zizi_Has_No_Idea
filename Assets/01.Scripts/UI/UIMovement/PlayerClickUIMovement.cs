@@ -10,6 +10,9 @@ public class PlayerClickUIMovement : UIMovement
 
     private void OnMove(EventParam param)
     {
+        gameObject.SetActive(!param.boolean);
+        gameObject.SetActive(param.boolean);
+
         if (param.boolean)
         {
             rectTransform.DOAnchorPos(targetPosition, duration).SetEase(Ease.InOutQuad);

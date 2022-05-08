@@ -18,8 +18,12 @@ public class SentencePanel : PanelBase
 
     private void UpdateUI(EventParam param)
     {
-        string postposition = (item.Name[item.Name.Length - 1] - 0xAC00) % 28 > 0 ? "을" : "를";
-        sentenceText.text = $"{param.character?.characterName}은 {item.Name}{postposition}";
+        if (param.character == null) return;
+
+        string oPostposition = (item.Name[item.Name.Length - 1] - 0xAC00) % 28 > 0 ? "을" : "를";
+        string sPostposition = (param.character?.characterName[param.character.characterName.Length - 1] - 0xAC00) % 28 > 0 ? "은" : "는";
+        
+        sentenceText.text = $"{param.character?.characterName}{sPostposition} {item.Name}{oPostposition}";
     }
 
     public void ChangeVerbType(VerbType verbType)

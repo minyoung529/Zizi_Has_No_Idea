@@ -8,6 +8,7 @@ public class CharacterMovement : MonoBehaviour
 {
     private Rigidbody rigid;
     [SerializeField] private float speed = 1f;
+    [SerializeField] private float rotationSpeed = 5f;
 
     [SerializeField] private UnityEvent<Vector3> OnRigidVelocity;
 
@@ -56,7 +57,7 @@ public class CharacterMovement : MonoBehaviour
                 currentDirection = Vector3.forward;
             }
 
-            transform.forward = CurrentDirection;
+            transform.forward = Vector3.Lerp(transform.forward, CurrentDirection, Time.deltaTime * rotationSpeed);
 
             Vector3 velocity = rigid.velocity;
             velocity.x = CurrentDirection.x * speed;

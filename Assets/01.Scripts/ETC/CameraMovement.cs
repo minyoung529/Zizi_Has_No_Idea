@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class CameraMovement : MonoBehaviour
 {
@@ -30,9 +31,21 @@ public class CameraMovement : MonoBehaviour
 
     private Camera cam;
 
+    private Quaternion originalRotation;
+    private Vector3 originalPosition;
+    private float originalview;
+
+    private bool isMove = true;
+
     private void Start()
     {
         cam = GetComponent<Camera>();
+
+        originalRotation = transform.rotation;
+        originalPosition = transform.position;
+        originalview = cam.orthographicSize;
+
+        EventManager.StartListening(Constant.RESET_GAME_EVENT, ResetPosAndRot);
     }
 
     private void Update()
@@ -99,5 +112,14 @@ public class CameraMovement : MonoBehaviour
         }
 
         transform.Translate(new Vector3(-moveX, moveY, 0f) * moveSpeed * Time.deltaTime);
+    }
+
+    private void ResetPosAndRot()
+    {
+        float delay = 1f;
+
+        transform.DORotateQuaternion(originalRotation, delay);
+        transform.DOMove(originalPosition, delay);
+        cam.DOOrthoSize(originalview, delay);
     }
 }

@@ -14,6 +14,10 @@ public class ItemObject : MonoBehaviour
         position.z = Mathf.RoundToInt(position.z);
 
         transform.position = position;
+    }
+
+    private void Update()
+    {
         item.ItemPosition = transform.position;
     }
 }

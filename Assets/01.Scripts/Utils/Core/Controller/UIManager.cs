@@ -26,12 +26,6 @@ public class UIManager : MonoBehaviour
 
         if (param.boolean)
         {
-            Vector3 pos = Input.mousePosition;
-            pos.x -= 100f;
-            pos.y -= 70f;
-
-            chartImage.anchoredPosition = pos;
-
             chartImage.gameObject.SetActive(true);
             chartImage.transform.localScale = Vector3.zero;
             chartImage.transform.DOScale(1f, delay).SetEase(Ease.InOutQuad);
