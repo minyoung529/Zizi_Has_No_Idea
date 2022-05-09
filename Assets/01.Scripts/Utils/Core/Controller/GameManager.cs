@@ -19,8 +19,7 @@ public class GameManager : MonoSingleton<GameManager>
     private List<ItemObject> currentItems;
     public List<ItemObject> CurrentItems { get => currentItems; }
 
-    private List<Character> currentCharacters;
-    public List<Character> CurrentCharacters { get => currentCharacters; }
+    public List<Character> CurrentCharacters { get; set; }
 
     public Vector3 PlayerSpawnPosition
     {
@@ -60,7 +59,7 @@ public class GameManager : MonoSingleton<GameManager>
         currentStagePrefab = Instantiate(prefab, Vector3.zero, Quaternion.identity);
 
         currentItems = new List<ItemObject>();
-        currentCharacters = new List<Character>();
+        CurrentCharacters = new List<Character>();
 
         EventManager.TriggerEvent(Constant.CLEAR_STAGE_EVENT);
 
@@ -85,12 +84,17 @@ public class GameManager : MonoSingleton<GameManager>
         {
             currentItems[i].Item.verbPairs = new Dictionary<Character, VerbType>();
 
-            for (int j = 0; j < currentCharacters.Count; j++)
+            for (int j = 0; j < CurrentCharacters.Count; j++)
             {
-                if (currentCharacters[j].characterName == currentItems[i].Item.Name) continue;
-                currentItems[i].Item.verbPairs.Add(currentCharacters[j], VerbType.None);
+                if (CurrentCharacters[j].characterName == currentItems[i].Item.Name) continue;
+                currentItems[i].Item.verbPairs.Add(CurrentCharacters[j], VerbType.None);
             }
         }
+    }
+
+    public void InstantiateParabola()
+    {
+        
     }
 
     private void OnDestroy()
