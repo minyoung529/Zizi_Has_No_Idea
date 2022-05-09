@@ -73,14 +73,14 @@ public class CharacterMovement : MonoBehaviour
     {
         settingDirections.ForEach(x => x.IsActive = false);
 
-        foreach (Item item in GameManager.Instance.CurrentItems)
+        foreach (ItemObject item in GameManager.Instance.CurrentItems)
         {
-            if (item.verbPairs[character] == VerbType.None) return;
-            AddSettingDirection(item.verbPairs[character], item);
+            if (item.Item.verbPairs[character] == VerbType.None) return;
+            AddSettingDirection(item.Item.verbPairs[character], item);
         }
     }
 
-    private void AddSettingDirection(VerbType type, Item item)
+    private void AddSettingDirection(VerbType type, ItemObject item)
     {
         Type scriptType = Type.GetType(type.ToString());
 

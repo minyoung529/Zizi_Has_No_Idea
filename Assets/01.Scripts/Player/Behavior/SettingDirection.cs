@@ -5,7 +5,7 @@ using UnityEngine;
 public class SettingDirection : MonoBehaviour
 {
     protected CharacterMovement currentCharacter;
-    protected Item target;
+    protected ItemObject target;
     public bool IsActive { get; set; }
 
     private void Awake()
@@ -13,7 +13,7 @@ public class SettingDirection : MonoBehaviour
         currentCharacter = GetComponent<CharacterMovement>();
     }
 
-    public void Init(Item target)
+    public void Init(ItemObject target)
     {
         this.target = target;
     }

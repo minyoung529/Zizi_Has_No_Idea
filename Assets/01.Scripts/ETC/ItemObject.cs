@@ -18,14 +18,9 @@ public class ItemObject : MonoBehaviour
         EventManager.StartListening(Constant.CLEAR_STAGE_EVENT, RegisterItem);
     }
 
-    private void Update()
-    {
-        item.ItemPosition = transform.position;
-    }
-
     private void RegisterItem()
     {
-        GameManager.Instance.CurrentItems.Add(item);
+        GameManager.Instance.CurrentItems.Add(this);
         Debug.Log($"{item.Name} µî·Ï");
     }
 

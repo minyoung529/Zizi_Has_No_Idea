@@ -6,6 +6,6 @@ public class Dislike : SettingDirection
 {
     public override void SetDirection()
     {
-        currentCharacter.CurrentDirection += -(target.ItemPosition - transform.position).normalized;
+        currentCharacter.CurrentDirection += -(target.transform.position - transform.position).normalized;
     }
 }

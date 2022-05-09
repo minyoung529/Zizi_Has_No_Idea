@@ -16,8 +16,8 @@ public class GameManager : MonoSingleton<GameManager>
 
     private GameObject currentStagePrefab;
 
-    private List<Item> currentItems;
-    public List<Item> CurrentItems { get => currentItems; }
+    private List<ItemObject> currentItems;
+    public List<ItemObject> CurrentItems { get => currentItems; }
 
     private List<Character> currentCharacters;
     public List<Character> CurrentCharacters { get => currentCharacters; }
@@ -26,7 +26,7 @@ public class GameManager : MonoSingleton<GameManager>
     {
         get => currentStagePrefab.transform.GetChild(0).position;
     }
-    
+
     void Awake()
     {
         UIManager = FindObjectOfType<UIManager>();
@@ -59,7 +59,7 @@ public class GameManager : MonoSingleton<GameManager>
         GameObject prefab = Data.LoadStage();
         currentStagePrefab = Instantiate(prefab, Vector3.zero, Quaternion.identity);
 
-        currentItems = new List<Item>();
+        currentItems = new List<ItemObject>();
         currentCharacters = new List<Character>();
 
         EventManager.TriggerEvent(Constant.CLEAR_STAGE_EVENT);
@@ -83,12 +83,12 @@ public class GameManager : MonoSingleton<GameManager>
     {
         for (int i = 0; i < currentItems.Count; i++)
         {
-            currentItems[i].verbPairs = new Dictionary<Character, VerbType>();
+            currentItems[i].Item.verbPairs = new Dictionary<Character, VerbType>();
 
             for (int j = 0; j < currentCharacters.Count; j++)
             {
-                if (currentCharacters[j].characterName == currentItems[i].Name) continue;
-                currentItems[i].verbPairs.Add(currentCharacters[j], VerbType.None);
+                if (currentCharacters[j].characterName == currentItems[i].Item.Name) continue;
+                currentItems[i].Item.verbPairs.Add(currentCharacters[j], VerbType.None);
             }
         }
     }

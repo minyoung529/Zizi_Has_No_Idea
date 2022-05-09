@@ -41,6 +41,11 @@ public class SentencePanel : PanelBase
         Debug.Log(verbType);
         item.verbPairs[VerbSystemController.CurrentCharacter] = verbType;
         VerbSystemController.CurrentVerb = null;
+
+
+        // TODO: 나중에 다른데로 옮기기
+        ItemObject itemObj = GameManager.Instance.CurrentItems.Find(x => x.Item.Name == item.Name);
+        ParabolaObject obj = Instantiate(new ParabolaObject(VerbSystemController.CurrentCharacter.transform, itemObj.transform), null);
     }
 
     void AdjustUIDetail()

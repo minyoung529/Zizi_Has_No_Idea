@@ -8,7 +8,4 @@ public class Item
     public string Name { get { return name; } }
 
     public Dictionary<Character, VerbType> verbPairs;
-
-    private Vector3 itemPosition;
-    public Vector3 ItemPosition { get { return itemPosition; } set { itemPosition = value; } }
 }

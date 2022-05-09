@@ -51,7 +51,7 @@ public class UIManager : MonoBehaviour
 
     private void GenerateSentencePanels()
     {
-        List<Item> items = GameManager.Instance.CurrentItems;
+        List<ItemObject> items = GameManager.Instance.CurrentItems;
 
         if (items == null || items.Count == 0) return;
 
@@ -71,7 +71,7 @@ public class UIManager : MonoBehaviour
             }
 
             panel.gameObject.SetActive(true);
-            panel.Init(items[i]);
+            panel.Init(items[i].Item);
         }
     }
 }
