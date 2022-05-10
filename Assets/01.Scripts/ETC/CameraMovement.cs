@@ -48,7 +48,8 @@ public class CameraMovement : MonoBehaviour
 
     private void Update()
     {
-        // TODO: UI On 상태일 때 막기
+        if (GameManager.GameState == GameState.InGameSetting || GameManager.GameState == GameState.Setting)
+            return;
 
         MouseXYMove();
         MouseScrollWheelZoom();

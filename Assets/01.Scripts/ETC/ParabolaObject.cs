@@ -11,30 +11,41 @@ public class ParabolaObject : MonoBehaviour
     private Vector3 endPoint;
     private LineRenderer lineRenderer;
 
-    public int count = 30;
+    public int count = 100;
 
     public float maxHeight = 60f;
 
-    public void Init(Transform target1, Transform target2)
+    private WaitForSeconds drawDelay = new WaitForSeconds(0.05f);
+
+    public void Init(Transform start, Transform end)
     {
-        this.target1 = target1;
-        this.target2 = target2;
+        this.target1 = start;
+        this.target2 = end;
 
         lineRenderer = gameObject.GetComponent<LineRenderer>();
+        lineRenderer.positionCount = 1;
 
-        lineRenderer.positionCount = count;
+        startPoint = start.position;
+        startPoint.y = ParabolaController.offsetY;
+        lineRenderer.SetPosition(0, startPoint);
 
-        lineRenderer.SetPosition(0, target1.position + Vector3.up * 0.5f);
-        lineRenderer.SetPosition(count - 1, target2.position + Vector3.up * 0.5f);
+        endPoint = end.position;
+        endPoint.y = ParabolaController.offsetY;
 
-        startPoint = lineRenderer.GetPosition(0);
-        endPoint = lineRenderer.GetPosition(count - 1);
+        gameObject.SetActive(true);
 
-        DrawParabola();
+        StartCoroutine(DrawParabolaObject());
     }
 
     private void DrawParabola()
     {
+
+    }
+
+    private IEnumerator DrawParabolaObject()
+    {
+        yield return null;
+
         for (int i = 1; i < count - 1; i++)
         {
             Vector3 position = Vector3.zero;
@@ -49,7 +60,13 @@ public class ParabolaObject : MonoBehaviour
             if (Mathf.Abs(endPoint.z - startPoint.z) > 0.01f)
                 position.z = increment * (endPoint.z - startPoint.z) + startPoint.z;
 
+            lineRenderer.positionCount++;
             lineRenderer.SetPosition(i, position);
+
+            yield return drawDelay;
         }
+
+        lineRenderer.positionCount++;
+        lineRenderer.SetPosition(count - 1, endPoint);
     }
 }

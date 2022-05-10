@@ -36,6 +36,8 @@ public class KeyInput : MonoBehaviour
 
     private bool Raycast()
     {
+        if (GameManager.GameState == GameState.Play) return false;
+
         Ray ray = Define.MainCam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitInfo;
 

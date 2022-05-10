@@ -22,9 +22,7 @@ public class GameManager : MonoSingleton<GameManager>
     public List<Character> CurrentCharacters { get; set; }
 
     public Vector3 PlayerSpawnPosition
-    {
-        get => currentStagePrefab.transform.GetChild(0).position;
-    }
+        => currentStagePrefab.transform.GetChild(0).position;
 
     void Awake()
     {
@@ -33,8 +31,9 @@ public class GameManager : MonoSingleton<GameManager>
 
         EventManager.StartListening(Constant.START_PLAY_EVENT, StartPlay);
         EventManager.StartListening(Constant.GET_STAR_EVENT, ClearStage);
-
+        EventManager<EventParam>.StartListening(Constant.CLICK_PLAYER_EVENT, SetGameState);
     }
+
     private void Start()
     {
         ClearStage();
@@ -92,9 +91,13 @@ public class GameManager : MonoSingleton<GameManager>
         }
     }
 
-    public void InstantiateParabola()
+    private void SetGameState(EventParam eventParam)
     {
-        
+        if (eventParam.boolean)
+            GameState = GameState.InGameSetting;
+
+        else if (GameState == GameState.InGameSetting)
+            GameState = GameState.Ready;
     }
 
     private void OnDestroy()

@@ -3,5 +3,6 @@ public enum GameState
     NotGame,
     Ready,
     Play,
-    Setting
+    Setting,
+    InGameSetting
 }
