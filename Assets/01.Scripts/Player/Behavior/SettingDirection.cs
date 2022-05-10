@@ -16,9 +16,17 @@ public class SettingDirection : MonoBehaviour
     public void Init(ItemObject target)
     {
         this.target = target;
+        IsActive = true;
+        SetupDirection();
     }
 
     public virtual void SetDirection() { }
 
     public virtual void SetupDirection() { }
+
+    public virtual void ResetData()
+    {
+        IsActive = false;
+        target = null;
+    }
 }

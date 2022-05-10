@@ -71,7 +71,7 @@ public class CharacterMovement : MonoBehaviour
 
     private void SetDirection()
     {
-        settingDirections.ForEach(x => x.IsActive = false);
+        settingDirections.ForEach(x => x.ResetData());
 
         foreach (ItemObject item in GameManager.Instance.CurrentItems)
         {
@@ -84,13 +84,18 @@ public class CharacterMovement : MonoBehaviour
     {
         Type scriptType = Type.GetType(type.ToString());
 
+
         SettingDirection settingDirection = GetComponent(scriptType) as SettingDirection;
-        settingDirection ??= gameObject.AddComponent(scriptType) as SettingDirection;
+
+        if (settingDirection == null || settingDirection.IsActive)
+        {
+            settingDirection = gameObject.AddComponent(scriptType) as SettingDirection;
+        }
+
         settingDirection.Init(item);
 
         if (!settingDirections.Contains(settingDirection))
         {
-            settingDirection.IsActive = true;
             settingDirections.Add(settingDirection);
         }
     }

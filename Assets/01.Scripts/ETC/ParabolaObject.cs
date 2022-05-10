@@ -15,10 +15,14 @@ public class ParabolaObject : MonoBehaviour
 
     public float maxHeight = 60f;
 
-    private void Init(Transform target1, Transform target2)
+    public void Init(Transform target1, Transform target2)
     {
         this.target1 = target1;
         this.target2 = target2;
+
+        lineRenderer = gameObject.GetComponent<LineRenderer>();
+
+        lineRenderer.positionCount = count;
 
         lineRenderer.SetPosition(0, target1.position + Vector3.up * 0.5f);
         lineRenderer.SetPosition(count - 1, target2.position + Vector3.up * 0.5f);
@@ -40,20 +44,12 @@ public class ParabolaObject : MonoBehaviour
             position.y = maxHeight * sin + startPoint.y;
 
             if (Mathf.Abs(endPoint.x - startPoint.x) > 0.01f)
-                position.x = increment * (endPoint.x - startPoint.x);
+                position.x = increment * (endPoint.x - startPoint.x) + startPoint.x;
 
             if (Mathf.Abs(endPoint.z - startPoint.z) > 0.01f)
-                position.z = increment * (endPoint.z - startPoint.z);
+                position.z = increment * (endPoint.z - startPoint.z) + startPoint.z;
 
             lineRenderer.SetPosition(i, position);
         }
-    }
-
-    public ParabolaObject(Transform target1, Transform target2)
-    {
-        lineRenderer ??= gameObject.AddComponent<LineRenderer>();
-        lineRenderer.positionCount = count;
-
-        Init(target1, target2);
     }
 }

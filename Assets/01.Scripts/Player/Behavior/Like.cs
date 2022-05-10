@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Like : SettingDirection
 {
-    public override void SetDirection()
+    public override void SetupDirection()
     {
         currentCharacter.CurrentDirection += (target.transform.position - transform.position).normalized;
     }

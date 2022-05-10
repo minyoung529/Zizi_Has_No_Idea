@@ -16,6 +16,8 @@ public class DataManager : MonoBehaviour
     [SerializeField] private VerbsSO verbs;
     public VerbsSO Verbs { get { return verbs; } }
 
+    public ParabolaObject parabolaPrefab;
+
     void Start()
     {
         DontDestroyOnLoad(this);
