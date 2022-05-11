@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class ParabolaObject : MonoBehaviour
 {
-    private Transform target1;
-    private Transform target2;
+    private string characterName;
+    public string CharacterName => characterName;
+
+    private string itemName;
+    public string ItemName => itemName;
 
     private Vector3 startPoint;
     private Vector3 endPoint;
@@ -17,19 +20,19 @@ public class ParabolaObject : MonoBehaviour
 
     private WaitForSeconds drawDelay = new WaitForSeconds(0.05f);
 
-    public void Init(Transform start, Transform end)
+    public void Init(Character start, ItemObject end)
     {
-        this.target1 = start;
-        this.target2 = end;
+        characterName = start.characterName;
+        itemName = end.Item.Name;
 
         lineRenderer = gameObject.GetComponent<LineRenderer>();
         lineRenderer.positionCount = 1;
 
-        startPoint = start.position;
+        startPoint = start.transform.position;
         startPoint.y = ParabolaController.offsetY;
         lineRenderer.SetPosition(0, startPoint);
 
-        endPoint = end.position;
+        endPoint = end.transform.position;
         endPoint.y = ParabolaController.offsetY;
 
         gameObject.SetActive(true);

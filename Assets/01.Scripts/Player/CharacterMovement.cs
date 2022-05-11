@@ -15,14 +15,8 @@ public class CharacterMovement : MonoBehaviour
     private Vector3 currentDirection;
     public Vector3 CurrentDirection
     {
-        get
-        {
-            return currentDirection.normalized;
-        }
-        set
-        {
-            currentDirection = value;
-        }
+        get => currentDirection.normalized;
+        set => currentDirection = value;
     }
 
     [SerializeField] LayerMask groundLayer;
@@ -48,6 +42,8 @@ public class CharacterMovement : MonoBehaviour
 
     private void OnPlay()
     {
+        if (character.IsInactive) return;
+
         if (GameManager.GameState == GameState.Play)
         {
             settingDirections.FindAll(x => x.IsActive).ForEach(x => x.SetDirection());
@@ -71,6 +67,8 @@ public class CharacterMovement : MonoBehaviour
 
     private void SetDirection()
     {
+        if (character.IsInactive) return;
+
         settingDirections.ForEach(x => x.ResetData());
 
         foreach (ItemObject item in GameManager.Instance.CurrentItems)

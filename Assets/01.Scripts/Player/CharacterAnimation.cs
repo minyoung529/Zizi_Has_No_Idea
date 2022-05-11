@@ -23,12 +23,8 @@ public class CharacterAnimation : MonoBehaviour
 
     public void SetWalkAnimation(Vector3 velocity)
     {
-        animator.SetBool(walkHash, (velocity.x > 0.1f || velocity.z > 0.1f) && velocity.y > -0.5f);
-    }
-
-    public void SetFallAnimation(Vector3 velocity)
-    {
-        animator.SetBool(fallHash, velocity.y < -0.5f);
+        animator.SetBool(walkHash, (Mathf.Abs(velocity.x) > 0.1f || Mathf.Abs(velocity.z) > 0.1f) && velocity.y > -0.5f);
+        animator.SetBool(fallHash, velocity.y < -1f);
     }
 
     private void TriggerSelectedAnimation(EventParam param)
@@ -37,7 +33,7 @@ public class CharacterAnimation : MonoBehaviour
 
         if (character.characterName == param.character.characterName)
         {
-            animator.SetTrigger(selectedHash);
+            animator.Play(selectedHash);
         }
     }
 

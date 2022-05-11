@@ -5,7 +5,11 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    [SerializeField] private bool isPlayer;
+    [SerializeField] private bool isPlayer = false;
+    public bool IsPlayer => isPlayer;
+
+    private bool isInactive = false;
+    public bool IsInactive => isInactive;
 
     public string characterName;
     private Vector3 originPosition = Vector3.zero;
@@ -35,11 +39,17 @@ public class Character : MonoBehaviour
 
     private void RegisterCharacter()
     {
+        isInactive = false;
+
         if (isPlayer)
         {
             PlayerInfo playerInfo = GameManager.Instance.PlayerTransform.GetComponent<PlayerInfo>();
-            if (playerInfo != null && playerInfo.isCharacter) return;
-            //TODO: Item 추가        
+            if (playerInfo != null && !playerInfo.isCharacter)
+            {
+                isInactive = true;
+                return;
+            }
+            //TODO: Item 추가
         }
 
         GameManager.Instance.CurrentCharacters.Add(this);

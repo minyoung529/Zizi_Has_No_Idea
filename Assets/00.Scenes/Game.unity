@@ -7174,6 +7174,10 @@ PrefabInstance:
       propertyPath: characterName
       value: "\uBBFC\uC601"
       objectReference: {fileID: 0}
+    - target: {fileID: 2005086666769593616, guid: 81b90cdefc27e71479a2713fcf98a9b5, type: 3}
+      propertyPath: speed
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6960901741360959444, guid: 81b90cdefc27e71479a2713fcf98a9b5, type: 3}
       propertyPath: m_Name
       value: BubbaSuit

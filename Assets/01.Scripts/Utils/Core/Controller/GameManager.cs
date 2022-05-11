@@ -12,7 +12,7 @@ public class GameManager : MonoSingleton<GameManager>
 
 
     public static int currentChapter { get; set; } = 1;
-    public static int currentStage { get; set; } = 3;
+    public static int currentStage { get; set; } = 4;
 
     private GameObject currentStagePrefab;
 
@@ -32,6 +32,8 @@ public class GameManager : MonoSingleton<GameManager>
         EventManager.StartListening(Constant.START_PLAY_EVENT, StartPlay);
         EventManager.StartListening(Constant.GET_STAR_EVENT, ClearStage);
         EventManager<EventParam>.StartListening(Constant.CLICK_PLAYER_EVENT, SetGameState);
+
+        ParabolaController.Start();
     }
 
     private void Start()

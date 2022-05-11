@@ -13,9 +13,9 @@ public class StarObject : MonoBehaviour
         transform.position = position;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag(Constant.PLAYER_TAG) && GameManager.GameState == GameState.Play)
+        if (collision.transform.CompareTag(Constant.PLAYER_TAG) && GameManager.GameState == GameState.Play)
         {
             Debug.Log("Get Star");
             EventManager.TriggerEvent(Constant.GET_STAR_EVENT);
