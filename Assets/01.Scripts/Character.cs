@@ -24,13 +24,24 @@ public class Character : MonoBehaviour
     private void ResetCharacter()
     {
         if (isPlayer)
-            transform.SetPositionAndRotation(GameManager.Instance.PlayerSpawnPosition, originalRotation);
+        {
+            transform.SetPositionAndRotation(GameManager.Instance.PlayerTransform.position, originalRotation);
+        }
         else
+        {
             transform.SetPositionAndRotation(originPosition, originalRotation);
+        }
     }
 
     private void RegisterCharacter()
     {
+        if (isPlayer)
+        {
+            PlayerInfo playerInfo = GameManager.Instance.PlayerTransform.GetComponent<PlayerInfo>();
+            if (playerInfo != null && playerInfo.isCharacter) return;
+            //TODO: Item 추가        
+        }
+
         GameManager.Instance.CurrentCharacters.Add(this);
         Debug.Log($"{characterName} 등록");
     }

@@ -22,6 +22,8 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
+    - _GlowCap: 0
+    - _GlowGap: 0.15
     - _HorizonLineContribution: 0.177
     - _HorizonLineExponent: 4
     - _SkyGradientExponent: 2.5

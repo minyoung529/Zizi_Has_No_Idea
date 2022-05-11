@@ -21,8 +21,8 @@ public class GameManager : MonoSingleton<GameManager>
 
     public List<Character> CurrentCharacters { get; set; }
 
-    public Vector3 PlayerSpawnPosition
-        => currentStagePrefab.transform.GetChild(0).position;
+    public Transform PlayerTransform
+        => currentStagePrefab.transform.GetChild(0);
 
     void Awake()
     {
