@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1716260830278958458}
   - component: {fileID: 141554990025691112}
   - component: {fileID: 8263183330406010876}
+  - component: {fileID: 1267020632689206629}
   m_Layer: 0
   m_Name: Star
   m_TagString: Star
@@ -91,6 +92,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!114 &1267020632689206629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808659566923325054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ed9480cae1a2c499842f3befe373ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayer: 0
+  isConstantY: 0
 --- !u!1001 &5531022616221694713
 PrefabInstance:
   m_ObjectHideFlags: 0

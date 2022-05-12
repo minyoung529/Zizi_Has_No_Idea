@@ -1657,6 +1657,7 @@ GameObject:
   - component: {fileID: 2005086666769593616}
   - component: {fileID: 7913183442328795701}
   - component: {fileID: 543450652528407160}
+  - component: {fileID: 1632845113}
   m_Layer: 6
   m_Name: BubbaSuit
   m_TagString: Player
@@ -1746,23 +1747,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b706b21bee490164c8dec0ac8ba3e1ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 3
   rotationSpeed: 5
   OnRigidVelocity:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7913183442328795701}
-        m_TargetAssemblyTypeName: PlayerAnimation, Assembly-CSharp
-        m_MethodName: SetFallAnimation
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 7913183442328795701}
         m_TargetAssemblyTypeName: PlayerAnimation, Assembly-CSharp
         m_MethodName: SetWalkAnimation
@@ -1803,7 +1792,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 1
-  characterName: "\uC3D8\uD0A4"
+  characterName: "\uC9C0\uC9C0"
+--- !u!114 &1632845113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6960901741360959444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ed9480cae1a2c499842f3befe373ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayer: 1
 --- !u!1 &7244767514854528749
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,3 +24,5 @@ MonoBehaviour:
     stagePrefab: {fileID: 8243762160370363931, guid: 78a8d68efeac5dc4fbe34a2fbe9715d3, type: 3}
   - stageNum: 5
     stagePrefab: {fileID: 8243762160370363931, guid: 0e3c1234b1b52af4ca23181def0897d7, type: 3}
+  - stageNum: 6
+    stagePrefab: {fileID: 8243762160370363931, guid: 6613b6570c1af874bb43bcde1e58a3ba, type: 3}

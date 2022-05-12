@@ -216,6 +216,7 @@ GameObject:
   - component: {fileID: 2455669178004443603}
   - component: {fileID: 4088828860045858199}
   - component: {fileID: 4280733149053657147}
+  - component: {fileID: 5947613495972406606}
   m_Layer: 6
   m_Name: Ghost
   m_TagString: Untagged
@@ -373,6 +374,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item:
     name: "\uAF2C\uB9C8\uC720\uB839"
+--- !u!114 &5947613495972406606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709816576029268815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ed9480cae1a2c499842f3befe373ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayer: 0
 --- !u!1 &2558416410140435324
 GameObject:
   m_ObjectHideFlags: 0

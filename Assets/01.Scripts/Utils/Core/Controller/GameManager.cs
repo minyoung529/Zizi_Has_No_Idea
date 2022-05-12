@@ -12,7 +12,7 @@ public class GameManager : MonoSingleton<GameManager>
 
 
     public static int currentChapter { get; set; } = 1;
-    public static int currentStage { get; set; } = 0;
+    public static int currentStage { get; set; } = 5;
 
     private GameObject currentStagePrefab;
 
@@ -69,7 +69,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     private IEnumerator LoadStage()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.15f);
 
         GameObject prefab = Data.LoadStage();
         currentStagePrefab = Instantiate(prefab, Vector3.zero, Quaternion.identity);
@@ -102,7 +102,7 @@ public class GameManager : MonoSingleton<GameManager>
 
             for (int j = 0; j < CurrentCharacters.Count; j++)
             {
-                if (CurrentCharacters[j].characterName == currentItems[i].Item.Name) continue;
+                if (CurrentCharacters[j].gameObject == currentItems[i].gameObject) continue;
                 currentItems[i].Item.verbPairs.Add(CurrentCharacters[j], VerbType.None);
             }
         }

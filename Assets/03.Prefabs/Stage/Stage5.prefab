@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <isCharacter>k__BackingField: 0
-  <isItem>k__BackingField: 1
+  <isItem>k__BackingField: 0
 --- !u!1001 &578800665168973587
 PrefabInstance:
   m_ObjectHideFlags: 0

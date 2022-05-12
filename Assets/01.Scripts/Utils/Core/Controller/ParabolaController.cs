@@ -26,6 +26,9 @@ public class ParabolaController
 
     private static void Check(Character startPoint, ItemObject endPoint)
     {
+        if (parabolas.Count == 0) return;
+        if (startPoint == null || endPoint == null) return;
+
         ParabolaObject obj = parabolas.Find(x => x.CharacterName == startPoint.characterName && x.ItemName == endPoint.Item.Name);
         if (obj == null) return;
 
@@ -38,7 +41,6 @@ public class ParabolaController
         for (int i = 0; i < parabolas.Count; i++)
         {
             ParabolaObject obj = parabolas[i];
-            parabolas.Remove(obj);
             GameObject.Destroy(obj.gameObject);
         }
 

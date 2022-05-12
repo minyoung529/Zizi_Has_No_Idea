@@ -12,29 +12,10 @@ public class Character : MonoBehaviour
     public bool IsInactive => isInactive;
 
     public string characterName;
-    private Vector3 originPosition = Vector3.zero;
-    private Quaternion originalRotation = Quaternion.identity;
 
     private void Awake()
     {
-        originPosition = transform.position;
-        originPosition.y = Constant.SPAWN_CHARACTER_Y;
-        originalRotation = transform.rotation;
-
-        EventManager.StartListening(Constant.RESET_GAME_EVENT, ResetCharacter);
         EventManager.StartListening(Constant.CLEAR_STAGE_EVENT, RegisterCharacter);
-    }
-
-    private void ResetCharacter()
-    {
-        if (isPlayer)
-        {
-            transform.SetPositionAndRotation(GameManager.Instance.PlayerTransform.position, originalRotation);
-        }
-        else
-        {
-            transform.SetPositionAndRotation(originPosition, originalRotation);
-        }
     }
 
     private void RegisterCharacter()
@@ -59,6 +40,5 @@ public class Character : MonoBehaviour
     private void OnDestroy()
     {
         EventManager.StopListening(Constant.CLEAR_STAGE_EVENT, RegisterCharacter);
-        EventManager.StopListening(Constant.RESET_GAME_EVENT, ResetCharacter);
     }
 }

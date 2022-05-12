@@ -73,7 +73,8 @@ public class CharacterMovement : MonoBehaviour
 
         foreach (ItemObject item in GameManager.Instance.CurrentItems)
         {
-            if (item.Item.verbPairs[character] == VerbType.None) return;
+            if (!item.Item.verbPairs.ContainsKey(character)) continue;
+            if (item.Item.verbPairs[character] == VerbType.None) continue;
             AddSettingDirection(item.Item.verbPairs[character], item);
         }
     }
@@ -110,5 +111,11 @@ public class CharacterMovement : MonoBehaviour
     {
         currentDirection = Vector3.zero;
         rigid.velocity = Vector3.zero;
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.StopListening(Constant.START_PLAY_EVENT, SetDirection);
+        EventManager.StopListening(Constant.RESET_GAME_EVENT, ResetData);
     }
 }
