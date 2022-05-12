@@ -13,7 +13,10 @@ public class SentencePanel : PanelBase
     {
         this.item = item;
         worldImage ??= GetComponentInChildren<WordImageVisual>();
+
         EventManager<EventParam>.StartListening(Constant.CLICK_PLAYER_EVENT, UpdateUI);
+        EventManager<VerbType>.StartListening(Constant.SELECT_VERB_WORD, ChangeVerbType);
+
         UpdateUI(new EventParam());
     }
 
@@ -37,13 +40,15 @@ public class SentencePanel : PanelBase
 
     public void ChangeVerbType(VerbType verbType)
     {
+        if (Vector2.Distance(worldImage.transform.position, Input.mousePosition) > 50f) return;
+
         Debug.Log(item.Name);
         Debug.Log(verbType);
         item.verbPairs[VerbSystemController.CurrentCharacter] = verbType;
         VerbSystemController.CurrentVerb = null;
 
         ItemObject itemObj = GameManager.Instance.CurrentItems.Find(x => x.Item.Name == item.Name);
-        ParabolaController.GenerateParabola(VerbSystemController.CurrentCharacter.transform, itemObj.transform);
+        ParabolaController.GenerateParabola(VerbSystemController.CurrentCharacter, itemObj);
     }
 
     void AdjustUIDetail()

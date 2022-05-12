@@ -10,7 +10,7 @@ using System;
 public class WordImageVisual : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private Image image;
-    private Sprite firstSprite;
+    private Sprite previousSprite;
 
     [SerializeField] private UnityEvent<VerbType> onPanelSelected;
 
@@ -18,7 +18,7 @@ public class WordImageVisual : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     private void Awake()
     {
-        firstSprite = image.sprite;
+        previousSprite = image.sprite;
         EventManager.StartListening(Constant.RESET_GAME_EVENT, ResetData);
     }
 
@@ -39,11 +39,6 @@ public class WordImageVisual : MonoBehaviour, IPointerEnterHandler, IPointerExit
         {
             ResetData();
         }
-
-        else if (!Input.GetMouseButton(0) && isSelect && VerbSystemController.CurrentVerb != null)
-        {
-            onPanelSelected.Invoke(VerbSystemController.CurrentVerb.verbType);
-        }
     }
 
     public void SetSprite(Item item)
@@ -52,13 +47,13 @@ public class WordImageVisual : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
         VerbType type = item.verbPairs[VerbSystemController.CurrentCharacter];
         Sprite sprite = GameManager.Instance.Data.Verbs.verbs.Find(x => x.verbType == type).verbSprites;
-       
+        previousSprite = sprite;
         image.sprite = sprite;
     }
 
     private void ResetData()
     {
-        image.sprite = firstSprite;
+        image.sprite = previousSprite;
         isSelect = false;
     }
 }

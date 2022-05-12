@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 993971308}
   - component: {fileID: 2016696934821936861}
   - component: {fileID: 4745667328068903167}
+  - component: {fileID: 4018587166668678432}
   m_Layer: 7
   m_Name: Platform
   m_TagString: Platform
@@ -143,6 +144,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 0
+--- !u!114 &4018587166668678432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3952345076219593435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 168b8418b4f47024eade3d9a3157f4b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grasses:
+  - grassPrefab: {fileID: 1754515521293593522, guid: 625b9f0a595509544ab76977ecf8c17e, type: 3}
+    count: 3
+  - grassPrefab: {fileID: 890833848567641289, guid: a52d6cd6ec5a18d418b98223941e11a8, type: 3}
+    count: 3
+  - grassPrefab: {fileID: 4282627543156723935, guid: f605abc0b09e5cc4f9bd5e20014296cb, type: 3}
+    count: 3
+  - grassPrefab: {fileID: 466847420454179428, guid: 1283a5f9ffdbfc546892309c3f1625e9, type: 3}
+    count: 3
+  - grassPrefab: {fileID: 332605820432017151, guid: fc9609e14f31a0c4db309d01a93f1ec6, type: 3}
+    count: 2
 --- !u!1 &7714248662055807958
 GameObject:
   m_ObjectHideFlags: 0

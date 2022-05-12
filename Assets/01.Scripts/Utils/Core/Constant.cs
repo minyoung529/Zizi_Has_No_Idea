@@ -11,6 +11,7 @@ public static class Constant
     public const short CLEAR_STAGE_EVENT = 500;
 
     public const short CLICK_PLAYER_EVENT = 400;
+    public const short SELECT_VERB_WORD = 600;
     #endregion
 
     #region TAG

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using DG.Tweening;
 
-public class VerbPanelEvent : PanelBase, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class VerbPanelEvent : PanelBase, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerUpHandler
 {
     private Verb verb;
     private Image image;
@@ -71,7 +71,17 @@ public class VerbPanelEvent : PanelBase, IBeginDragHandler, IDragHandler, IEndDr
         dragObject.sprite = null;
 
         if (!WordImageVisual.isSelect)
+        {
             VerbSystemController.CurrentVerb = null;
+        }
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        if(isSelecting)
+        {
+            EventManager<VerbType>.TriggerEvent(Constant.SELECT_VERB_WORD, VerbSystemController.CurrentVerb.verbType);
+        }
     }
 
     #endregion

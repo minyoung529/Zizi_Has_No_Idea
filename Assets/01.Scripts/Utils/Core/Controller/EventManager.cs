@@ -101,4 +101,6 @@ public struct EventParam
     public bool boolean;
     public Character character;
     public VerbType verbType;
+    public Verb verb;
+    public ItemObject itemObject;
 }

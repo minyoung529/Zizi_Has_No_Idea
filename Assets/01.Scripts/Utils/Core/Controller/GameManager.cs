@@ -12,17 +12,16 @@ public class GameManager : MonoSingleton<GameManager>
 
 
     public static int currentChapter { get; set; } = 1;
-    public static int currentStage { get; set; } = 4;
+    public static int currentStage { get; set; } = 0;
 
     private GameObject currentStagePrefab;
 
-    private List<ItemObject> currentItems;
+    private List<ItemObject> currentItems = new List<ItemObject>();
     public List<ItemObject> CurrentItems { get => currentItems; }
 
-    public List<Character> CurrentCharacters { get; set; }
+    public List<Character> CurrentCharacters { get; set; } = new List<Character>();
 
-    public Transform PlayerTransform
-        => currentStagePrefab.transform.GetChild(0);
+    public Transform PlayerTransform => currentStagePrefab.transform.GetChild(0);
 
     void Awake()
     {
@@ -41,6 +40,15 @@ public class GameManager : MonoSingleton<GameManager>
         ClearStage();
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            GameState = GameState.Play;
+            ClearStage();
+        }
+    }
+
     private void StartPlay()
     {
         Debug.Log("Play Start");
@@ -53,18 +61,25 @@ public class GameManager : MonoSingleton<GameManager>
 
         if (currentStagePrefab != null)
         {
-            Destroy(currentStagePrefab);
+            Destroy(currentStagePrefab.gameObject);
         }
+
+        StartCoroutine(LoadStage());
+    }
+
+    private IEnumerator LoadStage()
+    {
+        yield return new WaitForSeconds(0.1f);
 
         GameObject prefab = Data.LoadStage();
         currentStagePrefab = Instantiate(prefab, Vector3.zero, Quaternion.identity);
 
-        currentItems = new List<ItemObject>();
-        CurrentCharacters = new List<Character>();
+        currentItems.Clear();
+        CurrentCharacters.Clear();
 
         EventManager.TriggerEvent(Constant.CLEAR_STAGE_EVENT);
-
         ResetStage();
+
 
         Debug.Log("Clear Stage");
     }

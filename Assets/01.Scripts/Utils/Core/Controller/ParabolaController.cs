@@ -6,7 +6,7 @@ public class ParabolaController
 {
     public const float offsetY = 1.1f;
 
-    private static List<ParabolaObject> parabolas;
+    private static List<ParabolaObject> parabolas = new List<ParabolaObject>();
 
     public static void Start()
     {
@@ -29,13 +29,16 @@ public class ParabolaController
         ParabolaObject obj = parabolas.Find(x => x.CharacterName == startPoint.characterName && x.ItemName == endPoint.Item.Name);
         if (obj == null) return;
 
+        parabolas.Remove(obj);
         GameObject.Destroy(obj.gameObject);
     }
 
     private static void Reset()
     {
-        foreach(ParabolaObject obj in parabolas)
+        for (int i = 0; i < parabolas.Count; i++)
         {
+            ParabolaObject obj = parabolas[i];
+            parabolas.Remove(obj);
             GameObject.Destroy(obj.gameObject);
         }
 
