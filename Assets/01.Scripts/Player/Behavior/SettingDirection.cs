@@ -8,6 +8,9 @@ public class SettingDirection : MonoBehaviour
     protected ItemObject target;
     public bool IsActive { get; set; }
 
+    protected bool isStopMovement = false;
+    public bool IsStopMovement { get => isStopMovement; }
+
     private void Awake()
     {
         currentCharacter = GetComponent<CharacterMovement>();
@@ -28,5 +31,15 @@ public class SettingDirection : MonoBehaviour
     {
         IsActive = false;
         target = null;
+    }
+
+    public virtual void OnCollisionTarget() { }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(target.gameObject == collision.gameObject)
+        {
+            OnCollisionTarget();
+        }
     }
 }

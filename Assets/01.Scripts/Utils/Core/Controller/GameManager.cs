@@ -11,15 +11,15 @@ public class GameManager : MonoSingleton<GameManager>
     public DataManager Data { get; private set; }
 
 
-    public static int currentChapter { get; set; } = 1;
-    public static int currentStage { get; set; } = 5;
+    public static int CurrentChapter { get; set; } = 1;
+    public static int CurrentStage { get; set; } = 5;
 
     private GameObject currentStagePrefab;
 
-    private List<ItemObject> currentItems = new List<ItemObject>();
-    public List<ItemObject> CurrentItems { get => currentItems; }
-
+    public List<ItemObject> CurrentItems = new List<ItemObject>();
     public List<Character> CurrentCharacters { get; set; } = new List<Character>();
+
+    public int StarCount { get; set; } = 0;
 
     public Transform PlayerTransform => currentStagePrefab.transform.GetChild(0);
 
@@ -74,7 +74,7 @@ public class GameManager : MonoSingleton<GameManager>
         GameObject prefab = Data.LoadStage();
         currentStagePrefab = Instantiate(prefab, Vector3.zero, Quaternion.identity);
 
-        currentItems.Clear();
+        CurrentItems.Clear();
         CurrentCharacters.Clear();
 
         EventManager.TriggerEvent(Constant.CLEAR_STAGE_EVENT);
@@ -91,19 +91,19 @@ public class GameManager : MonoSingleton<GameManager>
         GameState = GameState.Ready;
 
         RegisterCurrentItem();
-        UIManager.ChangeStage(currentStage);
+        UIManager.ChangeStage(CurrentStage);
     }
 
     public void RegisterCurrentItem()
     {
-        for (int i = 0; i < currentItems.Count; i++)
+        for (int i = 0; i < CurrentItems.Count; i++)
         {
-            currentItems[i].Item.verbPairs = new Dictionary<Character, VerbType>();
+            CurrentItems[i].Item.verbPairs = new Dictionary<Character, VerbType>();
 
             for (int j = 0; j < CurrentCharacters.Count; j++)
             {
-                if (CurrentCharacters[j].gameObject == currentItems[i].gameObject) continue;
-                currentItems[i].Item.verbPairs.Add(CurrentCharacters[j], VerbType.None);
+                if (CurrentCharacters[j].gameObject == CurrentItems[i].gameObject) continue;
+                CurrentItems[i].Item.verbPairs.Add(CurrentCharacters[j], VerbType.None);
             }
         }
     }

@@ -11,6 +11,11 @@ public class BackPosition : MonoBehaviour
 
     private void Awake()
     {
+        Vector3 position = transform.position;
+        position.x = Mathf.RoundToInt(position.x);
+        position.z = Mathf.RoundToInt(position.z);
+        transform.position = position;
+
         originPosition = transform.position;
         
         if (isConstantY)

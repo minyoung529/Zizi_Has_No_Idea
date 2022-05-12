@@ -22,6 +22,6 @@ MonoBehaviour:
   - verbName: "\uC2EB\uC5B4\uD55C\uB2E4."
     verbSprites: {fileID: 21300000, guid: 6c98445c6664ead4faf42e51642df389, type: 3}
     verbType: 2
-  - verbName: "\uAE5C\uC9DD \uB180\uB77C\uD55C\uB2E4."
-    verbSprites: {fileID: 0}
+  - verbName: "\uB2FF\uC73C\uBA74 \uB0A0\uC544\uAC04\uB2E4."
+    verbSprites: {fileID: 21300000, guid: 39f965a14706c0e4e92821fbb1334fc4, type: 3}
     verbType: 3

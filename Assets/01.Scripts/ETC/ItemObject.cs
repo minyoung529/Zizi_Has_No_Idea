@@ -9,12 +9,6 @@ public class ItemObject : MonoBehaviour
 
     private void Awake()
     {
-        Vector3 position = transform.position;
-        position.x = Mathf.RoundToInt(position.x);
-        position.z = Mathf.RoundToInt(position.z);
-
-        transform.position = position;
-
         EventManager.StartListening(Constant.CLEAR_STAGE_EVENT, RegisterItem);
     }
 

@@ -4,13 +4,9 @@ using UnityEngine;
 
 public class StarObject : MonoBehaviour
 {
-    private void Start()
+    private void Awake()
     {
-        Vector3 position = transform.position;
-        position.x = Mathf.RoundToInt(position.x);
-        position.z = Mathf.RoundToInt(position.z);
-
-        transform.position = position;
+        RegisterStarCount();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -18,7 +14,15 @@ public class StarObject : MonoBehaviour
         if (collision.transform.CompareTag(Constant.PLAYER_TAG) && GameManager.GameState == GameState.Play)
         {
             Debug.Log("Get Star");
-            EventManager.TriggerEvent(Constant.GET_STAR_EVENT);
+            if (--GameManager.Instance.StarCount == 0)
+            {
+                EventManager.TriggerEvent(Constant.GET_STAR_EVENT);
+            }
         }
+    }
+
+    private void RegisterStarCount()
+    {
+        ++GameManager.Instance.StarCount;
     }
 }
