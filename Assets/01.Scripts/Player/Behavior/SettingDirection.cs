@@ -6,6 +6,8 @@ public class SettingDirection : MonoBehaviour
 {
     protected CharacterMovement currentCharacter;
     protected ItemObject target;
+    protected Verb verb;
+
     public bool IsActive { get; set; }
 
     protected bool isStopMovement = false;
@@ -20,6 +22,7 @@ public class SettingDirection : MonoBehaviour
     {
         this.target = target;
         IsActive = true;
+        verb = target.Item.verbPairs[currentCharacter.character];
         SetupDirection();
     }
 

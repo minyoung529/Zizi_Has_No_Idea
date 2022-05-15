@@ -27,4 +27,6 @@ public static class Constant
     public const float DEAD_LINE_Y = -10f;
     public const float SPAWN_CHARACTER_Y = 5f;
     #endregion
+
+    public static readonly string[] UNITS_NAME = { "조금", "보통", "엄청" };
 }

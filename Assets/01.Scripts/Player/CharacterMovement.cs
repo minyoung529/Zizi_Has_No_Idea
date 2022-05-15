@@ -23,7 +23,7 @@ public class CharacterMovement : MonoBehaviour
 
     private List<SettingDirection> settingDirections = new List<SettingDirection>();
 
-    private Character character;
+    public Character character { get; set; }
 
     private void Start()
     {
@@ -74,8 +74,8 @@ public class CharacterMovement : MonoBehaviour
         foreach (ItemObject item in GameManager.Instance.CurrentItems)
         {
             if (!item.Item.verbPairs.ContainsKey(character)) continue;
-            if (item.Item.verbPairs[character] == VerbType.None) continue;
-            AddSettingDirection(item.Item.verbPairs[character], item);
+            if (item.Item.verbPairs[character].verbType == VerbType.None) continue;
+            AddSettingDirection(item.Item.verbPairs[character].verbType, item);
         }
     }
 

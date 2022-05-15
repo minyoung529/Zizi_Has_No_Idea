@@ -45,7 +45,7 @@ public class WordImageVisual : MonoBehaviour, IPointerEnterHandler, IPointerExit
     {
         if (!item.verbPairs.ContainsKey(VerbSystemController.CurrentCharacter)) return;
 
-        VerbType type = item.verbPairs[VerbSystemController.CurrentCharacter];
+        VerbType type = item.verbPairs[VerbSystemController.CurrentCharacter].verbType;
         Sprite sprite = GameManager.Instance.Data.Verbs.verbs.Find(x => x.verbType == type).verbSprites;
         previousSprite = sprite;
         image.sprite = sprite;

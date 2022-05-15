@@ -98,12 +98,12 @@ public class GameManager : MonoSingleton<GameManager>
     {
         for (int i = 0; i < CurrentItems.Count; i++)
         {
-            CurrentItems[i].Item.verbPairs = new Dictionary<Character, VerbType>();
+            CurrentItems[i].Item.verbPairs = new Dictionary<Character, Verb>();
 
             for (int j = 0; j < CurrentCharacters.Count; j++)
             {
                 if (CurrentCharacters[j].gameObject == CurrentItems[i].gameObject) continue;
-                CurrentItems[i].Item.verbPairs.Add(CurrentCharacters[j], VerbType.None);
+                CurrentItems[i].Item.verbPairs.Add(CurrentCharacters[j], new Verb());
             }
         }
     }

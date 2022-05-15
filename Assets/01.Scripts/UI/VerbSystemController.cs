@@ -13,6 +13,8 @@ public class VerbSystemController : MonoBehaviour
     private static Character currentCharacter;
     public static Character CurrentCharacter { get { return currentCharacter; } set { currentCharacter = value; } }
 
+    public static SentencePanel CurrentPanel { get; set; }
+
 
     void Start()
     {

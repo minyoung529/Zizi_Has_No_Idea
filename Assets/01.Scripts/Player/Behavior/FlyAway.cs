@@ -6,10 +6,10 @@ using DG.Tweening;
 public class FlyAway : SettingDirection
 {
     private float maxHeight = 2f;
-    private float distance = 3f;
+    private float[] distances = { 4f, 7f, 10f };
 
     private const int count = 100;
-    private const float delay = 1.6f;
+    private const float delay = 0.7f;
     private const float delayPerCount = delay / count;
 
     private WaitForSeconds explosionDelay = new WaitForSeconds(delayPerCount);
@@ -24,7 +24,7 @@ public class FlyAway : SettingDirection
     {
         Debug.Log("들어오긴 했따");
         Vector3 startPoint = transform.position;
-        Vector3 endPoint = transform.position - transform.forward * distance;
+        Vector3 endPoint = target.transform.position - (transform.forward * distances[(int)verb.unitType]);
 
         for (int i = 0; i < count; i++)
         {
@@ -40,7 +40,7 @@ public class FlyAway : SettingDirection
             if (Mathf.Abs(endPoint.z - startPoint.z) > 0.01f)
                 position.z = increment * (endPoint.z - startPoint.z) + startPoint.z;
 
-            transform.DOMove(position, delayPerCount);
+            transform.DOMove(position, delayPerCount).SetEase(Ease.Unset);
 
             yield return explosionDelay;
         }

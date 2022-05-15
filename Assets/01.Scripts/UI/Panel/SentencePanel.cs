@@ -6,18 +6,19 @@ using UnityEngine.UI;
 public class SentencePanel : PanelBase
 {
     private Item item;
-    private WordImageVisual worldImage;
     private Verb verb;
-    [SerializeField] private Text subjectText;
+
+    private WordImageVisual worldImage;
+
     [SerializeField] private Text unitText;
+    [SerializeField] private Text subjectText;
     [SerializeField] private Text verbText;
 
-    private RectTransform unitRect;
+    [SerializeField] private RectTransform unitRect;
     private RectTransform verbRect;
     private RectTransform panelRect;
 
-    private float offset = 410f;
-
+    private readonly float offset = 410f;
     private Vector2 originalSizeDelta;
 
     public void Init(Item item)
@@ -59,7 +60,7 @@ public class SentencePanel : PanelBase
         if (Vector2.Distance(worldImage.transform.position, Input.mousePosition) > 50f) return;
 
         verb = VerbSystemController.CurrentVerb;
-        item.verbPairs[VerbSystemController.CurrentCharacter] = verb.verbType;
+        item.verbPairs[VerbSystemController.CurrentCharacter] = verb;
         VerbSystemController.CurrentVerb = null;
 
         ItemObject itemObj = GameManager.Instance.CurrentItems.Find(x => x.Item.Name == item.Name);
@@ -67,6 +68,12 @@ public class SentencePanel : PanelBase
 
         AdjustTextDetail();
         Debug.Log(item.Name + ", " + verb.verbType);
+    }
+
+    public void SetUnitType(UnitType unitType)
+    {
+        item.verbPairs[VerbSystemController.CurrentCharacter].unitType = unitType;
+        unitText.text = Constant.UNITS_NAME[(int)unitType];
     }
 
     void AdjustTextDetail()
@@ -81,7 +88,7 @@ public class SentencePanel : PanelBase
             ArrangeText(startPoint, unitRect, ref nextPos);
 
             startPoint = unitRect.anchoredPosition;
-            startPoint.x = unitText.text.Length * unitText.fontSize + unitRect.anchoredPosition.x + unitRect.rect.width;
+            startPoint.x = unitRect.anchoredPosition.x + unitRect.rect.width;
         }
 
         ArrangeText(startPoint, verbRect, ref nextPos, true);
@@ -98,7 +105,7 @@ public class SentencePanel : PanelBase
         {
             transform.anchoredPosition = nextPos;
             nextPos = transform.anchoredPosition;
-            nextPos.x += unitText.text.Length * unitText.fontSize + unitRect.rect.width;
+            nextPos.x += unitRect.rect.width;
 
             if (isSetRect)
                 panelRect.sizeDelta = originalSizeDelta + Vector2.up * 75f;
@@ -107,7 +114,6 @@ public class SentencePanel : PanelBase
 
     private void SetUI()
     {
-        unitRect = unitText.transform.parent.GetComponent<RectTransform>();
         verbRect = verbText.transform.parent.GetComponent<RectTransform>();
 
         panelRect = GetComponent<RectTransform>();

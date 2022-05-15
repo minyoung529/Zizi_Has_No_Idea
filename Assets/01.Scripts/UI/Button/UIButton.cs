@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Button))]
-public class UIButton : MonoBehaviour
+public abstract class UIButton : MonoBehaviour
 {
     private Button button;
 
@@ -14,8 +14,5 @@ public class UIButton : MonoBehaviour
         button.onClick.AddListener(OnClicked);
     }
 
-    protected virtual void OnClicked()
-    {
-
-    }
+    protected abstract void OnClicked();
 }
