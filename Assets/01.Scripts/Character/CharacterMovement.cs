@@ -12,6 +12,7 @@ public class CharacterMovement : MonoBehaviour
 
     [SerializeField] private UnityEvent<Vector3> OnRigidVelocity;
 
+
     private Vector3 currentDirection;
     public Vector3 CurrentDirection
     {
@@ -83,7 +84,6 @@ public class CharacterMovement : MonoBehaviour
     {
         Type scriptType = Type.GetType(type.ToString());
 
-
         SettingDirection settingDirection = GetComponent(scriptType) as SettingDirection;
 
         if (settingDirection == null || settingDirection.IsActive)
@@ -101,7 +101,7 @@ public class CharacterMovement : MonoBehaviour
 
     private void CheckDead()
     {
-        if (transform.position.y < Constant.DEAD_LINE_Y)
+        if (transform.position.y < Constant.DEAD_LINE_Y && character.IsPlayer)
         {
             GameManager.Instance.ResetStage();
         }
@@ -111,6 +111,7 @@ public class CharacterMovement : MonoBehaviour
     {
         currentDirection = Vector3.zero;
         rigid.velocity = Vector3.zero;
+        settingDirections.ForEach(x => x.ResetData());
     }
 
     private void OnDestroy()

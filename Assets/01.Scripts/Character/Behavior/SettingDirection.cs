@@ -40,6 +40,8 @@ public class SettingDirection : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (!IsActive) return;
+
         Debug.Log(target.name + ", " + collision.gameObject.name);
         if (target.gameObject == collision.gameObject)
         {
