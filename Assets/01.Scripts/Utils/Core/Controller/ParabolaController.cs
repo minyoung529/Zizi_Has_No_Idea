@@ -17,6 +17,7 @@ public class ParabolaController
     {
         Check(startPoint, endPoint);
 
+        Debug.Log("Instantiate");
         ParabolaObject obj = GameObject.Instantiate(GameManager.Instance.Data.parabolaPrefab, null);
         obj.Init(startPoint, endPoint);
         obj.gameObject.SetActive(true);

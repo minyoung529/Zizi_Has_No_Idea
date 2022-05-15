@@ -50,7 +50,7 @@ public class CharacterMovement : MonoBehaviour
 
             if (currentDirection.sqrMagnitude < 0.01f)
             {
-                currentDirection = Vector3.forward;
+                currentDirection = transform.forward;
             }
 
             transform.forward = Vector3.Lerp(transform.forward, CurrentDirection, Time.deltaTime * rotationSpeed);

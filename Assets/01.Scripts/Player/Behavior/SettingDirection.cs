@@ -37,7 +37,8 @@ public class SettingDirection : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(target.gameObject == collision.gameObject)
+        Debug.Log(target.name + ", " + collision.gameObject.name);
+        if (target.gameObject == collision.gameObject)
         {
             OnCollisionTarget();
         }

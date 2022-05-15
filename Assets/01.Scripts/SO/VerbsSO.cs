@@ -13,4 +13,5 @@ public class Verb
     public string verbName;
     public Sprite verbSprites;
     public VerbType verbType;
+    public bool isHasUnit;
 }

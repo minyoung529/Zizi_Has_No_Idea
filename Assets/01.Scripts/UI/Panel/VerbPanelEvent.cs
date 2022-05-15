@@ -80,7 +80,8 @@ public class VerbPanelEvent : PanelBase, IBeginDragHandler, IDragHandler, IEndDr
     {
         if(isSelecting)
         {
-            EventManager<VerbType>.TriggerEvent(Constant.SELECT_VERB_WORD, VerbSystemController.CurrentVerb.verbType);
+            EventManager.TriggerEvent(Constant.SELECT_VERB_WORD);
+            isSelecting = false;
         }
     }
 
