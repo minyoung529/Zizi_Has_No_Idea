@@ -6510,8 +6510,8 @@ GameObject:
   - component: {fileID: 543450652528407160}
   - component: {fileID: 2005086666769593616}
   - component: {fileID: 7913183442328795701}
-  - component: {fileID: 1632845113}
   - component: {fileID: 2037974287}
+  - component: {fileID: 1632845113}
   m_Layer: 6
   m_Name: BubbaSuit
   m_TagString: Player
@@ -6660,6 +6660,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b1408c558a614149a9c632bf4707ec5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2037974287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6960901741360959444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f41741c22776c468daf1f014116d5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkParticle: {fileID: 1869184586}
 --- !u!114 &1632845113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6674,19 +6687,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 1
   isConstantY: 1
---- !u!114 &2037974287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6960901741360959444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39f41741c22776c468daf1f014116d5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  walkParticle: {fileID: 1869184586}
 --- !u!1 &7244767514854528749
 GameObject:
   m_ObjectHideFlags: 0
