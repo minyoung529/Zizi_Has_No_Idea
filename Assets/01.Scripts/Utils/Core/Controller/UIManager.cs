@@ -54,7 +54,15 @@ public class UIManager : MonoBehaviour
 
         if (items == null || items.Count == 0) return;
 
-        sentencePanels.ForEach(x => x.gameObject.SetActive(false));
+        Debug.Log("Generate Success");
+
+        sentencePanels.ForEach(x =>
+        {
+            x.gameObject.SetActive(false);
+            x.Init(null);
+        });
+
+        Debug.Log(items.Count);
 
         for (int i = 0; i < items.Count; i++)
         {
@@ -71,6 +79,7 @@ public class UIManager : MonoBehaviour
                 sentencePanels.Add(panel);
             }
 
+            Debug.Log($"Generate => {items[i].Item.Name}");
             panel.gameObject.SetActive(true);
             panel.Init(items[i].Item);
         }
@@ -80,13 +89,12 @@ public class UIManager : MonoBehaviour
     {
         unitScroll.gameObject.SetActive(isActive);
 
-        if(EventSystem.current.currentSelectedGameObject != null)
+        if (EventSystem.current.currentSelectedGameObject != null)
         {
             Vector3 pos = EventSystem.current.currentSelectedGameObject.transform.position;
             pos.x -= 135 * 0.5f;
             pos.y -= 50 * 0.5f;
             unitScroll.transform.position = pos;
         }
-
     }
 }

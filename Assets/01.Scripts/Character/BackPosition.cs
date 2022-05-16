@@ -30,7 +30,7 @@ public class BackPosition : MonoBehaviour
     {
         if (isPlayer)
         {
-            transform.SetPositionAndRotation(GameManager.Instance.PlayerTransform.position, originalRotation);
+            transform.SetPositionAndRotation(GameManager.Instance.PlayerTransform.position, GameManager.Instance.PlayerTransform.rotation);
         }
         else
         {

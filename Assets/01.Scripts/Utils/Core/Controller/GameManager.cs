@@ -19,7 +19,16 @@ public class GameManager : MonoSingleton<GameManager>
     public List<ItemObject> CurrentItems = new List<ItemObject>();
     public List<Character> CurrentCharacters { get; set; } = new List<Character>();
 
-    public int StarCount { get; set; } = 0;
+    private int starCount = 0;
+    public int StarCount
+    {
+        get => starCount;
+        set
+        {
+            starCount = value;
+            Debug.Log(starCount);
+        }
+    }
 
     public Transform PlayerTransform => currentStagePrefab.transform.GetChild(0);
 
@@ -79,7 +88,6 @@ public class GameManager : MonoSingleton<GameManager>
 
         EventManager.TriggerEvent(Constant.CLEAR_STAGE_EVENT);
         ResetStage();
-
 
         Debug.Log("Clear Stage");
     }

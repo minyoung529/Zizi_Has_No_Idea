@@ -1,7 +1,12 @@
 using DG.Tweening;
+using UnityEngine;
 
 public class PlayUIMovement : UIMovement
 {
+
+    [SerializeField] Ease moveEase = Ease.InBack;
+    [SerializeField] Ease reverseEase = Ease.OutBack;
+
     protected override void Start()
     {
         base.Start();
@@ -11,13 +16,13 @@ public class PlayUIMovement : UIMovement
 
     protected override void OnMove()
     {
-        rectTransform.DOAnchorPos(targetPosition, duration).SetEase(Ease.InBack);
+        rectTransform.DOAnchorPos(targetPosition, duration).SetEase(moveEase);
     }
 
     protected override void OnMoveReverse()
     {
         rectTransform.anchoredPosition = targetPosition;
-        rectTransform.DOAnchorPos(originPosition, duration).SetEase(Ease.OutBack);
+        rectTransform.DOAnchorPos(originPosition, duration).SetEase(reverseEase);
     }
 
     private void OnDestroy()

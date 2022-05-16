@@ -37,7 +37,7 @@ public class SentencePanel : PanelBase
 
     private void UpdateUI(EventParam param = new EventParam())
     {
-        if (param.character == null || param.character?.characterName == item.Name)
+        if (param.character == null || item == null || param.character?.characterName == item?.Name)
         {
             gameObject.SetActive(false);
             return;
@@ -51,7 +51,6 @@ public class SentencePanel : PanelBase
 
         worldImage.SetSprite(item);
 
-
         AdjustTextDetail();
     }
 
@@ -59,6 +58,8 @@ public class SentencePanel : PanelBase
     {
         if (Vector2.Distance(worldImage.transform.position, Input.mousePosition) > 50f) return;
 
+        if (VerbSystemController.CurrentVerb == null) return;
+        Debug.Log(VerbSystemController.CurrentVerb);
         verb = VerbSystemController.CurrentVerb;
         item.verbPairs[VerbSystemController.CurrentCharacter] = verb;
         VerbSystemController.CurrentVerb = null;
@@ -67,7 +68,6 @@ public class SentencePanel : PanelBase
         ParabolaController.GenerateParabola(VerbSystemController.CurrentCharacter, itemObj);
 
         AdjustTextDetail();
-        Debug.Log(item.Name + ", " + verb.verbType);
     }
 
     public void SetUnitType(UnitType unitType)
@@ -82,6 +82,8 @@ public class SentencePanel : PanelBase
         startPoint.x += subjectText.text.Length * subjectText.fontSize;
 
         Vector2 nextPos = new Vector2(46f, subjectText.rectTransform.anchoredPosition.y - 75f);
+
+        if (verb == null) return;
 
         if (verb.isHasUnit)
         {

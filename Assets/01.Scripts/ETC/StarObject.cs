@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class StarObject : MonoBehaviour
 {
+    private bool isCollision = false;
     private void Awake()
     {
         RegisterStarCount();
@@ -11,11 +13,17 @@ public class StarObject : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.CompareTag(Constant.PLAYER_TAG) && GameManager.GameState == GameState.Play)
+        if (collision.transform.CompareTag(Constant.PLAYER_TAG) && GameManager.GameState == GameState.Play && !isCollision)
         {
             Debug.Log("Get Star");
-            if (--GameManager.Instance.StarCount == 0)
+
+            transform.DOScale(0f, 0.4f).SetEase(Ease.InOutQuad);
+            GameManager.Instance.StarCount -= 1;
+            isCollision = true;
+
+            if (GameManager.Instance.StarCount == 0)
             {
+                Debug.Log(GameManager.Instance.StarCount);
                 EventManager.TriggerEvent(Constant.GET_STAR_EVENT);
             }
         }
@@ -23,6 +31,7 @@ public class StarObject : MonoBehaviour
 
     private void RegisterStarCount()
     {
-        ++GameManager.Instance.StarCount;
+        GameManager.Instance.StarCount += 1;
+        Debug.Log($"Star Count = {GameManager.Instance.StarCount}");
     }
 }
