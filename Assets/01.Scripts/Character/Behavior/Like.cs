@@ -8,16 +8,15 @@ public class Like : SettingDirection
 
     public override void SetupDirection()
     {
-        currentCharacter.CurrentDirection += (target.transform.position - transform.position).normalized;
-        rigid = target.transform.GetComponentInChildren<Rigidbody>();
+        //currentCharacter.CurrentDirection += (target.transform.position - transform.position).normalized;
+        //rigid = target.transform.GetComponentInChildren<Rigidbody>();
     }
 
     public override void SetDirection()
     {
-        if (rigid == null) return;
-        if(rigid.velocity.sqrMagnitude > 0f)
+        if (GameManager.GameState == GameState.Play && target != null)
         {
-            currentCharacter.CurrentDirection = (target.transform.position - transform.position).normalized;
+            currentCharacter.CurrentDirection += (target.transform.position - transform.position).normalized;
         }
     }
 }

@@ -8,14 +8,14 @@ public class Dislike : SettingDirection
 
     public override void SetupDirection()
     {
-        currentCharacter.CurrentDirection += -(target.transform.position - transform.position).normalized;
-        rigid = target.transform.GetComponent<Rigidbody>();
+        //currentCharacter.CurrentDirection += -(target.transform.position - transform.position).normalized;
+        //rigid = target.transform.GetComponent<Rigidbody>();
     }
 
     public override void SetDirection()
     {
-        if (rigid == null) return;
-        if (rigid.velocity.sqrMagnitude > 0f)
+        //if (rigid == null) return;k
+        if (target != null && GameManager.GameState == GameState.Play)
         {
             Debug.Log("sdf");
             currentCharacter.CurrentDirection = -(target.transform.position - transform.position).normalized;

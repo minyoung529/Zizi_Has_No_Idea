@@ -16,7 +16,7 @@ public class CharacterMovement : MonoBehaviour
     private Vector3 currentDirection;
     public Vector3 CurrentDirection
     {
-        get => currentDirection.normalized;
+        get => currentDirection;
         set => currentDirection = value;
     }
 
@@ -54,11 +54,11 @@ public class CharacterMovement : MonoBehaviour
                 currentDirection = transform.forward;
             }
 
-            transform.forward = Vector3.Lerp(transform.forward, CurrentDirection, Time.deltaTime * rotationSpeed);
+            transform.forward = Vector3.Lerp(transform.forward, CurrentDirection.normalized, Time.deltaTime * rotationSpeed);
 
             Vector3 velocity = rigid.velocity;
-            velocity.x = CurrentDirection.x * speed;
-            velocity.z = CurrentDirection.z * speed;
+            velocity.x = CurrentDirection.normalized.x * speed;
+            velocity.z = CurrentDirection.normalized.z * speed;
 
             rigid.velocity = velocity;
         }
