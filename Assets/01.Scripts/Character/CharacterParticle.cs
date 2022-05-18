@@ -8,7 +8,9 @@ public class CharacterParticle : MonoBehaviour
 
     public void ActiveParticle(Vector3 velocity)
     {
-        if (velocity.sqrMagnitude > 0.01f)
+        velocity.y = 0f;
+
+        if (velocity.sqrMagnitude > 0.1f)
         {
             if (!walkParticle.gameObject.activeSelf)
             {
