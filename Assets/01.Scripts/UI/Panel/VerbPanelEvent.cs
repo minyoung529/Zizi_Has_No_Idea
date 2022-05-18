@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using DG.Tweening;
 
-public class VerbPanelEvent : PanelBase, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerUpHandler
+public class VerbPanelEvent : PanelBase, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
 {
     private Verb verb;
     private Image image;
@@ -84,6 +84,21 @@ public class VerbPanelEvent : PanelBase, IBeginDragHandler, IDragHandler, IEndDr
             EventManager.TriggerEvent(Constant.SELECT_VERB_WORD);
             isSelecting = false;
         }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        Vector2 position = transform.position;
+        position.x += image.rectTransform.rect.width * 0.4f;
+        position.y -= image.rectTransform.rect.height * 0.4f;
+
+
+        GameManager.Instance.UIManager.ActiveInfoImage(verb.verbName, position);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        GameManager.Instance.UIManager.ActiveInfoImage("", transform.position);
     }
 
     #endregion

@@ -6787,13 +6787,14 @@ GameObject:
   - component: {fileID: 1094708421}
   - component: {fileID: 1094708423}
   - component: {fileID: 1094708422}
+  - component: {fileID: 1094708424}
   m_Layer: 5
   m_Name: VerbInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1094708421
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6853,6 +6854,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1094708420}
   m_CullTransparentMesh: 1
+--- !u!114 &1094708424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094708420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ae9a21a489508449b11a963722a21df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1097683619
 GameObject:
   m_ObjectHideFlags: 0
@@ -8701,10 +8714,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58fea45cbc1f43245acff2d6f71c8e39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chartImage: {fileID: 1097683620}
   stageText: {fileID: 1092142318}
+  chartImage: {fileID: 1097683620}
   sentencePanelPrefab: {fileID: 1695478637}
   unitScroll: {fileID: 488653683}
+  verbInfoImage: {fileID: 1094708424}
 --- !u!114 &2044957362
 MonoBehaviour:
   m_ObjectHideFlags: 0

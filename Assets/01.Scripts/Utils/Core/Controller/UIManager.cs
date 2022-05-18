@@ -102,8 +102,8 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void ActiveInfoImage(string message)
+    public void ActiveInfoImage(string message, Vector3 position)
     {
-        verbInfoImage.ActiveMessage(message);
+        verbInfoImage.ActiveMessage(message, position);
     }
 }
