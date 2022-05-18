@@ -7,14 +7,18 @@ using DG.Tweening;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private RectTransform chartImage;
 
     [SerializeField] private Text stageText;
 
+    [Header("Character Chart")]
+    [SerializeField] private RectTransform chartImage;
     [SerializeField] private SentencePanel sentencePanelPrefab;
     private List<SentencePanel> sentencePanels = new List<SentencePanel>();
 
     [SerializeField] private Image unitScroll;
+
+    [Header("ETC UI")]
+    [SerializeField] private InfoImage verbInfoImage;
 
     void Start()
     {
@@ -96,5 +100,10 @@ public class UIManager : MonoBehaviour
             pos.y -= 50 * 0.5f;
             unitScroll.transform.position = pos;
         }
+    }
+
+    public void ActiveInfoImage(string message)
+    {
+        verbInfoImage.ActiveMessage(message);
     }
 }

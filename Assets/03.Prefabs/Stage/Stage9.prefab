@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8243762160370363930}
   m_Layer: 0
-  m_Name: Stage8
+  m_Name: Stage9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -199,7 +199,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 952285459814439615, guid: b6f440069a50a864bbda14a745d23b0d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.17
+      value: 6.33
       objectReference: {fileID: 0}
     - target: {fileID: 952285459814439615, guid: b6f440069a50a864bbda14a745d23b0d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -207,7 +207,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 952285459814439615, guid: b6f440069a50a864bbda14a745d23b0d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.0800002
+      value: -6.52
       objectReference: {fileID: 0}
     - target: {fileID: 952285459814439615, guid: b6f440069a50a864bbda14a745d23b0d, type: 3}
       propertyPath: m_LocalRotation.w
