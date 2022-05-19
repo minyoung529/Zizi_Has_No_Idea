@@ -8738,6 +8738,32 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2139395586476966529, guid: 81b90cdefc27e71479a2713fcf98a9b5, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 932dd11cb70ddec4b99359695c2b9683, type: 3}
+    - target: {fileID: 2139395586476966529, guid: 81b90cdefc27e71479a2713fcf98a9b5, type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'RightLowerLegBone'\n\tTransform 'LeftLowerLegBone'\n\tTransform
+        'LeftUpperArmBone'\n\tTransform 'RightUpperLegBone'\n\tTransform 'RightUpperArmBone'\n\tTransform
+        'RightToesBone'\n\tTransform 'Ear.001'\n\tTransform 'Ear.004'\n\tTransform
+        'LeftHandBone'\n\tTransform 'LeftUpperLegBone'\n\tand more ...\n\tFrom animation
+        clip 'Walk'"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5506999719810035923, guid: 81b90cdefc27e71479a2713fcf98a9b5, type: 3}
+      propertyPath: m_Quality
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5506999719810035923, guid: 81b90cdefc27e71479a2713fcf98a9b5, type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5506999719810035923, guid: 81b90cdefc27e71479a2713fcf98a9b5, type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[3]
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6960901741360959444, guid: 81b90cdefc27e71479a2713fcf98a9b5, type: 3}
       propertyPath: m_Name
       value: BubbaSuit
