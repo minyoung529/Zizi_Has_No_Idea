@@ -7,6 +7,7 @@ public class SettingDirection : MonoBehaviour
     protected CharacterMovement currentCharacter;
     protected ItemObject target;
     protected Verb verb;
+    public SimulateType SimulateType { get => verb.simulateType; } 
 
     public bool IsActive { get; set; }
 

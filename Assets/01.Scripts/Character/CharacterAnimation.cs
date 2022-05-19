@@ -41,7 +41,6 @@ public class CharacterAnimation : MonoBehaviour
     {
         if (collision.transform.CompareTag(Constant.PLATFORM_TAG))
         {
-            Debug.Log("∂•ø° ¥Í¿Ω");
             animator.SetTrigger(landingHash);
         }
     }

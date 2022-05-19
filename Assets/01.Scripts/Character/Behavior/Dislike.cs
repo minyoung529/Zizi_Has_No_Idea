@@ -17,7 +17,6 @@ public class Dislike : SettingDirection
         //if (rigid == null) return;k
         if (target != null && GameManager.GameState == GameState.Play)
         {
-            Debug.Log("sdf");
             currentCharacter.CurrentDirection += -(target.transform.position - transform.position).normalized;
         }
     }

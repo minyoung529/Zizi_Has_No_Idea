@@ -43,13 +43,13 @@ public class CharacterMovement : MonoBehaviour
 
     private void OnPlay()
     {
-        if (character.IsInactive) return;
-
         if (GameManager.GameState == GameState.Play)
         {
+            if (character.IsInactive) return;
             settingDirections.FindAll(x => x.IsActive).ForEach(x => x.SetDirection());
 
-            if (currentDirection.sqrMagnitude < 0.01f)
+            if (settingDirections.FindAll(x => x.SimulateType == SimulateType.Move).Count == 0
+                && currentDirection.sqrMagnitude < 0.01f)
             {
                 currentDirection = transform.forward;
             }
