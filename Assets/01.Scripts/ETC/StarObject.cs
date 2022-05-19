@@ -6,8 +6,16 @@ using DG.Tweening;
 public class StarObject : MonoBehaviour
 {
     private bool isCollision = false;
+    private Rigidbody rigid;
+    private MeshRenderer meshRenderer;
+    private new Collider collider;
+
     private void Awake()
     {
+        EventManager.StartListening(Constant.RESET_GAME_EVENT, RegisterStarCount);
+        rigid = GetComponent<Rigidbody>();
+        collider = GetComponent<Collider>();
+        meshRenderer = GetComponentInChildren<MeshRenderer>();
         RegisterStarCount();
     }
 
@@ -17,7 +25,8 @@ public class StarObject : MonoBehaviour
         {
             Debug.Log("Get Star");
 
-            transform.DOScale(0f, 0.4f).SetEase(Ease.InOutQuad);
+            SetData(false);
+
             GameManager.Instance.StarCount -= 1;
             isCollision = true;
 
@@ -31,7 +40,23 @@ public class StarObject : MonoBehaviour
 
     private void RegisterStarCount()
     {
+        if (rigid == null) return;
+
         GameManager.Instance.StarCount += 1;
+        SetData(true);
+        rigid.velocity = Vector3.zero;
+        isCollision = false;
         Debug.Log($"Star Count = {GameManager.Instance.StarCount}");
+    }
+
+    private void SetData(bool isEnabled)
+    {
+        collider.enabled = isEnabled;
+        meshRenderer.enabled = isEnabled;
+
+        if(isEnabled)
+        {
+            transform.localScale = Vector3.one;
+        }
     }
 }

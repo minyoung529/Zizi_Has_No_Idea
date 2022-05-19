@@ -23,11 +23,7 @@ public class GameManager : MonoSingleton<GameManager>
     public int StarCount
     {
         get => starCount;
-        set
-        {
-            starCount = value;
-            Debug.Log(starCount);
-        }
+        set => starCount = value;
     }
 
     public Transform PlayerTransform => currentStagePrefab.transform.GetChild(0);
@@ -78,7 +74,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     private IEnumerator LoadStage()
     {
-        yield return new WaitForSeconds(0.15f);
+        yield return new WaitForSeconds(0.2f);
 
         GameObject prefab = Data.LoadStage();
         currentStagePrefab = Instantiate(prefab, Vector3.zero, Quaternion.identity);
@@ -94,6 +90,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void ResetStage()
     {
+        starCount = 0;
         Debug.Log("Reset Stage");
         EventManager.TriggerEvent(Constant.RESET_GAME_EVENT);
         GameState = GameState.Ready;
