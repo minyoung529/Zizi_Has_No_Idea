@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System;
 
 public class StarObject : MonoBehaviour
 {
@@ -17,6 +18,11 @@ public class StarObject : MonoBehaviour
         collider = GetComponent<Collider>();
         meshRenderer = GetComponentInChildren<MeshRenderer>();
         RegisterStarCount();
+    }
+
+    private void Start()
+    {
+        EventManager.StartListening(Constant.CLEAR_STAGE_EVENT, DestroyObject);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -58,5 +64,16 @@ public class StarObject : MonoBehaviour
         {
             transform.localScale = Vector3.one;
         }
+    }
+
+    private void DestroyObject()
+    {
+        Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.StopListening(Constant.RESET_GAME_EVENT, RegisterStarCount);
+        EventManager.StopListening(Constant.CLEAR_STAGE_EVENT, DestroyObject);
     }
 }

@@ -158,15 +158,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grasses:
   - grassPrefab: {fileID: 1754515521293593522, guid: 625b9f0a595509544ab76977ecf8c17e, type: 3}
-    count: 3
+    count: 5
   - grassPrefab: {fileID: 890833848567641289, guid: a52d6cd6ec5a18d418b98223941e11a8, type: 3}
-    count: 3
+    count: 5
   - grassPrefab: {fileID: 4282627543156723935, guid: f605abc0b09e5cc4f9bd5e20014296cb, type: 3}
-    count: 3
+    count: 5
   - grassPrefab: {fileID: 466847420454179428, guid: 1283a5f9ffdbfc546892309c3f1625e9, type: 3}
-    count: 3
+    count: 5
   - grassPrefab: {fileID: 332605820432017151, guid: fc9609e14f31a0c4db309d01a93f1ec6, type: 3}
-    count: 2
+    count: 3
 --- !u!1 &7714248662055807958
 GameObject:
   m_ObjectHideFlags: 0

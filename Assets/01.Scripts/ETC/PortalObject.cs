@@ -8,6 +8,8 @@ public class PortalObject : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (linkedPortal == null) return;
+
         CharacterMovement character = collision.gameObject.GetComponent<CharacterMovement>();
 
         if(character)
