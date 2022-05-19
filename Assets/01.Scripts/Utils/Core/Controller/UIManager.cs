@@ -66,8 +66,6 @@ public class UIManager : MonoBehaviour
             x.Init(null);
         });
 
-        Debug.Log(items.Count);
-
         for (int i = 0; i < items.Count; i++)
         {
             SentencePanel panel;

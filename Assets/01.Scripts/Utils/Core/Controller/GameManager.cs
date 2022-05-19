@@ -12,7 +12,7 @@ public class GameManager : MonoSingleton<GameManager>
 
 
     public static int CurrentChapter { get; set; } = 1;
-    public static int CurrentStage { get; set; } = 0;
+    public static int CurrentStage { get; set; } = 8;
 
     private GameObject currentStagePrefab;
 
@@ -84,6 +84,7 @@ public class GameManager : MonoSingleton<GameManager>
 
         EventManager.TriggerEvent(Constant.CLEAR_STAGE_EVENT);
         ResetStage();
+        RegisterCurrentItem();
 
         Debug.Log("Clear Stage");
     }
@@ -95,7 +96,7 @@ public class GameManager : MonoSingleton<GameManager>
         EventManager.TriggerEvent(Constant.RESET_GAME_EVENT);
         GameState = GameState.Ready;
 
-        RegisterCurrentItem();
+        //RegisterCurrentItem();
         UIManager.ChangeStage(CurrentStage);
     }
 

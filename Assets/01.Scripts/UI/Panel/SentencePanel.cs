@@ -56,16 +56,16 @@ public class SentencePanel : PanelBase
 
     public void ChangeVerbType()
     {
-        if (Vector2.Distance(worldImage.transform.position, Input.mousePosition) > 50f) return;
-
+        if (!worldImage.IsInPointer()) return;
         if (VerbSystemController.CurrentVerb == null) return;
-        Debug.Log(VerbSystemController.CurrentVerb);
+
         verb = VerbSystemController.CurrentVerb;
         item.verbPairs[VerbSystemController.CurrentCharacter] = verb;
         VerbSystemController.CurrentVerb = null;
 
+        Debug.Log(item.Name);
         ItemObject itemObj = GameManager.Instance.CurrentItems.Find(x => x.Item.Name == item.Name);
-        ParabolaController.GenerateParabola(VerbSystemController.CurrentCharacter, itemObj);
+        ParabolaController.GenerateParabola(VerbSystemController.CurrentCharacter, itemObj, verb.verbType);
 
         AdjustTextDetail();
     }

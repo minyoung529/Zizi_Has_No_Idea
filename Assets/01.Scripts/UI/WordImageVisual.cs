@@ -14,7 +14,8 @@ public class WordImageVisual : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     [SerializeField] private UnityEvent<VerbType> onPanelSelected;
 
-    static public bool isSelect;
+    static public bool IsSelect { get; set; }
+    private bool isSelectThis = false;
 
     private void Awake()
     {
@@ -29,7 +30,8 @@ public class WordImageVisual : MonoBehaviour, IPointerEnterHandler, IPointerExit
             image.transform.localScale = Vector3.zero;
             image.transform.DOScale(1f, 0.2f);
             image.sprite = VerbSystemController.CurrentVerb.verbSprites;
-            isSelect = true;
+            IsSelect = true;
+            isSelectThis = true;
         }
     }
 
@@ -54,6 +56,12 @@ public class WordImageVisual : MonoBehaviour, IPointerEnterHandler, IPointerExit
     private void ResetData()
     {
         image.sprite = previousSprite;
-        isSelect = false;
+        IsSelect = false;
+        isSelectThis = false;
+    }
+
+    public bool IsInPointer()
+    {
+        return isSelectThis;
     }
 }

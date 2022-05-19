@@ -16,7 +16,6 @@ public class Like : SettingDirection
     {
         if (GameManager.GameState == GameState.Play && target != null)
         {
-            Debug.Log(currentCharacter.CurrentDirection);
             currentCharacter.CurrentDirection += (target.transform.position - transform.position).normalized;
         }
     }

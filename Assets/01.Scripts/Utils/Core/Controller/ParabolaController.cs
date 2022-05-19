@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,14 +11,28 @@ public class ParabolaController
 
     public static void Start()
     {
-        EventManager.StartListening(Constant.START_PLAY_EVENT, Reset);
+        EventManager.StartListening(Constant.START_PLAY_EVENT, Disabled);
+        EventManager.StartListening(Constant.RESET_GAME_EVENT, Active);
+        EventManager.StartListening(Constant.CLEAR_STAGE_EVENT, Reset);
     }
 
-    public static void GenerateParabola(Character startPoint, ItemObject endPoint)
+    private static void Active()
+    {
+        parabolas.ForEach(x => x.gameObject.SetActive(true));
+    }
+
+    private static void Disabled()
+    {
+        parabolas.ForEach(x => x.gameObject.SetActive(false));
+    }
+
+    public static void GenerateParabola(Character startPoint, ItemObject endPoint, VerbType verbType)
     {
         Check(startPoint, endPoint);
 
-        Debug.Log("Instantiate");
+        if (verbType == VerbType.None) return;
+
+        Debug.Log(startPoint.name + ", " + endPoint);
         ParabolaObject obj = GameObject.Instantiate(GameManager.Instance.Data.parabolaPrefab, null);
         obj.Init(startPoint, endPoint);
         obj.gameObject.SetActive(true);
