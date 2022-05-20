@@ -62,6 +62,8 @@ public class WordImageVisual : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public bool IsInPointer()
     {
-        return isSelectThis;
+        bool value = isSelectThis;
+        isSelectThis = false;
+        return value;
     }
 }

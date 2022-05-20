@@ -59,7 +59,6 @@ public class VerbPanelEvent : PanelBase, IBeginDragHandler, IDragHandler, IEndDr
         dragObject.transform.DOScale(1f, 0.3f);
         dragObject.sprite = image.sprite;
 
-        Debug.Log(verb.verbName);
         VerbSystemController.CurrentVerb = verb;
     }
 

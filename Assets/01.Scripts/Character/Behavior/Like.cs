@@ -16,7 +16,12 @@ public class Like : SettingDirection
     {
         if (GameManager.GameState == GameState.Play && target != null)
         {
-            currentCharacter.CurrentDirection += (target.transform.position - transform.position).normalized;
+            Vector3 direction = (target.transform.position - transform.position).normalized;
+            direction.y = 0f;
+
+            Debug.Log(direction);
+
+            currentCharacter.CurrentDirection += direction;
         }
     }
 }

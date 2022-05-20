@@ -63,7 +63,7 @@ public class SentencePanel : PanelBase
         item.verbPairs[VerbSystemController.CurrentCharacter] = verb;
         VerbSystemController.CurrentVerb = null;
 
-        Debug.Log(item.Name);
+        Debug.Log(item.Name + ", " + verb.verbName);
         ItemObject itemObj = GameManager.Instance.CurrentItems.Find(x => x.Item.Name == item.Name);
         ParabolaController.GenerateParabola(VerbSystemController.CurrentCharacter, itemObj, verb.verbType);
 

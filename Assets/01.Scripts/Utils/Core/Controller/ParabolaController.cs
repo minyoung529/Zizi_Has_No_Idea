@@ -32,7 +32,6 @@ public class ParabolaController
 
         if (verbType == VerbType.None) return;
 
-        Debug.Log(startPoint.name + ", " + endPoint);
         ParabolaObject obj = GameObject.Instantiate(GameManager.Instance.Data.parabolaPrefab, null);
         obj.Init(startPoint, endPoint);
         obj.gameObject.SetActive(true);

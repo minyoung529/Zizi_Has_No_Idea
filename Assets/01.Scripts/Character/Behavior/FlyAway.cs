@@ -6,7 +6,7 @@ using DG.Tweening;
 public class FlyAway : SettingDirection
 {
     private float maxHeight = 2f;
-    private float[] distances = { 7f, 13f, 20f };
+    private readonly float[] distances = { 7f, 12f, 17f };
 
     private const int count = 100;
     private const float delay = 0.7f;

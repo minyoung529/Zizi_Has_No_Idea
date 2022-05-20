@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 8884101657072921372}
   - component: {fileID: 6185576328977846863}
   - component: {fileID: 2699259157041528031}
-  - component: {fileID: 1998594080038897536}
+  - component: {fileID: 6550694712066962934}
   m_Layer: 6
   m_Name: Ghost (1)
   m_TagString: Player
@@ -357,7 +357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item:
     name: "\uAF2C\uB9C8\uC720\uB839"
---- !u!114 &1998594080038897536
+--- !u!114 &6550694712066962934
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -370,7 +370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 0
-  isConstantY: 1
+  isConstantY: 0
 --- !u!1 &3938057850145963202
 GameObject:
   m_ObjectHideFlags: 0
@@ -985,7 +985,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8243762160370363930}
   m_Layer: 0
-  m_Name: Stage9
+  m_Name: Stage10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1119,7 +1119,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2730603863336278294}
   - component: {fileID: 3938758244930383983}
-  - component: {fileID: 3791861882068316938}
+  - component: {fileID: 5393574075193209208}
   m_Layer: 0
   m_Name: PlayerTransform
   m_TagString: Untagged
@@ -1156,7 +1156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <isCharacter>k__BackingField: 1
   <isItem>k__BackingField: 0
---- !u!114 &3791861882068316938
+--- !u!114 &5393574075193209208
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
