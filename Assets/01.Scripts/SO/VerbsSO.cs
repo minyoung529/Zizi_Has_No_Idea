@@ -14,7 +14,7 @@ public class Verb
     public Sprite verbSprites;
     public VerbType verbType;
     public SimulateType simulateType;
-    public bool isHasUnit;
+    public bool hasUnit;
 
     public UnitType unitType { get; set; } = UnitType.Middle;
 }

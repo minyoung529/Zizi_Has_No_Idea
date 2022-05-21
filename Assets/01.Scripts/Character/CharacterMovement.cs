@@ -46,22 +46,26 @@ public class CharacterMovement : MonoBehaviour
         if (GameManager.GameState == GameState.Play)
         {
             if (character.IsInactive) return;
-            settingDirections.FindAll(x => x.IsActive).ForEach(x => x.SetDirection());
+            List<SettingDirection> directions = settingDirections.FindAll(x => x.IsActive);
+            directions.ForEach(x => x.SetDirection());
 
-            Debug.Log(currentDirection);
-
-            if (settingDirections.FindAll(x => x.SimulateType == SimulateType.Move).Count == 0
-                && currentDirection.sqrMagnitude < 0.01f)
+            if (currentDirection.sqrMagnitude < 0.05f)
             {
-                Debug.Log("sdf");
-                currentDirection = transform.forward;
+                if (directions.FindAll(x => x.SimulateType == SimulateType.Move).Count == 0)
+                {
+                    currentDirection = transform.forward;
+                }
+                else
+                {
+                    return;
+                }
             }
 
             transform.forward = Vector3.Lerp(transform.forward, currentDirection.normalized, Time.deltaTime * rotationSpeed);
 
             Vector3 velocity = rigid.velocity;
             velocity.x = currentDirection.normalized.x * speed;
-            velocity.z = currentDirection.normalized .z * speed;
+            velocity.z = currentDirection.normalized.z * speed;
 
             rigid.velocity = velocity;
         }

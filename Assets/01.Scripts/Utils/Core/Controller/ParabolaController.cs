@@ -33,7 +33,9 @@ public class ParabolaController
         if (verbType == VerbType.None) return;
 
         ParabolaObject obj = GameObject.Instantiate(GameManager.Instance.Data.parabolaPrefab, null);
-        obj.Init(startPoint, endPoint);
+
+        Sprite verbSprite = GameManager.Instance.Data.Verbs.verbs.Find(x => x.verbType == verbType).verbSprites;
+        obj.Init(startPoint, endPoint, verbSprite);
         obj.gameObject.SetActive(true);
 
         parabolas.Add(obj);

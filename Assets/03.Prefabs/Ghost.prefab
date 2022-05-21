@@ -5094,6 +5094,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 0
   characterName: "\uAF2C\uB9C8\uC720\uB839"
+  pointObject: {fileID: 5052095111307677860, guid: e87b7b603688902448724f00b221e016, type: 3}
 --- !u!114 &8433292809592917551
 MonoBehaviour:
   m_ObjectHideFlags: 0

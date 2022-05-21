@@ -17,19 +17,19 @@ MonoBehaviour:
     verbSprites: {fileID: 21300000, guid: b04877b6289d6d242ab3d07f5ea02b53, type: 3}
     verbType: 0
     simulateType: 0
-    isHasUnit: 0
+    hasUnit: 0
   - verbName: "\uC88B\uC544\uD55C\uB2E4."
     verbSprites: {fileID: 21300000, guid: 34b44b4b35ccaed4d9fd29c9aa47b347, type: 3}
     verbType: 1
     simulateType: 0
-    isHasUnit: 0
+    hasUnit: 0
   - verbName: "\uC2EB\uC5B4\uD55C\uB2E4."
     verbSprites: {fileID: 21300000, guid: 6c98445c6664ead4faf42e51642df389, type: 3}
     verbType: 2
     simulateType: 0
-    isHasUnit: 0
+    hasUnit: 0
   - verbName: "\uB2FF\uC73C\uBA74 \uD3ED\uBC1C\uD55C\uB2E4."
     verbSprites: {fileID: 21300000, guid: 39f965a14706c0e4e92821fbb1334fc4, type: 3}
     verbType: 3
     simulateType: 1
-    isHasUnit: 1
+    hasUnit: 1

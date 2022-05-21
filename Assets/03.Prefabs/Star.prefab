@@ -120,7 +120,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 1808659566923325049}
-  speed: 90
+  xSpeed: 90
+  ySpeed: 90
+  zSpeed: 90
+  rotationType: -1
 --- !u!1001 &6328521312388298301
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -106,15 +106,15 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _IOR: 0.025
+    - _IOR: 0.1
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _Opacity: 0.649
+    - _Opacity: 1
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Scale: 4.84
+    - _Scale: 9.33
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -123,7 +123,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BackgroundColor: {r: 1.6055588, g: 0, b: 0, a: 0}
+    - _BackgroundColor: {r: 1, g: 0.02230626, b: 0, a: 0}
     - _BaseColor: {r: 0, g: 3.3254902, b: 5.992157, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Emission: {r: 0, g: 0, b: 0, a: 0}

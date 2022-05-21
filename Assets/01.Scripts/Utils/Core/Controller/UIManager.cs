@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour
 
     private void ActiveChartImage(EventParam param)
     {
-        float delay = 0.3f;
+       float delay = 0.3f;
         if (param.boolean == chartImage.gameObject.activeSelf) return;
 
         if (param.boolean)
@@ -63,7 +63,7 @@ public class UIManager : MonoBehaviour
         sentencePanels.ForEach(x =>
         {
             x.gameObject.SetActive(false);
-            x.Init(null);
+            x.SetData(null);
         });
 
         for (int i = 0; i < items.Count; i++)
@@ -79,11 +79,12 @@ public class UIManager : MonoBehaviour
             {
                 panel = Instantiate(sentencePanelPrefab, sentencePanelPrefab.transform.parent);
                 sentencePanels.Add(panel);
+                panel.Init(items[i].Item);
             }
 
             Debug.Log($"Generate => {items[i].Item.Name}");
             panel.gameObject.SetActive(true);
-            panel.Init(items[i].Item);
+            panel.SetData(items[i].Item);
         }
     }
 

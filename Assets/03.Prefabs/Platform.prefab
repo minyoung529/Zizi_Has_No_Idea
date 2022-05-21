@@ -165,8 +165,12 @@ MonoBehaviour:
     count: 5
   - grassPrefab: {fileID: 466847420454179428, guid: 1283a5f9ffdbfc546892309c3f1625e9, type: 3}
     count: 5
-  - grassPrefab: {fileID: 332605820432017151, guid: fc9609e14f31a0c4db309d01a93f1ec6, type: 3}
-    count: 3
+  - grassPrefab: {fileID: 2488787766339042169, guid: cdf9103fe290322488580484edf1afa5, type: 3}
+    count: 2
+  - grassPrefab: {fileID: 2021752912380046348, guid: 27f6a82e4310c2846beea27fa85a51ff, type: 3}
+    count: 2
+  - grassPrefab: {fileID: 3546495396319631992, guid: 601b857436932c0418d0d51409ff819e, type: 3}
+    count: 2
 --- !u!1 &7714248662055807958
 GameObject:
   m_ObjectHideFlags: 0

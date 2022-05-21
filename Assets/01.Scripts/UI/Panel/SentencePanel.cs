@@ -23,15 +23,19 @@ public class SentencePanel : PanelBase
 
     public void Init(Item item)
     {
-        this.item = item;
-        worldImage ??= GetComponentInChildren<WordImageVisual>();
+        SetData(item);
+        SetUI();
 
         EventManager<EventParam>.StartListening(Constant.CLICK_PLAYER_EVENT, UpdateUI);
         EventManager.StartListening(Constant.SELECT_VERB_WORD, ChangeVerbType);
+    }
+
+    public void SetData(Item item)
+    {
+        this.item = item;
 
         verb = GameManager.Instance.Data.Verbs.verbs.Find(x => x.verbType == VerbType.None);
 
-        SetUI();
         UpdateUI();
     }
 
@@ -43,13 +47,15 @@ public class SentencePanel : PanelBase
             return;
         }
 
-        gameObject.SetActive(true);
+        Debug.Log(item.Name + " " + verb.verbName);
+        verb = item.verbPairs[VerbSystemController.CurrentCharacter];
 
         string oPostposition = (item.Name[item.Name.Length - 1] - 0xAC00) % 28 > 0 ? "을" : "를";
         string sPostposition = (param.character?.characterName[param.character.characterName.Length - 1] - 0xAC00) % 28 > 0 ? "은" : "는";
         subjectText.text = $"{param.character?.characterName}{sPostposition} {item.Name}{oPostposition} ";
 
         worldImage.SetSprite(item);
+        gameObject.SetActive(true);
 
         AdjustTextDetail();
     }
@@ -63,7 +69,6 @@ public class SentencePanel : PanelBase
         item.verbPairs[VerbSystemController.CurrentCharacter] = verb;
         VerbSystemController.CurrentVerb = null;
 
-        Debug.Log(item.Name + ", " + verb.verbName);
         ItemObject itemObj = GameManager.Instance.CurrentItems.Find(x => x.Item.Name == item.Name);
         ParabolaController.GenerateParabola(VerbSystemController.CurrentCharacter, itemObj, verb.verbType);
 
@@ -83,19 +88,27 @@ public class SentencePanel : PanelBase
 
         Vector2 nextPos = new Vector2(46f, subjectText.rectTransform.anchoredPosition.y - 75f);
 
-        if (verb == null) return;
+        if (verb == null)
+        {
+            Debug.Log("verb: NULL");
+            return;
+        }
 
-        if (verb.isHasUnit)
+        Debug.Log(verb.verbName + ", " + verb.hasUnit);
+
+        if (verb.hasUnit)
         {
             ArrangeText(startPoint, unitRect, ref nextPos);
 
             startPoint = unitRect.anchoredPosition;
             startPoint.x = unitRect.anchoredPosition.x + unitRect.rect.width;
+
+            SetUnitType(verb.unitType);
         }
 
         ArrangeText(startPoint, verbRect, ref nextPos, true);
 
-        unitRect.gameObject.SetActive(verb.isHasUnit);
+        unitRect.gameObject.SetActive(verb.hasUnit);
     }
 
     private void ArrangeText(Vector3 startPoint, RectTransform transform, ref Vector2 nextPos, bool isSetRect = false)
@@ -120,5 +133,12 @@ public class SentencePanel : PanelBase
 
         panelRect = GetComponent<RectTransform>();
         originalSizeDelta = panelRect.sizeDelta;
+        worldImage = GetComponentInChildren<WordImageVisual>();
+    }
+
+    private void OnDestroy()
+    {
+        EventManager<EventParam>.StopListening(Constant.CLICK_PLAYER_EVENT, UpdateUI);
+        EventManager.StopListening(Constant.SELECT_VERB_WORD, ChangeVerbType);
     }
 }

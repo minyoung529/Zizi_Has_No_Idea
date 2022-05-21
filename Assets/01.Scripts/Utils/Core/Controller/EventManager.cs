@@ -56,7 +56,7 @@ public class EventManager<T>
     public static void StartListening(short eventName, Action<T> listener)
     {
         Action<T> thisEvent;
-
+         
         if (eventDictionary.TryGetValue(eventName, out thisEvent))
         {
             thisEvent += listener;
