@@ -28,4 +28,10 @@ public class PlayerLight : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+
+    private void OnDestroy()
+    {
+        EventManager.StopListening(Constant.START_PLAY_EVENT, ActiveLight);
+        EventManager.StopListening(Constant.RESET_GAME_EVENT, InactiveLight);
+    }
 }

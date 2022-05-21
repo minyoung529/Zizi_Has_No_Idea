@@ -40,6 +40,10 @@ public class Character : MonoBehaviour
                 {
                     InstantiatePoint();
                 }
+                else
+                {
+                    point.SetActive(true);
+                }
             }
             //TODO: Item Ãß°¡
         }

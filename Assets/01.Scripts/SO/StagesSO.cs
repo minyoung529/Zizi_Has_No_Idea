@@ -5,5 +5,5 @@ using UnityEngine;
 public class StagesSO : ScriptableObject
 {
     public int chapter;
-    public List<Stage> stages;
+    public List<GameObject> stages;
 }

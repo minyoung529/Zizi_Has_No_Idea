@@ -14,21 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chapter: 1
   stages:
-  - stageNum: 1
-    stagePrefab: {fileID: 8243762160370363931, guid: d373fa4fc40067540a946bc9e8f8d84c, type: 3}
-  - stageNum: 2
-    stagePrefab: {fileID: 8243762160370363931, guid: 842cac5bcc4955d44a3271e069edbfee, type: 3}
-  - stageNum: 3
-    stagePrefab: {fileID: 8243762160370363931, guid: 0144eec4550ecb549bc79d4a83ce4915, type: 3}
-  - stageNum: 4
-    stagePrefab: {fileID: 8243762160370363931, guid: 78a8d68efeac5dc4fbe34a2fbe9715d3, type: 3}
-  - stageNum: 5
-    stagePrefab: {fileID: 8243762160370363931, guid: 0e3c1234b1b52af4ca23181def0897d7, type: 3}
-  - stageNum: 6
-    stagePrefab: {fileID: 8243762160370363931, guid: 6613b6570c1af874bb43bcde1e58a3ba, type: 3}
-  - stageNum: 7
-    stagePrefab: {fileID: 8243762160370363931, guid: a0d5c45580a2f7245843de4d032eaf5e, type: 3}
-  - stageNum: 8
-    stagePrefab: {fileID: 8243762160370363931, guid: 69ac0403de4490d40a12e32467358884, type: 3}
-  - stageNum: 9
-    stagePrefab: {fileID: 8243762160370363931, guid: 6635180865adfa745a50458fea1cd6de, type: 3}
+  - {fileID: 8243762160370363931, guid: d373fa4fc40067540a946bc9e8f8d84c, type: 3}
+  - {fileID: 8243762160370363931, guid: 842cac5bcc4955d44a3271e069edbfee, type: 3}
+  - {fileID: 8243762160370363931, guid: 78a8d68efeac5dc4fbe34a2fbe9715d3, type: 3}
+  - {fileID: 8243762160370363931, guid: 0144eec4550ecb549bc79d4a83ce4915, type: 3}
+  - {fileID: 8243762160370363931, guid: e798d042457e0dd4eaf593ef03337398, type: 3}
+  - {fileID: 8243762160370363931, guid: b7e68943e843e004f984892a93d22617, type: 3}
+  - {fileID: 8243762160370363931, guid: 0e3c1234b1b52af4ca23181def0897d7, type: 3}
+  - {fileID: 8243762160370363931, guid: 6613b6570c1af874bb43bcde1e58a3ba, type: 3}
+  - {fileID: 8243762160370363931, guid: a0d5c45580a2f7245843de4d032eaf5e, type: 3}
+  - {fileID: 8243762160370363931, guid: 69ac0403de4490d40a12e32467358884, type: 3}
+  - {fileID: 8243762160370363931, guid: 6635180865adfa745a50458fea1cd6de, type: 3}
+  - {fileID: 8243762160370363931, guid: b1cd525a20f4a6a4bbc401d2e3e4dcb4, type: 3}

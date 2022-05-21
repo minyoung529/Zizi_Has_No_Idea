@@ -21,6 +21,7 @@ public class KeyInput : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            if (GameManager.Instance.CurrentItems.Count == 0) return;
             if (Raycast()) return;
 
             if (!EventSystem.current.IsPointerOverGameObject())

@@ -58,9 +58,9 @@ public class DataManager : MonoBehaviour
     public GameObject LoadStage()
     {
         Debug.Log(GameManager.CurrentChapter);
-        List<Stage> stages = chapterDatas.Find(x => x.chapter == GameManager.CurrentChapter).stages;
+        List<GameObject> stages = chapterDatas.Find(x => x.chapter == GameManager.CurrentChapter).stages;
 
-        if(GameManager.CurrentStage >= stages.Count)
+        if (GameManager.CurrentStage >= stages.Count)
         {
             GameManager.CurrentStage = 0;
             GameManager.CurrentChapter++;
@@ -70,7 +70,7 @@ public class DataManager : MonoBehaviour
             GameManager.CurrentStage++;
         }
 
-        return stages.Find(x => x.stageNum == GameManager.CurrentStage).stagePrefab;
+        return stages[GameManager.CurrentStage - 1];
     }
 
     private void OnDestroy()

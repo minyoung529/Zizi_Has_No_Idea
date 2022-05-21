@@ -24,26 +24,34 @@ public class UIManager : MonoBehaviour
     {
         Debug.Log("UI Manager Start");
         EventManager<EventParam>.StartListening(Constant.CLICK_PLAYER_EVENT, ActiveChartImage);
+        EventManager.StartListening(Constant.START_PLAY_EVENT, InactiveCharImage);
+        EventManager.StartListening(Constant.RESET_GAME_EVENT, () => ChangeStage(GameManager.CurrentStage));
     }
 
     private void ActiveChartImage(EventParam param)
     {
-       float delay = 0.3f;
         if (param.boolean == chartImage.gameObject.activeSelf) return;
 
         if (param.boolean)
         {
             chartImage.gameObject.SetActive(true);
             chartImage.transform.localScale = Vector3.zero;
-            chartImage.transform.DOScale(1f, delay).SetEase(Ease.InOutQuad);
+            chartImage.transform.DOScale(1f, 0.3f).SetEase(Ease.InOutQuad);
         }
         else
         {
-            chartImage.transform.DOScale(0f, delay).SetEase(Ease.InOutQuad)
-                .OnComplete(() => chartImage.gameObject.SetActive(false));
+            InactiveCharImage();
         }
 
         ActiveUnitScroll(false);
+    }
+
+    private void InactiveCharImage()
+    {
+        if (!chartImage.gameObject.activeSelf) return;
+
+        chartImage.transform.DOScale(0f, 0.3f).SetEase(Ease.InOutQuad)
+    .OnComplete(() => chartImage.gameObject.SetActive(false));
     }
 
     public void ChangeStage(int stage)
@@ -104,5 +112,12 @@ public class UIManager : MonoBehaviour
     public void ActiveInfoImage(string message, Vector3 position)
     {
         verbInfoImage.ActiveMessage(message, position);
+    }
+
+    private void OnDestroy()
+    {
+        EventManager<EventParam>.StopListening(Constant.CLICK_PLAYER_EVENT, ActiveChartImage);
+        EventManager.StopListening(Constant.START_PLAY_EVENT, InactiveCharImage);
+        EventManager.StopListening(Constant.RESET_GAME_EVENT, () => ChangeStage(GameManager.CurrentStage));
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameManager : MonoSingleton<GameManager>
 {
-    public static GameState GameState { get; private set; } = GameState.Play;
+    public static GameState GameState { get; private set; } = GameState.NotGame;
 
     public UIManager UIManager { get; private set; }
     public DataManager Data { get; private set; }
@@ -28,7 +28,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     public Transform PlayerTransform => currentStagePrefab.transform.GetChild(0);
 
-    void Awake()
+    private void Awake()
     {
         UIManager = FindObjectOfType<UIManager>();
         Data = FindObjectOfType<DataManager>();
@@ -43,6 +43,12 @@ public class GameManager : MonoSingleton<GameManager>
     private void Start()
     {
         ClearStage();
+
+    }
+
+    public void GameStart()
+    {
+        GameState = GameState.Play;
     }
 
     private void Update()
@@ -62,8 +68,6 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void ClearStage()
     {
-        if (GameState != GameState.Play) return;
-
         if (currentStagePrefab != null)
         {
             Destroy(currentStagePrefab.gameObject);
@@ -95,9 +99,6 @@ public class GameManager : MonoSingleton<GameManager>
         Debug.Log("Reset Stage");
         EventManager.TriggerEvent(Constant.RESET_GAME_EVENT);
         GameState = GameState.Ready;
-
-        //RegisterCurrentItem();
-        UIManager.ChangeStage(CurrentStage);
     }
 
     public void RegisterCurrentItem()

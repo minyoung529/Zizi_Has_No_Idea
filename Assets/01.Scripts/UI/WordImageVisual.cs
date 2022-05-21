@@ -9,9 +9,6 @@ using System;
 
 public class WordImageVisual : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] private Image image;
-    private Sprite previousSprite;
-
     [SerializeField] private UnityEvent<VerbType> onPanelSelected;
 
     static public bool IsSelect { get; set; }
@@ -19,20 +16,14 @@ public class WordImageVisual : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     private void Awake()
     {
-        previousSprite = image.sprite;
         EventManager.StartListening(Constant.RESET_GAME_EVENT, ResetData);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (Input.GetMouseButton(0) && VerbSystemController.CurrentVerb != null)
-        {
-            image.transform.localScale = Vector3.zero;
-            image.transform.DOScale(1f, 0.2f);
-            image.sprite = VerbSystemController.CurrentVerb.verbSprites;
-            IsSelect = true;
-            isSelectThis = true;
-        }
+        IsSelect = true;
+        isSelectThis = true;
+
     }
 
     public void OnPointerExit(PointerEventData eventData)
