@@ -110,7 +110,9 @@ public class GameManager : MonoSingleton<GameManager>
             for (int j = 0; j < CurrentCharacters.Count; j++)
             {
                 if (CurrentCharacters[j].gameObject == CurrentItems[i].gameObject) continue;
-                CurrentItems[i].Item.verbPairs.Add(CurrentCharacters[j], new Verb());
+
+                Verb defaultVerb = Data.Verbs.verbs[0];
+                CurrentItems[i].Item.verbPairs.Add(CurrentCharacters[j], new Verb(defaultVerb));
             }
         }
     }

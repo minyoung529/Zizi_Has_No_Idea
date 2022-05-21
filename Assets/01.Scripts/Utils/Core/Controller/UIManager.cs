@@ -20,12 +20,17 @@ public class UIManager : MonoBehaviour
     [Header("ETC UI")]
     [SerializeField] private InfoImage verbInfoImage;
 
+    [Header("CanvasGroup")]
+    [SerializeField] private CanvasGroup lobbyCanvas;
+    [SerializeField] private CanvasGroup gameCanvas;
+
     void Start()
     {
         Debug.Log("UI Manager Start");
         EventManager<EventParam>.StartListening(Constant.CLICK_PLAYER_EVENT, ActiveChartImage);
         EventManager.StartListening(Constant.START_PLAY_EVENT, InactiveCharImage);
         EventManager.StartListening(Constant.RESET_GAME_EVENT, () => ChangeStage(GameManager.CurrentStage));
+        EventManager.StartListening(Constant.GAME_START_EVENT, () => FadeLobbyCanvas(0f, 1f));
     }
 
     private void ActiveChartImage(EventParam param)
@@ -114,10 +119,17 @@ public class UIManager : MonoBehaviour
         verbInfoImage.ActiveMessage(message, position);
     }
 
+    private void FadeLobbyCanvas(float lobbyCanvasAlpha, float gameCanvasAlpha)
+    {
+        lobbyCanvas.DOFade(lobbyCanvasAlpha, 1f).OnComplete(() => lobbyCanvas.gameObject.SetActive(lobbyCanvasAlpha >= 0.9f));
+        gameCanvas.DOFade(gameCanvasAlpha, 1f).OnComplete(() => gameCanvas.gameObject.SetActive(gameCanvasAlpha >= 0.9f));
+    }
+
     private void OnDestroy()
     {
         EventManager<EventParam>.StopListening(Constant.CLICK_PLAYER_EVENT, ActiveChartImage);
         EventManager.StopListening(Constant.START_PLAY_EVENT, InactiveCharImage);
         EventManager.StopListening(Constant.RESET_GAME_EVENT, () => ChangeStage(GameManager.CurrentStage));
+        EventManager.StopListening(Constant.GAME_START_EVENT, () => FadeLobbyCanvas(0f, 1f));
     }
 }

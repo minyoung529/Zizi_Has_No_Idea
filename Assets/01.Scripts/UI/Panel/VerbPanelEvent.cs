@@ -5,12 +5,10 @@ using UnityEngine.UI;
 using UnityEngine;
 using DG.Tweening;
 
-public class VerbPanelEvent : PanelBase, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
+public class VerbPanelEvent : PanelBase, IPointerEnterHandler, IPointerExitHandler
 {
     private Verb verb;
     private Image image;
-
-    private bool isSelecting = false;
 
     private void Awake()
     {
@@ -25,28 +23,23 @@ public class VerbPanelEvent : PanelBase, IBeginDragHandler, IDragHandler, IEndDr
     }
 
     #region Drag
-    public void OnBeginDrag(PointerEventData eventData)
+    public void OnBeginDrag()
     {
         VerbSystemController.CurrentVerb = verb;
     }
 
-    public void OnDrag(PointerEventData eventData) { }
-
-    public void OnEndDrag(PointerEventData eventData)
+    public void OnEndDrag()
     {
-        if (!WordImageVisual.IsSelect)
+        if (!ChangeUISprite.IsSelect)
         {
             VerbSystemController.CurrentVerb = null;
         }
     }
 
-    public void OnPointerUp(PointerEventData eventData)
+    public void OnSelected()
     {
-        if (isSelecting)
-        {
-            EventManager.TriggerEvent(Constant.SELECT_VERB_WORD);
-            isSelecting = false;
-        }
+        Debug.Log("sdf");
+        EventManager.TriggerEvent(Constant.SELECT_VERB_WORD_EVENT);
     }
 
     public void OnPointerEnter(PointerEventData eventData)

@@ -8,7 +8,7 @@ public class SentencePanel : PanelBase
     private Item item;
     private Verb verb;
 
-    private WordImageVisual worldImage;
+    private ChangeUISprite worldImage;
 
     [SerializeField] private Text unitText;
     [SerializeField] private Text subjectText;
@@ -27,7 +27,7 @@ public class SentencePanel : PanelBase
         SetUI();
 
         EventManager<EventParam>.StartListening(Constant.CLICK_PLAYER_EVENT, UpdateUI);
-        EventManager.StartListening(Constant.SELECT_VERB_WORD, ChangeVerbType);
+        EventManager.StartListening(Constant.SELECT_VERB_WORD_EVENT, ChangeVerbType);
     }
 
     public void SetData(Item item)
@@ -54,7 +54,11 @@ public class SentencePanel : PanelBase
         string sPostposition = (param.character?.characterName[param.character.characterName.Length - 1] - 0xAC00) % 28 > 0 ? "Àº" : "´Â";
         subjectText.text = $"{param.character?.characterName}{sPostposition} {item.Name}{oPostposition} ";
 
-        worldImage.SetSprite(item);
+        if (item.verbPairs.ContainsKey(VerbSystemController.CurrentCharacter))
+        {
+            worldImage.SetSprite(item.verbPairs[VerbSystemController.CurrentCharacter].verbSprites);
+        }
+
         gameObject.SetActive(true);
 
         AdjustTextDetail();
@@ -65,12 +69,16 @@ public class SentencePanel : PanelBase
         if (!worldImage.IsInPointer()) return;
         if (VerbSystemController.CurrentVerb == null) return;
 
+        Debug.Log("Change");
+
         verb = VerbSystemController.CurrentVerb;
         item.verbPairs[VerbSystemController.CurrentCharacter] = verb;
         VerbSystemController.CurrentVerb = null;
 
         ItemObject itemObj = GameManager.Instance.CurrentItems.Find(x => x.Item.Name == item.Name);
         ParabolaController.GenerateParabola(VerbSystemController.CurrentCharacter, itemObj, verb.verbType);
+
+        worldImage.SetSprite(item.verbPairs[VerbSystemController.CurrentCharacter].verbSprites);
 
         AdjustTextDetail();
     }
@@ -133,12 +141,12 @@ public class SentencePanel : PanelBase
 
         panelRect = GetComponent<RectTransform>();
         originalSizeDelta = panelRect.sizeDelta;
-        worldImage = GetComponentInChildren<WordImageVisual>();
+        worldImage = GetComponentInChildren<ChangeUISprite>();
     }
 
     private void OnDestroy()
     {
         EventManager<EventParam>.StopListening(Constant.CLICK_PLAYER_EVENT, UpdateUI);
-        EventManager.StopListening(Constant.SELECT_VERB_WORD, ChangeVerbType);
+        EventManager.StopListening(Constant.SELECT_VERB_WORD_EVENT, ChangeVerbType);
     }
 }

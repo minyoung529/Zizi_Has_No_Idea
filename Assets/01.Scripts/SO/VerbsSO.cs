@@ -17,4 +17,14 @@ public class Verb
     public bool hasUnit;
 
     public UnitType unitType { get; set; } = UnitType.Middle;
+
+    public Verb(Verb verb)
+    {
+        verbName = verb.verbName;
+        verbSprites = verb.verbSprites;
+        verbType = verb.verbType;
+        simulateType = verb.simulateType;
+        hasUnit = verb.hasUnit;
+        unitType = verb.unitType;
+    }
 }

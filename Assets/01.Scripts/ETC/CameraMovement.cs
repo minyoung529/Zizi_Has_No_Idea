@@ -44,6 +44,7 @@ public class CameraMovement : MonoBehaviour
         originalview = cam.orthographicSize;
 
         EventManager.StartListening(Constant.RESET_GAME_EVENT, ResetPosAndRot);
+        EventManager.StartListening(Constant.GAME_START_EVENT, ResetPosAndRot);
     }
 
     private void Update()
@@ -120,5 +121,11 @@ public class CameraMovement : MonoBehaviour
         transform.DORotateQuaternion(originalRotation, delay);
         transform.DOMove(originalPosition, delay);
         cam.DOOrthoSize(originalview, delay);
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.StopListening(Constant.RESET_GAME_EVENT, ResetPosAndRot);
+        EventManager.StopListening(Constant.GAME_START_EVENT, ResetPosAndRot);
     }
 }

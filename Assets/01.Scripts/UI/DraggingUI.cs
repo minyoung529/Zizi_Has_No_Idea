@@ -4,12 +4,22 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using DG.Tweening;
+using UnityEngine.Events;
 
 public class DraggingUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField] private Image dragObject;
     private Image image;
     private bool isSelecting = false;
+
+    public UnityEvent onBeginDrag;
+    public UnityEvent onDragging;
+    public UnityEvent onSelected;
+
+    public Sprite CurrentSprite
+    {
+        get => image.sprite;
+    }
 
     public static DraggingUI currentDraggedUI;
 
@@ -37,12 +47,19 @@ public class DraggingUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         dragObject.gameObject.SetActive(true);
         dragObject.transform.DOScale(1f, 0.3f);
         dragObject.sprite = image.sprite;
+
+        onBeginDrag.Invoke();
     }
 
-    public void OnDrag(PointerEventData eventData) { }
+    public void OnDrag(PointerEventData eventData)
+    {
+        onDragging.Invoke();
+    }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        onSelected.Invoke();
+
         dragObject.gameObject.SetActive(false);
         dragObject.sprite = null;
         currentDraggedUI = null;
