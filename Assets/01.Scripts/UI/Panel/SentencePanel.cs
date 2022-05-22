@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class SentencePanel : PanelBase
 {
@@ -20,6 +21,9 @@ public class SentencePanel : PanelBase
 
     private readonly float offset = 410f;
     private Vector2 originalSizeDelta;
+
+    [SerializeField] private UnityEvent onSelected;
+    [SerializeField] private UnityEvent onFailToSelected;
 
     public void Init(Item item)
     {
@@ -66,7 +70,11 @@ public class SentencePanel : PanelBase
 
     public void ChangeVerbType()
     {
-        if (!worldImage.IsInPointer()) return;
+        if (!worldImage.IsInPointer())
+        {
+            onFailToSelected.Invoke();
+            return;
+        }
         if (VerbSystemController.CurrentVerb == null) return;
 
         Debug.Log("Change");
@@ -81,6 +89,7 @@ public class SentencePanel : PanelBase
         worldImage.SetSprite(item.verbPairs[VerbSystemController.CurrentCharacter].verbSprites);
 
         AdjustTextDetail();
+        onSelected.Invoke();
     }
 
     public void SetUnitType(UnitType unitType)

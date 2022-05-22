@@ -36,6 +36,7 @@ public class GameManager : MonoSingleton<GameManager>
         EventManager.StartListening(Constant.START_PLAY_EVENT, StartPlay);
         EventManager.StartListening(Constant.GET_STAR_EVENT, ClearStage);
         EventManager<EventParam>.StartListening(Constant.CLICK_PLAYER_EVENT, SetGameState);
+        EventManager.StartListening(Constant.GAME_START_EVENT, () => GameState = GameState.Ready);
 
         ParabolaController.Start();
     }
@@ -43,17 +44,16 @@ public class GameManager : MonoSingleton<GameManager>
     private void Start()
     {
         ClearStage();
-
     }
 
     public void GameStart()
     {
-        GameState = GameState.Play;
+        GameState = GameState.Ready;
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             GameState = GameState.Play;
             ClearStage();
@@ -98,7 +98,11 @@ public class GameManager : MonoSingleton<GameManager>
         starCount = 0;
         Debug.Log("Reset Stage");
         EventManager.TriggerEvent(Constant.RESET_GAME_EVENT);
-        GameState = GameState.Ready;
+
+        if (GameState != GameState.NotGame)
+        {
+            GameState = GameState.Ready;
+        }
     }
 
     public void RegisterCurrentItem()
@@ -130,5 +134,6 @@ public class GameManager : MonoSingleton<GameManager>
     {
         EventManager.StopListening(Constant.START_PLAY_EVENT, StartPlay);
         EventManager.StopListening(Constant.GET_STAR_EVENT, ClearStage);
+        EventManager.StopListening(Constant.GAME_START_EVENT, () => GameState = GameState.Ready);
     }
 }

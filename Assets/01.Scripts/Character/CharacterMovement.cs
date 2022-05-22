@@ -26,6 +26,8 @@ public class CharacterMovement : MonoBehaviour
 
     public Character character { get; set; }
 
+    [SerializeField] private UnityEvent onLanding;
+
     private void Start()
     {
         rigid = GetComponent<Rigidbody>();
@@ -119,6 +121,14 @@ public class CharacterMovement : MonoBehaviour
         currentDirection = Vector3.zero;
         rigid.velocity = Vector3.zero;
         settingDirections.ForEach(x => x.ResetData());
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.CompareTag(Constant.PLATFORM_TAG))
+        {
+            onLanding.Invoke();
+        }
     }
 
     private void OnDestroy()

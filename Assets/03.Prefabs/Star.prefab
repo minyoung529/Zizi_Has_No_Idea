@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 141554990025691112}
   - component: {fileID: 1267020632689206629}
   - component: {fileID: 7956171306099996685}
+  - component: {fileID: 4206741657687748697}
   m_Layer: 0
   m_Name: Star
   m_TagString: Star
@@ -93,6 +94,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d82321f8c1ebd1e45890b10b5fdc820a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onGetStar:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4206741657687748697}
+        m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
+        m_MethodName: PlayOneShot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1267020632689206629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,6 +140,20 @@ MonoBehaviour:
   ySpeed: 90
   zSpeed: 90
   rotationType: -1
+--- !u!114 &4206741657687748697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808659566923325054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 770dde1b02ab1794facff00300c0ad8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClip: {fileID: 8300000, guid: c5435003f446ee3419f2abb2fc5bbbb4, type: 3}
+  audioType: 1
 --- !u!1001 &6328521312388298301
 PrefabInstance:
   m_ObjectHideFlags: 0

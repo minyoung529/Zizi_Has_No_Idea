@@ -2,17 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundManager : MonoBehaviour
+public class SoundManager : MonoSingleton<SoundManager>
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private AudioSource bgmAudio;
+    [SerializeField] private AudioSource effectAudio;
+
+    private Dictionary<AudioType, AudioSource> audioSources = new Dictionary<AudioType, AudioSource>();
+
+
+    private void Awake()
     {
-        
+        audioSources.Add(AudioType.BGM, bgmAudio);
+        audioSources.Add(AudioType.EffectSound, effectAudio);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlayAudio(AudioType audioType, AudioClip audioClip)
     {
-        
+        if(audioSources.ContainsKey(audioType))
+        {
+            audioSources[audioType].Stop();
+            audioSources[audioType].clip = audioClip;
+            audioSources[audioType].Play();
+        }
+    }
+
+    public void PlayOneShotAudio(AudioType audioType, AudioClip audioClip)
+    {
+        if (audioSources.ContainsKey(audioType))
+        {
+            audioSources[audioType].PlayOneShot(audioClip);
+        }
     }
 }

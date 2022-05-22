@@ -5031,14 +5031,15 @@ GameObject:
   m_Component:
   - component: {fileID: 2085639080183120373}
   - component: {fileID: 8710913809519738856}
+  - component: {fileID: 4088828860045858199}
+  - component: {fileID: 1839170234120123875}
   - component: {fileID: 5755363042195648909}
   - component: {fileID: 8433292809592917551}
-  - component: {fileID: 1839170234120123875}
   - component: {fileID: 2455669178004443603}
-  - component: {fileID: 4088828860045858199}
+  - component: {fileID: 6095139182076227748}
+  - component: {fileID: 5957736416486303356}
   - component: {fileID: 4280733149053657147}
   - component: {fileID: 5947613495972406606}
-  - component: {fileID: 6095139182076227748}
   m_Layer: 6
   m_Name: Ghost
   m_TagString: Untagged
@@ -5080,33 +5081,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &5755363042195648909
-MonoBehaviour:
+--- !u!65 &4088828860045858199
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1709816576029268815}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed174b7fccbc48c4d98141e0e9d84a44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isPlayer: 0
-  characterName: "\uAF2C\uB9C8\uC720\uB839"
-  pointObject: {fileID: 5052095111307677860, guid: e87b7b603688902448724f00b221e016, type: 3}
---- !u!114 &8433292809592917551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1709816576029268815}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b1408c558a614149a9c632bf4707ec5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  serializedVersion: 2
+  m_Size: {x: 0.85, y: 1.37, z: 1}
+  m_Center: {x: 0, y: 0.42, z: -0.03}
 --- !u!95 &1839170234120123875
 Animator:
   serializedVersion: 4
@@ -5127,6 +5114,60 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5755363042195648909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709816576029268815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed174b7fccbc48c4d98141e0e9d84a44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayer: 0
+  characterName: "\uAF2C\uB9C8\uC720\uB839"
+  pointObject: {fileID: 5052095111307677860, guid: e87b7b603688902448724f00b221e016, type: 3}
+  onSelected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8433292809592917551}
+        m_TargetAssemblyTypeName: CharacterAnimation, Assembly-CSharp
+        m_MethodName: PlaySelectedAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5957736416486303356}
+        m_TargetAssemblyTypeName: CharacterSound, Assembly-CSharp
+        m_MethodName: PlaySelectSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8433292809592917551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709816576029268815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b1408c558a614149a9c632bf4707ec5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2455669178004443603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5183,19 +5224,62 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
---- !u!65 &4088828860045858199
-BoxCollider:
+  onLanding:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8433292809592917551}
+        m_TargetAssemblyTypeName: CharacterAnimation, Assembly-CSharp
+        m_MethodName: PlayLandingAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5957736416486303356}
+        m_TargetAssemblyTypeName: CharacterSound, Assembly-CSharp
+        m_MethodName: PlayLandingSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6095139182076227748
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1709816576029268815}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.85, y: 1.37, z: 1}
-  m_Center: {x: 0, y: 0.42, z: -0.03}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f41741c22776c468daf1f014116d5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkParticle: {fileID: 6277570853697930367}
+--- !u!114 &5957736416486303356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709816576029268815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4e388575e9e1e7439032d03f58333d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSound: {fileID: 8300000, guid: cceccc12496d2aa41b33a9d05e6b6e51, type: 3}
+  selectSound: {fileID: 8300000, guid: 6cf9016a11b820046aff97731fccd997, type: 3}
+  fallSound: {fileID: 0}
+  landingSound: {fileID: 8300000, guid: 7d62dff4de348414d8cea46964a934ff, type: 3}
 --- !u!114 &4280733149053657147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5224,19 +5308,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 0
   isConstantY: 1
---- !u!114 &6095139182076227748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1709816576029268815}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39f41741c22776c468daf1f014116d5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  walkParticle: {fileID: 6277570853697930367}
 --- !u!1 &2558416410140435324
 GameObject:
   m_ObjectHideFlags: 0

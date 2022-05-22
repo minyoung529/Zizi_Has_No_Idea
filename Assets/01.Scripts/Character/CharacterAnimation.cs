@@ -12,13 +12,9 @@ public class CharacterAnimation : MonoBehaviour
 
     private Animator animator;
 
-    private Character character;
-
     private void Start()
     {
-        character = GetComponent<Character>();
         animator = GetComponent<Animator>();
-        EventManager<EventParam>.StartListening(Constant.CLICK_PLAYER_EVENT, TriggerSelectedAnimation);
     }
 
     public void SetWalkAnimation(Vector3 velocity)
@@ -27,21 +23,13 @@ public class CharacterAnimation : MonoBehaviour
         animator.SetBool(fallHash, velocity.y < -1f);
     }
 
-    private void TriggerSelectedAnimation(EventParam param)
+    public void PlaySelectedAnimation()
     {
-        if (character == null || param.character == null) return;
-
-        if (character.characterName == param.character.characterName)
-        {
-            animator.Play(selectedHash);
-        }
+        animator.SetTrigger(selectedHash);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void PlayLandingAnimation()
     {
-        if (collision.transform.CompareTag(Constant.PLATFORM_TAG))
-        {
-            animator.SetTrigger(landingHash);
-        }
+        animator.SetTrigger(landingHash);
     }
 }

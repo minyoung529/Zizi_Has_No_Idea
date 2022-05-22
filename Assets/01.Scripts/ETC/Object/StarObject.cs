@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
-using System;
+using UnityEngine.Events;
 
 public class StarObject : MonoBehaviour
 {
@@ -10,6 +7,8 @@ public class StarObject : MonoBehaviour
     private Rigidbody rigid;
     private MeshRenderer meshRenderer;
     private new Collider collider;
+
+    [SerializeField] private UnityEvent onGetStar;
 
     private void Awake()
     {
@@ -30,7 +29,7 @@ public class StarObject : MonoBehaviour
         if (collision.transform.CompareTag(Constant.PLAYER_TAG) && GameManager.GameState == GameState.Play && !isCollision)
         {
             Debug.Log("Get Star");
-
+            onGetStar.Invoke();
             SetData(false);
 
             GameManager.Instance.StarCount -= 1;

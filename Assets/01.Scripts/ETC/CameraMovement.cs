@@ -10,15 +10,15 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private float rotationDeacceleration = 3f;
     [SerializeField] private float mouseSensitivity = 1f;
 
-    private float rotX;
-    private float rotY;
-
     MinMax minMaxAngle = new MinMax(0, 90);
 
     [Header("¡‹")]
     [SerializeField] private float zoomSpeed = 3f;
     [SerializeField] private float zoomAcceleration = 3f;
     private float wheel;
+
+    private float rotX;
+    private float rotY;
 
     MinMax minMaxZoom = new MinMax(2, 15);
 
@@ -49,28 +49,47 @@ public class CameraMovement : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.GameState == GameState.InGameSetting || GameManager.GameState == GameState.Setting)
+        if (GameManager.GameState == GameState.NotGame)
+        {
+            rotX = -0.15f;
+            RotateX();
             return;
+        }
 
-        MouseXYMove();
+        else if (!(GameManager.GameState == GameState.Play || GameManager.GameState == GameState.Ready)) return;
+
+        // INPUT CAMERA MOVE
+
+        if(Input.GetMouseButton(0))
+        {
+            rotX = Input.GetAxis("Mouse X");
+            rotY = Input.GetAxis("Mouse Y");
+        }
+
+        RotateX();
+        RotateY();
+
         MouseScrollWheelZoom();
         CarryCamera();
     }
 
-    private void MouseXYMove()
+    private void RotateX()
     {
-        if (Input.GetMouseButton(0))
-        {
-            rotX = Input.GetAxisRaw("Mouse X");
-            rotY = Input.GetAxisRaw("Mouse Y");
-        }
-        else
+        if (!Input.GetMouseButton(0))
         {
             rotX = Mathf.Lerp(rotX, 0f, Time.deltaTime * rotationDeacceleration);
-            rotY = Mathf.Lerp(rotY, 0f, Time.deltaTime * rotationDeacceleration);
         }
 
         transform.RotateAround(Vector3.zero, Vector3.up, rotX * Time.deltaTime * rotationSpeed);
+    }
+
+    private void RotateY()
+    {
+        if (!Input.GetMouseButton(0))
+        {
+            rotY = Mathf.Lerp(rotY, 0f, Time.deltaTime * rotationDeacceleration);
+        }
+
         transform.Rotate(new Vector3(-rotY, 0f, 0f) * Time.deltaTime * rotationSpeed);
     }
 
@@ -127,5 +146,10 @@ public class CameraMovement : MonoBehaviour
     {
         EventManager.StopListening(Constant.RESET_GAME_EVENT, ResetPosAndRot);
         EventManager.StopListening(Constant.GAME_START_EVENT, ResetPosAndRot);
+    }
+
+    private void AutoRotate()
+    {
+
     }
 }

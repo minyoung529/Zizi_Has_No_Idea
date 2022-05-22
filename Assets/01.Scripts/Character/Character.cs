@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Character : MonoBehaviour
 {
@@ -16,9 +17,22 @@ public class Character : MonoBehaviour
     [SerializeField] private GameObject pointObject;
     private GameObject point;
 
+    [SerializeField] private UnityEvent onSelected;
+
     private void Awake()
     {
         EventManager.StartListening(Constant.CLEAR_STAGE_EVENT, RegisterCharacter);
+        EventManager<EventParam>.StartListening(Constant.CLICK_PLAYER_EVENT, OnSelect);
+    }
+
+    private void OnSelect(EventParam param)
+    {
+        if (param.character == null) return;
+
+        if (characterName == param.character.characterName)
+        {
+            onSelected.Invoke();
+        }
     }
 
     private void RegisterCharacter()
