@@ -56,11 +56,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 467497191883276293}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.54, y: 2, z: 0.34}
-  m_Center: {x: 0, y: 0.21, z: 0}
+  m_Size: {x: 1.54, y: 2, z: 0.1}
+  m_Center: {x: 0, y: 0.21, z: 0.26}
 --- !u!114 &5208302004983636812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 3740299543274081217}
   - component: {fileID: 8785074807956149510}
   - component: {fileID: 4528501641346633204}
+  - component: {fileID: 1276687927905280432}
   m_Layer: 0
   m_Name: Plano.001
   m_TagString: Untagged
@@ -187,6 +188,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1276687927905280432
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499557792727147653}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0030000764, y: 0.0030045018, z: 0.00047102038}
+  m_Center: {x: -0.000000023865141, y: -0.0000020589212, z: -0.0003}
 --- !u!1 &1775537591480926291
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,7 +258,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3073818237782356826}
   m_LocalRotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0067, y: 0.1419, z: -0.097}
+  m_LocalPosition: {x: -0.0067, y: 0.1419, z: -0.118}
   m_LocalScale: {x: 414.61087, y: 584.7118, z: 430.4068}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -279,7 +293,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 83303f83fea8b1246ad6f780923f0842, type: 2}
+  - {fileID: 2100000, guid: 954ddfd8859bcb74f877541edc300b2b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
