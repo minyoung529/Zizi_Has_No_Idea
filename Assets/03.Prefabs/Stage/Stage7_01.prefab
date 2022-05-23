@@ -587,6 +587,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9065329884201993610}
   - component: {fileID: 6887276183790910269}
+  - component: {fileID: 1921118443123706610}
   m_Layer: 0
   m_Name: Icosphere
   m_TagString: Untagged
@@ -680,6 +681,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.000105666695, y: 0.00650585, z: -0.00038068346}
     m_Extent: {x: 0.004225469, y: 0.005705308, z: 0.0053094905}
   m_DirtyAABB: 0
+--- !u!114 &1921118443123706610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2180806626180188010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7caa7f41efff48f4397d321520eac995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstColor: {r: 0.2264151, g: 0.2264151, b: 0.2264151, a: 1}
+  secondColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1 &2559001063732278664
 GameObject:
   m_ObjectHideFlags: 0
@@ -1786,7 +1801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item:
-    name: "\uAF2C\uB9C8\uC720\uB839"
+    name: "\uBA39\uBB3C"
 --- !u!1 &6665201850993051898
 GameObject:
   m_ObjectHideFlags: 0

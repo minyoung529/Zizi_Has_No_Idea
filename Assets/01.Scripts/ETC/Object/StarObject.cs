@@ -16,9 +16,11 @@ public class StarObject : MonoBehaviour
     private void Awake()
     {
         EventManager.StartListening(Constant.RESET_GAME_EVENT, RegisterStarCount);
+
         rigid = GetComponent<Rigidbody>();
         collider = GetComponent<Collider>();
         meshRenderer = GetComponentInChildren<MeshRenderer>();
+
         originScale = transform.localScale;
         RegisterStarCount();
     }
@@ -79,5 +81,10 @@ public class StarObject : MonoBehaviour
     {
         EventManager.StopListening(Constant.RESET_GAME_EVENT, RegisterStarCount);
         EventManager.StopListening(Constant.CLEAR_STAGE_EVENT, DestroyObject);
+    }
+
+    private void OnDisable()
+    {
+        
     }
 }

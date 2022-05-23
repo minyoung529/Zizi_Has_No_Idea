@@ -74,9 +74,9 @@ public class Character : MonoBehaviour
     {
         Vector3 pointPosition = transform.position;
         pointPosition.y += 2f;
-        point = Instantiate(pointObject, pointPosition, pointObject.transform.rotation);
+        point = PoolManager.Pop(pointObject);
+        point.transform.SetPositionAndRotation(pointPosition, pointObject.transform.rotation);
         point.transform.SetParent(transform);
-        point.SetActive(true);
     }
 
     private void OnDestroy()

@@ -87,4 +87,9 @@ public class ParabolaObject : MonoBehaviour
         lineRenderer.SetPosition(count - 1, endPoint);
         callback.Invoke();
     }
+
+    private void OnDisable()
+    {
+        
+    }
 }

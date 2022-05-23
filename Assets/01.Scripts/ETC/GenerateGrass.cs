@@ -7,6 +7,8 @@ public class GenerateGrass : MonoBehaviour
     [SerializeField]
     private List<GrassPair> grasses;
 
+    private List<GameObject> currentGrasses = new List<GameObject>();
+
     float surfaceY = 0f;
     Vector3 scale;
 
@@ -28,7 +30,9 @@ public class GenerateGrass : MonoBehaviour
         {
             for (int i = 0; i < pair.count; i++)
             {
-                GameObject obj = Instantiate(pair.grassPrefab, RandomPosition(), RandomRotation(pair.grassPrefab.transform));
+                GameObject obj = PoolManager.Pop(pair.grassPrefab);
+                currentGrasses.Add(obj);
+                obj.transform.SetPositionAndRotation(RandomPosition(), RandomRotation(pair.grassPrefab.transform));
                 obj.transform.SetParent(transform);
             }
         }
@@ -52,6 +56,12 @@ public class GenerateGrass : MonoBehaviour
     private Quaternion RandomRotation(Transform prefab)
     {
         return Quaternion.Euler(prefab.rotation.eulerAngles.x, Random.Range(0f, 360f), prefab.rotation.eulerAngles.z);
+    }
+
+    private void OnDisable()
+    {
+        currentGrasses.ForEach(x => PoolManager.Push(x));
+        currentGrasses.Clear();
     }
 }
 

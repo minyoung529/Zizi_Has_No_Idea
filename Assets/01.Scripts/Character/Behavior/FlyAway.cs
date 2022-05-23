@@ -25,7 +25,8 @@ public class FlyAway : SettingDirection
 
     private IEnumerator BehaviourCoroutine()
     {
-        Debug.Log("들어오긴 했따");
+        // TODO: 땅에 닿으면 멈추는 것! 
+
         Vector3 startPoint = transform.position;
         Vector3 endPoint = target.transform.position - (transform.forward * distances[(int)verb.unitType]);
 
