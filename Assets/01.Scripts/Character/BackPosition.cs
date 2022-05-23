@@ -16,7 +16,7 @@ public class BackPosition : MonoBehaviour
         position.z = Mathf.RoundToInt(position.z);
         transform.position = position;
 
-        originPosition = transform.position;
+        originPosition = position;
         
         if (isConstantY)
             originPosition.y = Constant.SPAWN_CHARACTER_Y;
@@ -26,7 +26,7 @@ public class BackPosition : MonoBehaviour
         EventManager.StartListening(Constant.RESET_GAME_EVENT, ResetObject);
     }
 
-    private void ResetObject()
+    public void ResetObject()
     {
         if (isPlayer)
         {

@@ -5,18 +5,21 @@ using DG.Tweening;
 
 public class FlyAway : SettingDirection
 {
-    private float maxHeight = 2f;
+    private float maxHeight = 2.5f;
     private readonly float[] distances = { 7f, 12f, 17f };
 
     private const int count = 100;
-    private const float delay = 0.7f;
+    private const float delay = 2f;
     private const float delayPerCount = delay / count;
 
     private WaitForSeconds explosionDelay = new WaitForSeconds(delayPerCount);
 
-    public override void OnCollisionTarget()
+    private Rigidbody rigid;
+
+    public override void OnCollisionTarget(Collision collision)
     {
         isStopMovement = true;
+        rigid = gameObject.GetComponent<Rigidbody>();
         StartCoroutine(BehaviourCoroutine());
     }
 
@@ -28,6 +31,12 @@ public class FlyAway : SettingDirection
 
         for (int i = 0; i < count; i++)
         {
+            if (GameManager.GameState != GameState.Play)
+            {
+                GetComponent<BackPosition>()?.ResetObject();
+                yield break;
+            }
+
             Vector3 position = Vector3.zero;
             float increment = (i - 1) / ((float)count - 2);
 
@@ -40,7 +49,14 @@ public class FlyAway : SettingDirection
             if (Mathf.Abs(endPoint.z - startPoint.z) > 0.01f)
                 position.z = increment * (endPoint.z - startPoint.z) + startPoint.z;
 
-            transform.DOMove(position, delayPerCount).SetEase(Ease.Unset);
+            if (rigid)
+            {
+                rigid.DOMove(position, delayPerCount).SetEase(Ease.Unset);
+            }
+            else
+            {
+                transform.DOMove(position, delayPerCount).SetEase(Ease.Unset);
+            }
 
             yield return explosionDelay;
         }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using DG.Tweening;
 
 public class StarObject : MonoBehaviour
 {
@@ -10,12 +11,15 @@ public class StarObject : MonoBehaviour
 
     [SerializeField] private UnityEvent onGetStar;
 
+    private Vector3 originScale;
+
     private void Awake()
     {
         EventManager.StartListening(Constant.RESET_GAME_EVENT, RegisterStarCount);
         rigid = GetComponent<Rigidbody>();
         collider = GetComponent<Collider>();
         meshRenderer = GetComponentInChildren<MeshRenderer>();
+        originScale = transform.localScale;
         RegisterStarCount();
     }
 
@@ -59,9 +63,10 @@ public class StarObject : MonoBehaviour
         collider.enabled = isEnabled;
         meshRenderer.enabled = isEnabled;
 
-        if(isEnabled)
+        if (isEnabled)
         {
-            transform.localScale = Vector3.one;
+            transform.DOKill();
+            transform.DOScale(originScale, 0.3f);
         }
     }
 

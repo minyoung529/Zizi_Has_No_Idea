@@ -37,7 +37,7 @@ public class SettingDirection : MonoBehaviour
         target = null;
     }
 
-    public virtual void OnCollisionTarget() { }
+    public virtual void OnCollisionTarget(Collision collision) { }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -46,7 +46,7 @@ public class SettingDirection : MonoBehaviour
         Debug.Log(target.name + ", " + collision.gameObject.name);
         if (target.gameObject == collision.gameObject)
         {
-            OnCollisionTarget();
+            OnCollisionTarget(collision);
         }
     }
 }

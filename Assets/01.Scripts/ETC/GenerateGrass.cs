@@ -19,17 +19,7 @@ public class GenerateGrass : MonoBehaviour
     private void Ready()
     {
         scale = transform.localScale;
-
-        Vector3 startPos = transform.position;
-        startPos.y += 100f;
-
-        Ray ray = new Ray(startPos, Vector3.down);
-        RaycastHit hitInfo;
-
-        if (Physics.Raycast(ray, out hitInfo, 130f, LayerMask.GetMask(Constant.PLATFORM_TAG)))
-        {
-            surfaceY = hitInfo.point.y;
-        }
+        surfaceY = transform.position.y + transform.localScale.y / 2f;
     }
 
     private void Generate()
@@ -52,7 +42,11 @@ public class GenerateGrass : MonoBehaviour
         float randX = Random.Range(-x, x);
         float randZ = Random.Range(-z, z);
 
-        return new Vector3(randX, surfaceY, randZ);
+        Vector3 pos = transform.position;
+        pos.y = 0f;
+        pos += new Vector3(randX, surfaceY, randZ);
+
+        return pos;
     }
 
     private Quaternion RandomRotation(Transform prefab)

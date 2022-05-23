@@ -12,7 +12,7 @@ public class GameManager : MonoSingleton<GameManager>
 
 
     public static int CurrentChapter { get; set; } = 1;
-    public static int CurrentStage { get; set; } = 0;
+    public static int CurrentStage { get; set; } = 10;
 
     private GameObject currentStagePrefab;
 
@@ -27,6 +27,8 @@ public class GameManager : MonoSingleton<GameManager>
     }
 
     public Transform PlayerTransform => currentStagePrefab.transform.GetChild(0);
+
+    public bool skipLobbyScene = true;
 
     private void Awake()
     {
@@ -44,6 +46,11 @@ public class GameManager : MonoSingleton<GameManager>
     private void Start()
     {
         ClearStage();
+
+        if (skipLobbyScene)
+        {
+            EventManager.TriggerEvent(Constant.GAME_START_EVENT);
+        }
     }
 
     public void GameStart()
@@ -62,7 +69,6 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void StartPlay()
     {
-        Debug.Log("Play Start");
         GameState = GameState.Play;
     }
 

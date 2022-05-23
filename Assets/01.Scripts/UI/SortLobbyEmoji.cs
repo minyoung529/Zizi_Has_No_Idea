@@ -26,7 +26,6 @@ public class SortLobbyEmoji : MonoBehaviour
             switch (DraggingUI.currentDraggedUI.gameObject.name)
             {
                 case START:
-                    Debug.Log("sdf");
                     EventManager.TriggerEvent(Constant.GAME_START_EVENT);
                     break;
                 case STOP:

@@ -24,7 +24,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private CanvasGroup lobbyCanvas;
     [SerializeField] private CanvasGroup gameCanvas;
 
-    void Start()
+    void Awake()
     {
         Debug.Log("UI Manager Start");
         EventManager<EventParam>.StartListening(Constant.CLICK_PLAYER_EVENT, ActiveChartImage);
