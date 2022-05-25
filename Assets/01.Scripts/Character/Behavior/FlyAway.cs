@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class FlyAway : SettingDirection
 {
-    private float maxHeight = 2.5f;
+    private float maxHeight = 3.5f;
     private readonly float[] distances = { 7f, 12f, 17f };
 
     private const int count = 100;
@@ -15,6 +15,10 @@ public class FlyAway : SettingDirection
     private WaitForSeconds explosionDelay = new WaitForSeconds(delayPerCount);
 
     private Rigidbody rigid;
+
+    private bool isCollision;
+
+    private Character character;
 
     public override void OnCollisionTarget(Collision collision)
     {
@@ -26,12 +30,14 @@ public class FlyAway : SettingDirection
     private IEnumerator BehaviourCoroutine()
     {
         // TODO: ¶¥¿¡ ´êÀ¸¸é ¸ØÃß´Â °Í! 
-
         Vector3 startPoint = transform.position;
         Vector3 endPoint = target.transform.position - (transform.forward * distances[(int)verb.unitType]);
 
         for (int i = 0; i < count; i++)
         {
+            Debug.Log(rigid.collisionDetectionMode);
+            Debug.Log(rigid.detectCollisions);
+
             if (GameManager.GameState != GameState.Play)
             {
                 GetComponent<BackPosition>()?.ResetObject();
@@ -60,8 +66,28 @@ public class FlyAway : SettingDirection
             }
 
             yield return explosionDelay;
+
+            if (isCollision && i > 5)
+            {
+                isCollision = false;
+                isStopMovement = false;
+                yield break;
+            }
+            else if (i < 0)
+            {
+                isCollision = false;
+            }
         }
 
         isStopMovement = false;
+        isCollision = false;
+    }
+
+    protected override void ChildOnCollisionTrigger()
+    {
+        if (isStopMovement)
+        {
+            isCollision = true;
+        }
     }
 }

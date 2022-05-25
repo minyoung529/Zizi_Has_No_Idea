@@ -83,4 +83,10 @@ public class Character : MonoBehaviour
     {
         EventManager.StopListening(Constant.CLEAR_STAGE_EVENT, RegisterCharacter);
     }
+
+    public bool isCollision = true;
+    private void OnCollisionEnter(Collision collision)
+    {
+        isCollision = true;
+    }
 }

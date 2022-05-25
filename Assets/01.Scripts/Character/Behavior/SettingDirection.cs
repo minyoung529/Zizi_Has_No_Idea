@@ -41,6 +41,8 @@ public class SettingDirection : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        ChildOnCollisionTrigger();
+
         if (!IsActive || target == null) return;
 
         Debug.Log(target.name + ", " + collision.gameObject.name);
@@ -49,4 +51,6 @@ public class SettingDirection : MonoBehaviour
             OnCollisionTarget(collision);
         }
     }
+
+    protected virtual void ChildOnCollisionTrigger() { }
 }

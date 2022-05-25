@@ -12,6 +12,11 @@ public class GenerateGrass : MonoBehaviour
     float surfaceY = 0f;
     Vector3 scale;
 
+    private void Awake()
+    {
+        EventManager.StartListening(Constant.CLEAR_STAGE_EVENT, OnClear);
+    }
+
     private void Start()
     {
         Ready();
@@ -58,9 +63,12 @@ public class GenerateGrass : MonoBehaviour
         return Quaternion.Euler(prefab.rotation.eulerAngles.x, Random.Range(0f, 360f), prefab.rotation.eulerAngles.z);
     }
 
-    private void OnDisable()
+    private void OnClear()
     {
-        currentGrasses.ForEach(x => PoolManager.Push(x));
+        currentGrasses.ForEach(x =>
+        {
+            PoolManager.Push(x);
+        });
         currentGrasses.Clear();
     }
 }

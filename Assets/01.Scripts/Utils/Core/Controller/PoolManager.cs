@@ -15,7 +15,6 @@ public class PoolManager : MonoBehaviour
     public static void Push(GameObject obj)
     {
         obj.name = obj.name.Trim();
-        obj.SetActive(false);
         obj.transform.position = Vector3.one;
 
         if (!pools.ContainsKey(obj.name))
@@ -25,6 +24,7 @@ public class PoolManager : MonoBehaviour
 
         obj.transform.SetParent(poolTransform);
         pools[obj.name].Push(obj);
+        obj.SetActive(false);
     }
 
     public static GameObject Pop(GameObject item)
@@ -35,12 +35,10 @@ public class PoolManager : MonoBehaviour
         if (pools.ContainsKey(item.name))
         {
             if (pools[item.name].Count > 0)
-            {
                 value = pools[item.name].Pop();
-            }
         }
 
-        value ??= GameObject.Instantiate(item);
+        value ??= GameObject.Instantiate(item,null);
         value.name = item.name;
         value.SetActive(true);
         return value;
