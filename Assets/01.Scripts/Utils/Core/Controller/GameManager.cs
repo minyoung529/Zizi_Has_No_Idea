@@ -12,7 +12,7 @@ public class GameManager : MonoSingleton<GameManager>
 
 
     public static int CurrentChapter { get; set; } = 1;
-    public static int CurrentStage { get; set; } = 10;
+    public static int CurrentStage { get; set; } = 3;
 
     private GameObject currentStagePrefab;
 
@@ -76,6 +76,7 @@ public class GameManager : MonoSingleton<GameManager>
     {
         if (currentStagePrefab != null)
         {
+            EventManager.TriggerEvent(Constant.POOL_EVENT);
             Destroy(currentStagePrefab.gameObject);
         }
 

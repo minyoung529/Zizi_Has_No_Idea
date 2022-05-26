@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using DG.Tweening;
+using System;
 
 public class FlyAway : SettingDirection
 {
@@ -18,18 +20,27 @@ public class FlyAway : SettingDirection
 
     private bool isCollision;
 
-    private Character character;
+    private Action onExplosion;
+    private AudioClip explosionClip;
+
+    private void Start()
+    {
+        explosionClip = Resources.Load<AudioClip>("Explosion");
+    }
 
     public override void OnCollisionTarget(Collision collision)
     {
         isStopMovement = true;
         rigid = gameObject.GetComponent<Rigidbody>();
+        onExplosion += () => SoundManager.Instance.PlayOneShotAudio(AudioType.EffectSound, explosionClip);
+
         StartCoroutine(BehaviourCoroutine());
     }
 
     private IEnumerator BehaviourCoroutine()
     {
-        // TODO: ¶¥¿¡ ´êÀ¸¸é ¸ØÃß´Â °Í! 
+        onExplosion.Invoke();
+
         Vector3 startPoint = transform.position;
         Vector3 endPoint = target.transform.position - (transform.forward * distances[(int)verb.unitType]);
 
@@ -67,7 +78,7 @@ public class FlyAway : SettingDirection
 
             yield return explosionDelay;
 
-            if (isCollision && i > 5)
+            if (isCollision && i > 30)
             {
                 isCollision = false;
                 isStopMovement = false;

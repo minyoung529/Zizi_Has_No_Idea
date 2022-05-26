@@ -14,6 +14,7 @@ public static class Constant
     public const short SELECT_VERB_WORD_EVENT = 600;
 
     public const short GAME_START_EVENT = 1;
+    public const short POOL_EVENT = -1;
     #endregion
 
     #region TAG

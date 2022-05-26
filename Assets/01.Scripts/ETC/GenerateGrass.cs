@@ -12,15 +12,12 @@ public class GenerateGrass : MonoBehaviour
     float surfaceY = 0f;
     Vector3 scale;
 
-    private void Awake()
-    {
-        EventManager.StartListening(Constant.CLEAR_STAGE_EVENT, OnClear);
-    }
-
     private void Start()
     {
         Ready();
         Generate();
+
+        EventManager.StartListening(Constant.POOL_EVENT, OnClear);
     }
 
     private void Ready()
@@ -67,6 +64,7 @@ public class GenerateGrass : MonoBehaviour
     {
         currentGrasses.ForEach(x =>
         {
+            x.transform.SetParent(null);
             PoolManager.Push(x);
         });
         currentGrasses.Clear();

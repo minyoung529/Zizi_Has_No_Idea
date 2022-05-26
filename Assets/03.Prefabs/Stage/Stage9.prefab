@@ -371,6 +371,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 0
   isConstantY: 1
+  isGrid: 1
 --- !u!1 &3938057850145963202
 GameObject:
   m_ObjectHideFlags: 0
@@ -1170,6 +1171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 0
   isConstantY: 0
+  isGrid: 1
 --- !u!1 &8904101493875390219
 GameObject:
   m_ObjectHideFlags: 0
@@ -1293,7 +1295,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 952285459814439615, guid: b6f440069a50a864bbda14a745d23b0d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.17
+      value: 3.81
       objectReference: {fileID: 0}
     - target: {fileID: 952285459814439615, guid: b6f440069a50a864bbda14a745d23b0d, type: 3}
       propertyPath: m_LocalPosition.y

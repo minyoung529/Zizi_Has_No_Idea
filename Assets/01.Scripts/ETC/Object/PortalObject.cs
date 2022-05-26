@@ -5,6 +5,12 @@ using UnityEngine;
 public class PortalObject : MonoBehaviour
 {
     [SerializeField] private Transform linkedPortal;
+    private AudioClip portalClip;
+
+    private void Start()
+    {
+        portalClip = Resources.Load<AudioClip>("Explosion");
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -17,6 +23,7 @@ public class PortalObject : MonoBehaviour
         {
             character.CurrentDirection = linkedPortal.forward;
             character.transform.localPosition = linkedPortal.transform.position;
+            SoundManager.Instance.PlayOneShotAudio(AudioType.EffectSound, portalClip);
         }
     }
 }

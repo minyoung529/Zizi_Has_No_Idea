@@ -371,6 +371,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 0
   isConstantY: 0
+  isGrid: 1
 --- !u!1 &3938057850145963202
 GameObject:
   m_ObjectHideFlags: 0
@@ -1170,6 +1171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 0
   isConstantY: 0
+  isGrid: 1
 --- !u!1 &8904101493875390219
 GameObject:
   m_ObjectHideFlags: 0
@@ -1332,6 +1334,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5208302004983636812, guid: b6f440069a50a864bbda14a745d23b0d, type: 3}
+      propertyPath: portalClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0a2df6a515011884dba2e6fc9117743e, type: 3}
+    - target: {fileID: 5208302004983636812, guid: b6f440069a50a864bbda14a745d23b0d, type: 3}
       propertyPath: linkedPortal
       value: 
       objectReference: {fileID: 5650938203561689550}
@@ -1429,6 +1435,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5208302004983636812, guid: b6f440069a50a864bbda14a745d23b0d, type: 3}
+      propertyPath: portalClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0a2df6a515011884dba2e6fc9117743e, type: 3}
     - target: {fileID: 5208302004983636812, guid: b6f440069a50a864bbda14a745d23b0d, type: 3}
       propertyPath: linkedPortal
       value: 

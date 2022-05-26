@@ -41,6 +41,8 @@ public class ChangeUISprite : MonoBehaviour, IPointerEnterHandler, IPointerExitH
             Debug.Log("exit");
             image.sprite = previousSprite;
         }
+
+        isSelectThis = false;
     }
 
     public void SetSprite(Sprite sprite)
