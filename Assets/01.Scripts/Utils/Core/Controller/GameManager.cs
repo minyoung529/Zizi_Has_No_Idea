@@ -36,7 +36,7 @@ public class GameManager : MonoSingleton<GameManager>
         Data = FindObjectOfType<DataManager>();
 
         EventManager.StartListening(Constant.START_PLAY_EVENT, StartPlay);
-        EventManager.StartListening(Constant.GET_STAR_EVENT, ClearStage);
+        EventManager.StartListening(Constant.GET_STAR_EVENT, () => ClearStage());
         EventManager<EventParam>.StartListening(Constant.CLICK_PLAYER_EVENT, SetGameState);
         EventManager.StartListening(Constant.GAME_START_EVENT, () => GameState = GameState.Ready);
 
@@ -45,7 +45,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void Start()
     {
-        ClearStage();
+        ClearStage(0f);
 
         if (skipLobbyScene)
         {
@@ -72,19 +72,21 @@ public class GameManager : MonoSingleton<GameManager>
         GameState = GameState.Play;
     }
 
-    public void ClearStage()
+    public void ClearStage(float delay = 3f)
     {
+        StartCoroutine(LoadStage(delay));
+    }
+
+    private IEnumerator LoadStage(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
         if (currentStagePrefab != null)
         {
             EventManager.TriggerEvent(Constant.POOL_EVENT);
             Destroy(currentStagePrefab.gameObject);
         }
 
-        StartCoroutine(LoadStage());
-    }
-
-    private IEnumerator LoadStage()
-    {
         yield return new WaitForSeconds(0.2f);
 
         GameObject prefab = Data.LoadStage();
@@ -140,7 +142,8 @@ public class GameManager : MonoSingleton<GameManager>
     private void OnDestroy()
     {
         EventManager.StopListening(Constant.START_PLAY_EVENT, StartPlay);
-        EventManager.StopListening(Constant.GET_STAR_EVENT, ClearStage);
+        EventManager.StopListening(Constant.GET_STAR_EVENT, () => ClearStage());
         EventManager.StopListening(Constant.GAME_START_EVENT, () => GameState = GameState.Ready);
+        EventManager<EventParam>.StopListening(Constant.CLICK_PLAYER_EVENT, SetGameState);
     }
 }

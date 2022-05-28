@@ -45,6 +45,8 @@ public class CharacterMovement : MonoBehaviour
 
     private void OnPlay()
     {
+        if (GameManager.Instance.StarCount == 0) return;
+
         if (GameManager.GameState == GameState.Play)
         {
             if (character.IsInactive) return;
