@@ -31,5 +31,10 @@ public static class Constant
     public const float SPAWN_CHARACTER_Y = 5f;
     #endregion
 
+    #region SCENE
+    public const string GAME_SCENE = "Game";
+    public const string STAGE_SCENE = "Stage";
+    #endregion
+
     public static readonly string[] UNITS_NAME = { "조금", "보통", "엄청" };
 }

@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class GameManager : MonoSingleton<GameManager>
 {
-    public static GameState GameState { get; private set; } = GameState.NotGame;
+    public static GameState GameState { get; set; } = GameState.NotGame;
 
     public UIManager UIManager { get; private set; }
     public DataManager Data { get; private set; }
 
 
     public static int CurrentChapter { get; set; } = 1;
-    public static int CurrentStage { get; set; } = 3;
+    public static int CurrentStage { get; set; } = 0;
 
     private GameObject currentStagePrefab;
 
@@ -72,7 +72,7 @@ public class GameManager : MonoSingleton<GameManager>
         GameState = GameState.Play;
     }
 
-    private void ClearStage()
+    public void ClearStage()
     {
         if (currentStagePrefab != null)
         {

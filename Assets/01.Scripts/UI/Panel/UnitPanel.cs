@@ -15,16 +15,14 @@ public class UnitPanel : UIButton
 
     public void Init()
     {
-        GetComponentInChildren<Button>().onClick.AddListener(OnClicked);
-
         Text nameText = GetComponentInChildren<Text>();
-
         index = transform.GetSiblingIndex();
         nameText.text = Constant.UNITS_NAME[index];
     }
 
     protected override void OnClicked()
     {
+        Debug.Log(transform.GetSiblingIndex());
         VerbSystemController.CurrentPanel.SetUnitType((UnitType)index);
         GameManager.Instance.UIManager.ActiveUnitScroll(false);
     }

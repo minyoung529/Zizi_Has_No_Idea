@@ -147,9 +147,4 @@ public class CameraMovement : MonoBehaviour
         EventManager.StopListening(Constant.RESET_GAME_EVENT, ResetPosAndRot);
         EventManager.StopListening(Constant.GAME_START_EVENT, ResetPosAndRot);
     }
-
-    private void AutoRotate()
-    {
-
-    }
 }

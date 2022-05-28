@@ -121,8 +121,17 @@ public class UIManager : MonoBehaviour
 
     private void FadeLobbyCanvas(float lobbyCanvasAlpha, float gameCanvasAlpha)
     {
+        lobbyCanvas.gameObject.SetActive(true);
+        gameCanvas.gameObject.SetActive(true);
+
         lobbyCanvas.DOFade(lobbyCanvasAlpha, 1f).OnComplete(() => lobbyCanvas.gameObject.SetActive(lobbyCanvasAlpha >= 0.9f));
         gameCanvas.DOFade(gameCanvasAlpha, 1f).OnComplete(() => gameCanvas.gameObject.SetActive(gameCanvasAlpha >= 0.9f));
+    }
+
+    public void ActiveLobby()
+    {
+        GameManager.GameState = GameState.NotGame;
+        FadeLobbyCanvas(1f, 0f);
     }
 
     private void OnDestroy()

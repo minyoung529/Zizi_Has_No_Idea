@@ -37,6 +37,7 @@ public class SortLobbyEmoji : MonoBehaviour
             }
 
             onChange.Invoke();
+            spriteChanger.ResetData();
         }
         else
         {

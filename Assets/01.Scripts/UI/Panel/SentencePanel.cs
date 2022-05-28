@@ -94,6 +94,7 @@ public class SentencePanel : PanelBase
 
     public void SetUnitType(UnitType unitType)
     {
+        Debug.Log("SETUNIT");
         item.verbPairs[VerbSystemController.CurrentCharacter].unitType = unitType;
         unitText.text = Constant.UNITS_NAME[(int)unitType];
     }

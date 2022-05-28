@@ -61,10 +61,11 @@ public class ChangeUISprite : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         return value;
     }
 
-    private void ResetData()
+    public void ResetData()
     {
         isSelectThis = false;
         IsSelect = false;
+        image.sprite = null;
     }
 
     private void OnDestroy()

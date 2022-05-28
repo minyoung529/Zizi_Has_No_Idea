@@ -13,23 +13,4 @@ public class Define : MonoBehaviour
             return mainCam;
         }
     }
-
-    public static Vector3 MousePosition
-    {
-        get
-        {
-            return MainCam.ScreenToWorldPoint
-            (new Vector3(Input.mousePosition.x, Input.mousePosition.y, MainCam.farClipPlane));
-        }
-    }
-
-    private static Transform playerTransform;
-    public static Transform PlayerTransform
-    {
-        get
-        {
-            playerTransform ??= FindObjectOfType<CharacterMovement>().transform;
-            return playerTransform;
-        }
-    }
 }

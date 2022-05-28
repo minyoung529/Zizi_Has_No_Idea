@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,8 +16,16 @@ public class ChangeSkyBox : MonoBehaviour
     [Range(0.01f, 1f)]
     float speed = 0.5f;
 
+    [SerializeField]
+    private bool isReverse = false;
+
     private void Start()
     {
+        if (isReverse)
+        {
+            materials = materials.Reverse().ToArray();
+        }
+
         skyboxMaterial = new Material(materials[0]);
         RenderSettings.skybox = skyboxMaterial;
         StartCoroutine(ChangeSkyColor());
@@ -47,7 +56,7 @@ public class ChangeSkyBox : MonoBehaviour
     private void ChangeAscendingColor(float lerpTime)
     {
         Color sunDiscColor = Color.Lerp(materials[index].GetColor("_SunDiscColor"),
-    materials[nextIndex].GetColor("_SunDiscColor"), lerpTime);
+            materials[nextIndex].GetColor("_SunDiscColor"), lerpTime);
         skyboxMaterial.SetColor("_SunDiscColor", sunDiscColor);
 
         Color sunHaloColor = Color.Lerp(materials[index].GetColor("_SunHaloColor"),
@@ -65,6 +74,5 @@ public class ChangeSkyBox : MonoBehaviour
         Color skyBottomColor = Color.Lerp(materials[index].GetColor("_SkyGradientBottom"),
             materials[nextIndex].GetColor("_SkyGradientBottom"), lerpTime);
         skyboxMaterial.SetColor("_SkyGradientBottom", skyBottomColor);
-
     }
 }
