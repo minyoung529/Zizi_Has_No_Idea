@@ -9,11 +9,16 @@ public class SoundManager : MonoSingleton<SoundManager>
 
     private Dictionary<AudioType, AudioSource> audioSources = new Dictionary<AudioType, AudioSource>();
 
+    private AudioClip fireWorkClip;
+
+    private WaitForSeconds delay01 = new WaitForSeconds(1f);
 
     private void Awake()
     {
         audioSources.Add(AudioType.BGM, bgmAudio);
         audioSources.Add(AudioType.EffectSound, effectAudio);
+
+        fireWorkClip = Resources.Load<AudioClip>("Firework");
     }
 
     public void PlayAudio(AudioType audioType, AudioClip audioClip)
@@ -32,5 +37,19 @@ public class SoundManager : MonoSingleton<SoundManager>
         {
             audioSources[audioType].PlayOneShot(audioClip);
         }
+    }
+
+    public void PlayClearSound()
+    {
+        StartCoroutine(FireworkCoroutine());
+    }
+
+    private IEnumerator FireworkCoroutine()
+    {
+        PlayOneShotAudio(AudioType.EffectSound, fireWorkClip);
+        yield return delay01;
+        PlayOneShotAudio(AudioType.EffectSound, fireWorkClip);
+        yield return delay01;
+        PlayOneShotAudio(AudioType.EffectSound, fireWorkClip);
     }
 }

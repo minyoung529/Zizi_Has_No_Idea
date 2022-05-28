@@ -74,6 +74,11 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void ClearStage(float delay = 3f)
     {
+        if (delay >= 0.01f)
+        {
+            SoundManager.Instance.PlayClearSound();
+        }
+
         StartCoroutine(LoadStage(delay));
     }
 
