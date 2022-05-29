@@ -34,7 +34,6 @@ public class StarObject : MonoBehaviour
     {
         if (collision.transform.CompareTag(Constant.PLAYER_TAG) && GameManager.GameState == GameState.Play && !isCollision)
         {
-            Debug.Log("Get Star");
             onGetStar.Invoke();
             SetData(false);
 
@@ -43,7 +42,6 @@ public class StarObject : MonoBehaviour
 
             if (GameManager.Instance.StarCount == 0)
             {
-                Debug.Log(GameManager.Instance.StarCount);
                 EventManager.TriggerEvent(Constant.GET_STAR_EVENT);
             }
         }
