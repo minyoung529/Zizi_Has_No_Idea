@@ -23,6 +23,7 @@ public class SettingDirection : MonoBehaviour
     {
         this.target = target;
         IsActive = true;
+        currentCharacter ??= GetComponent<CharacterMovement>();
         verb = target.Item.verbPairs[currentCharacter.character];
         SetupDirection();
     }

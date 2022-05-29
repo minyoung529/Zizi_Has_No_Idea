@@ -38,7 +38,6 @@ public class VerbPanelEvent : PanelBase, IPointerEnterHandler, IPointerExitHandl
 
     public void OnSelected()
     {
-        Debug.Log("sdf");
         EventManager.TriggerEvent(Constant.SELECT_VERB_WORD_EVENT);
     }
 

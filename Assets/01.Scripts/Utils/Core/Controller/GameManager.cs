@@ -12,7 +12,7 @@ public class GameManager : MonoSingleton<GameManager>
 
 
     public static int CurrentChapter { get; set; } = 1;
-    public static int CurrentStage { get; set; } = 0;
+    public static int CurrentStage { get; set; } = 10;
 
     private GameObject currentStagePrefab;
 
@@ -28,7 +28,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     public Transform PlayerTransform => currentStagePrefab.transform.GetChild(0);
 
-    public bool skipLobbyScene = true;
+    [SerializeField] private bool skipLobbyScene = true;
 
     private void Awake()
     {

@@ -32,7 +32,6 @@ public class ParabolaController
 
         if (verbType == VerbType.None) return;
 
-        //TODO : гоюз
         ParabolaObject obj = PoolManager.Pop(GameManager.Instance.Data.parabolaPrefab.gameObject).GetComponent<ParabolaObject>();
 
         Sprite verbSprite = GameManager.Instance.Data.Verbs.verbs.Find(x => x.verbType == verbType).verbSprites;
@@ -59,7 +58,7 @@ public class ParabolaController
         for (int i = 0; i < parabolas.Count; i++)
         {
             ParabolaObject obj = parabolas[i];
-            GameObject.Destroy(obj.gameObject);
+            PoolManager.Push(obj.gameObject);
         }
 
         parabolas.Clear();

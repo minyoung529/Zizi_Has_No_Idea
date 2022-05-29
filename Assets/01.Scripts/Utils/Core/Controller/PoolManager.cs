@@ -38,9 +38,26 @@ public class PoolManager : MonoBehaviour
                 value = pools[item.name].Pop();
         }
 
-        value ??= GameObject.Instantiate(item,null);
+        value ??= GameObject.Instantiate(item, null);
         value.name = item.name;
         value.SetActive(true);
         return value;
     }
+
+    public static GameObject Pop(string item)
+    {
+        GameObject value = null;
+
+        if (pools.ContainsKey(item))
+        {
+            if (pools[item].Count > 0)
+                value = pools[item].Pop();
+        }
+
+        value ??= Instantiate(Resources.Load<GameObject>(item));
+        value.name = item;
+        value.SetActive(true);
+        return value;
+    }
+
 }

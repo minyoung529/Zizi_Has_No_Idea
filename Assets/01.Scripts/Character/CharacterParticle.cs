@@ -8,7 +8,6 @@ public class CharacterParticle : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("Listening");
         EventManager.StartListening(Constant.GET_STAR_EVENT, StopParticle);
     }
 
@@ -20,7 +19,6 @@ public class CharacterParticle : MonoBehaviour
         {
             if (!walkParticle.gameObject.activeSelf)
             {
-                Debug.Log("계속 돌고 있는데 true");
                 walkParticle.gameObject.SetActive(true);
             }
         }
