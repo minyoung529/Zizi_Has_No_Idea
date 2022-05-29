@@ -33,8 +33,8 @@ MonoBehaviour:
     verbType: 3
     simulateType: 1
     hasUnit: 1
-  - verbName: "\uD22C\uBA85 \uCDE8\uAE09\uD55C\uB2E4."
+  - verbName: "\uBD80\uC234\uBC84\uB9B0\uB2E4."
     verbSprites: {fileID: 21300000, guid: ccaaef7579ae6494b9175aa6073f8d6b, type: 3}
-    verbType: 3
+    verbType: 4
     simulateType: 1
     hasUnit: 0

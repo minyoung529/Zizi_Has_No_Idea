@@ -63,7 +63,7 @@ public class GameManager : MonoSingleton<GameManager>
         if (Input.GetKeyDown(KeyCode.Q))
         {
             GameState = GameState.Play;
-            ClearStage();
+            ClearStage(0f);
         }
     }
 

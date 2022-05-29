@@ -65,7 +65,9 @@ public class ChangeUISprite : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
         isSelectThis = false;
         IsSelect = false;
-        image.sprite = null;
+
+        image ??= GetComponent<Image>();
+        image.sprite = previousSprite;
     }
 
     private void OnDestroy()

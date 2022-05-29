@@ -96,7 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6b963ca1b320664c9db7983a050c36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTransform: {fileID: 7823626085506895179}
   xSpeed: 180
   ySpeed: 160
   zSpeed: 180

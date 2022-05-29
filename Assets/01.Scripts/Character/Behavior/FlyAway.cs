@@ -60,12 +60,8 @@ public class FlyAway : SettingDirection
 
             float sin = Mathf.Sin(increment * 180f * Mathf.Deg2Rad);
             position.y = maxHeight * sin + startPoint.y;
-
-            if (Mathf.Abs(endPoint.x - startPoint.x) > 0.01f)
-                position.x = increment * (endPoint.x - startPoint.x) + startPoint.x;
-
-            if (Mathf.Abs(endPoint.z - startPoint.z) > 0.01f)
-                position.z = increment * (endPoint.z - startPoint.z) + startPoint.z;
+            position.x = increment * (endPoint.x - startPoint.x) + startPoint.x;
+            position.z = increment * (endPoint.z - startPoint.z) + startPoint.z;
 
             if (rigid)
             {

@@ -14,7 +14,6 @@ public class RotationEffect : MonoBehaviour
         RotationZ = 4
     }
 
-    [SerializeField] Transform targetTransform;
     private float accTime = 0f;
     [SerializeField] private float xSpeed = 180f;
     [SerializeField] private float ySpeed = 180f;
@@ -22,29 +21,20 @@ public class RotationEffect : MonoBehaviour
 
     [SerializeField] private RotationType rotationType;
 
-    private void Start()
-    {
-        targetTransform ??= transform;
-    }
 
     void Update()
     {
         accTime += Time.deltaTime;
 
-        Vector3 eulerAngles = targetTransform.rotation.eulerAngles;
+        Vector3 eulerAngles = transform.rotation.eulerAngles;
 
         if ((rotationType & RotationType.RotationZ) != 0)
         {
-            if (gameObject.name == "Point(Clone)")
-                Debug.Log(1);
             eulerAngles.z = accTime * zSpeed;
         }
 
         if ((rotationType & RotationType.RotationX) != 0)
         {
-            if (gameObject.name == "Point(Clone)")
-                Debug.Log(1);
-
             eulerAngles.x = accTime * xSpeed;
         }
 
@@ -53,6 +43,6 @@ public class RotationEffect : MonoBehaviour
             eulerAngles.y = accTime * ySpeed;
         }
 
-        targetTransform.rotation = Quaternion.Euler(eulerAngles);
+        transform.rotation = Quaternion.Euler(eulerAngles);
     }
 }
