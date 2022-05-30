@@ -23,6 +23,7 @@ public class UIManager : MonoBehaviour
     [Header("CanvasGroup")]
     [SerializeField] private CanvasGroup lobbyCanvas;
     [SerializeField] private CanvasGroup gameCanvas;
+    [SerializeField] private CanvasGroup settingCanvas;
 
     void Awake()
     {
@@ -70,8 +71,6 @@ public class UIManager : MonoBehaviour
         List<ItemObject> items = GameManager.Instance.CurrentItems;
 
         if (items == null || items.Count == 0) return;
-
-        Debug.Log("Generate Success");
 
         sentencePanels.ForEach(x =>
         {
@@ -132,6 +131,15 @@ public class UIManager : MonoBehaviour
     {
         GameManager.GameState = GameState.NotGame;
         FadeLobbyCanvas(1f, 0f);
+    }
+
+    public void ActiveSetting()
+    {
+        GameManager.GameState = GameState.NotGame;
+        settingCanvas.alpha = 0;
+        settingCanvas.gameObject.SetActive(true);
+        settingCanvas.DOFade(1f, 1f);
+
     }
 
     private void OnDestroy()

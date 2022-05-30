@@ -32,7 +32,7 @@ public class SortLobbyEmoji : MonoBehaviour
                     Application.Quit();
                     break;
                 case SETTING:
-                    // TODO: 설정창 만들기
+                    GameManager.Instance.UIManager.ActiveSetting();
                     break;
             }
 
