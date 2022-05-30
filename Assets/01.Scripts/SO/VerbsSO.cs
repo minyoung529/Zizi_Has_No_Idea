@@ -20,6 +20,11 @@ public class Verb
 
     public Verb(Verb verb)
     {
+        ChangeData(verb);
+    }
+
+    public void ChangeData(Verb verb)
+    {
         verbName = verb.verbName;
         verbSprites = verb.verbSprites;
         verbType = verb.verbType;

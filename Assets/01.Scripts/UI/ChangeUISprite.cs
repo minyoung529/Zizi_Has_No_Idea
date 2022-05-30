@@ -24,7 +24,6 @@ public class ChangeUISprite : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
         if (Input.GetMouseButton(0) && DraggingUI.currentDraggedUI != null)
         {
-            Debug.Log("enter");
             image.transform.localScale = Vector3.zero;
             image.transform.DOScale(1f, 0.2f);
             image.sprite = DraggingUI.currentDraggedUI.CurrentSprite;
@@ -38,7 +37,6 @@ public class ChangeUISprite : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
         if (Input.GetMouseButton(0) && isSelectThis)
         {
-            Debug.Log("exit");
             image.sprite = previousSprite;
         }
 

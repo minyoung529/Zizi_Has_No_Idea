@@ -6,8 +6,8 @@ using UnityEngine.Events;
 
 public class SentencePanel : PanelBase
 {
-    private Item item;
-    private Verb verb;
+    public Item item;
+    public Verb verb;
 
     private ChangeUISprite worldImage;
 
@@ -51,7 +51,6 @@ public class SentencePanel : PanelBase
             return;
         }
 
-        Debug.Log(item.Name + " " + verb.verbName);
         verb = item.verbPairs[VerbSystemController.CurrentCharacter];
 
         string oPostposition = (item.Name[item.Name.Length - 1] - 0xAC00) % 28 > 0 ? "À»" : "¸¦";
@@ -77,9 +76,7 @@ public class SentencePanel : PanelBase
         }
         if (VerbSystemController.CurrentVerb == null) return;
 
-        Debug.Log("Change");
-
-        verb = VerbSystemController.CurrentVerb;
+        verb.ChangeData(VerbSystemController.CurrentVerb);
         item.verbPairs[VerbSystemController.CurrentCharacter] = verb;
         VerbSystemController.CurrentVerb = null;
 
@@ -94,8 +91,8 @@ public class SentencePanel : PanelBase
 
     public void SetUnitType(UnitType unitType)
     {
-        Debug.Log("SETUNIT");
-        item.verbPairs[VerbSystemController.CurrentCharacter].unitType = unitType;
+        Debug.Log(verb.verbName + ", " + unitType);
+        verb.unitType = unitType;
         unitText.text = Constant.UNITS_NAME[(int)unitType];
     }
 
@@ -111,8 +108,6 @@ public class SentencePanel : PanelBase
             Debug.Log("verb: NULL");
             return;
         }
-
-        Debug.Log(verb.verbName + ", " + verb.hasUnit);
 
         if (verb.hasUnit)
         {
@@ -141,7 +136,9 @@ public class SentencePanel : PanelBase
             nextPos.x += unitRect.rect.width;
 
             if (isSetRect)
+            {
                 panelRect.sizeDelta = originalSizeDelta + Vector2.up * 75f;
+            }
         }
     }
 

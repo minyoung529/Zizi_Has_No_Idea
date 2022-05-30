@@ -22,7 +22,6 @@ public class UnitPanel : UIButton
 
     protected override void OnClicked()
     {
-        Debug.Log(transform.GetSiblingIndex());
         VerbSystemController.CurrentPanel.SetUnitType((UnitType)index);
         GameManager.Instance.UIManager.ActiveUnitScroll(false);
     }
