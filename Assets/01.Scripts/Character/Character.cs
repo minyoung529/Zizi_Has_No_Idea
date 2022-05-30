@@ -42,9 +42,9 @@ public class Character : MonoBehaviour
         if (isPlayer)
         {
             PlayerInfo playerInfo = GameManager.Instance.PlayerTransform.GetComponent<PlayerInfo>();
-            if (playerInfo != null && !playerInfo.isCharacter)
+            if (playerInfo && !playerInfo.isCharacter)
             {
-                point.SetActive(false);
+                point?.SetActive(false);
                 isInactive = true;
                 return;
             }

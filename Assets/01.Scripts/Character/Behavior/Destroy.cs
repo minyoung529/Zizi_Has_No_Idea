@@ -20,7 +20,13 @@ public class Destroy : SettingDirection
     public override void OnCollisionTarget(Collision collision)
     {
         CharacterRenderer renderer = collision.transform.GetComponent<CharacterRenderer>();
-        
+        PutItem putItem = collision.transform.GetComponent<PutItem>();
+
+        if(putItem)
+        {
+            putItem.PutItemOnCurrentPos();
+        }
+
         if (renderer)
         {
             SoundManager.Instance.PlayOneShotAudio(AudioType.EffectSound, destroyClip);

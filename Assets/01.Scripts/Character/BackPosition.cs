@@ -7,6 +7,7 @@ public class BackPosition : MonoBehaviour
     private Vector3 originPosition = Vector3.zero;
     private Quaternion originalRotation = Quaternion.identity;
     new private Collider collider;
+
     public bool isPlayer = false;
     public bool isConstantY = true;
     public bool isGrid = true;

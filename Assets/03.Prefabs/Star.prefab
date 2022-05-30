@@ -123,6 +123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 0
   isConstantY: 0
+  isGrid: 1
 --- !u!114 &7956171306099996685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,7 +136,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6b963ca1b320664c9db7983a050c36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTransform: {fileID: 1808659566923325049}
   xSpeed: 90
   ySpeed: 90
   zSpeed: 90

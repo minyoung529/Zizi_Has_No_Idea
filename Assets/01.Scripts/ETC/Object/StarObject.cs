@@ -12,6 +12,17 @@ public class StarObject : MonoBehaviour
     [SerializeField] private UnityEvent onGetStar;
 
     private Vector3 originScale;
+    private bool skipRegister;
+    public bool SkipRegister
+    {
+        get { return skipRegister; }
+        set
+        {
+            skipRegister = value;
+            if (skipRegister == true)
+                GameManager.Instance.StarCount -= 1;
+        }
+    }
 
     private void Awake()
     {
@@ -22,7 +33,9 @@ public class StarObject : MonoBehaviour
         meshRenderer = GetComponentInChildren<MeshRenderer>();
 
         originScale = transform.localScale;
-        RegisterStarCount();
+
+        if (!SkipRegister)
+            RegisterStarCount();
     }
 
     private void Start()
@@ -83,6 +96,6 @@ public class StarObject : MonoBehaviour
 
     private void OnDisable()
     {
-        
+
     }
 }

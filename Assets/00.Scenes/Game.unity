@@ -437,7 +437,8 @@ MonoBehaviour:
     CC BY\n\uC720\uB839 \uBAA8\uB378\uB9C1, \uC560\uB2C8\uBA54\uC774\uC158: sketchfab,
     Marcos.Andre, CC BY\n\uC794\uB514 \uBAA8\uB378\uB9C1:sketchfab, Anskar, CC BY\n\uAF43
     \uBAA8\uB378\uB9C1:sketchfab, rosiejarvis, CC BY\n\uD3EC\uD0C8 \uBAA8\uB378\uB9C1:sketchfab,
-    Martin3DWork, CC BY\n\r\n\uBC30\uACBD\uC74C\uC545: Night In Paris,\uAE40\uC7AC\uC601,\uACF5\uC720\uB9C8\uB2F9,CC
+    Martin3DWork, CC BY\n\uC720\uB9AC\uBCD1 \uBAA8\uB378\uB9C1: sketchfab, Epitaph
+    Crimson, CC BY\n\r\n\uBC30\uACBD\uC74C\uC545: Night In Paris,\uAE40\uC7AC\uC601,\uACF5\uC720\uB9C8\uB2F9,CC
     BY\r,\n\uB098\uBB47\uC78E\uC744 \uC2A4\uCE58\uB294 \uC794\uC794\uD55C \uC624\uD6C4\uC758
     \uBC14\uB78C\uC18C\uB9AC, \uD55C\uAD6D\uC800\uC791\uAD8C\uC704\uC6D0\uD68C, CCBY\r\n\n\n"
 --- !u!222 &76683050
@@ -34186,7 +34187,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3852391515540794832, guid: 6e0a57876233e8a43a58ada008d9c22e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 3.49
       objectReference: {fileID: 0}
     - target: {fileID: 3852391515540794832, guid: 6e0a57876233e8a43a58ada008d9c22e, type: 3}
       propertyPath: m_LocalPosition.z
