@@ -33,9 +33,28 @@ public class StarObject : MonoBehaviour
         meshRenderer = GetComponentInChildren<MeshRenderer>();
 
         originScale = transform.localScale;
+    }
+
+    private void OnEnable()
+    {
+        BackPosition backPosition = GetComponent<BackPosition>();
 
         if (!SkipRegister)
+        {
             RegisterStarCount();
+
+            if (!backPosition)
+            {
+                gameObject.AddComponent<BackPosition>();
+            }
+        }
+        else
+        {
+            if (backPosition)
+            {
+                Destroy(backPosition);
+            }
+        }
     }
 
     private void Start()
@@ -64,10 +83,17 @@ public class StarObject : MonoBehaviour
     {
         if (rigid == null) return;
 
-        GameManager.Instance.StarCount += 1;
         SetData(true);
         rigid.velocity = Vector3.zero;
         isCollision = false;
+
+        if (skipRegister)
+        {
+            DestroyObject();
+            return;
+        }
+
+        GameManager.Instance.StarCount += 1;
         Debug.Log($"Star Count = {GameManager.Instance.StarCount}");
     }
 
@@ -85,17 +111,13 @@ public class StarObject : MonoBehaviour
 
     private void DestroyObject()
     {
-        Destroy(gameObject);
+        skipRegister = false;
+        PoolManager.Push(gameObject);
     }
 
     private void OnDestroy()
     {
         EventManager.StopListening(Constant.RESET_GAME_EVENT, RegisterStarCount);
         EventManager.StopListening(Constant.CLEAR_STAGE_EVENT, DestroyObject);
-    }
-
-    private void OnDisable()
-    {
-
     }
 }

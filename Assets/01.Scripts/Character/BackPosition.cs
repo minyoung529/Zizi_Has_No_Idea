@@ -7,6 +7,7 @@ public class BackPosition : MonoBehaviour
     private Vector3 originPosition = Vector3.zero;
     private Quaternion originalRotation = Quaternion.identity;
     new private Collider collider;
+    private Rigidbody rigidBody;
 
     public bool isPlayer = false;
     public bool isConstantY = true;
@@ -14,6 +15,9 @@ public class BackPosition : MonoBehaviour
 
     private void Awake()
     {
+        rigidBody = GetComponent<Rigidbody>();
+        collider = GetComponent<Collider>();
+
         Vector3 position = transform.position;
         if (isGrid)
         {
@@ -28,9 +32,13 @@ public class BackPosition : MonoBehaviour
             originPosition.y = Constant.SPAWN_CHARACTER_Y;
 
         originalRotation = transform.rotation;
-        collider = GetComponent<Collider>();
 
         EventManager.StartListening(Constant.RESET_GAME_EVENT, ResetObject);
+    }
+
+    private void OnEnable()
+    {
+        rigidBody.velocity = Vector3.zero;
     }
 
     public void ResetObject()
