@@ -5,10 +5,13 @@ using UnityEngine;
 public class PutItem : MonoBehaviour
 {
     [SerializeField] private GameObject item;
+    private GenerateObject generateObject;
 
     private void Awake()
     {
-        if (item.GetComponent<StarObject>())
+        generateObject = item.GetComponent<GenerateObject>();
+
+        if (generateObject)
         {
             EventManager.StartListening(Constant.RESET_GAME_EVENT, RegisterStarCount);
         }
@@ -19,13 +22,6 @@ public class PutItem : MonoBehaviour
         GameObject obj = PoolManager.Pop(item);
         obj.transform.position = transform.position;
         obj.transform.SetParent(transform.parent);
-
-        StarObject star = obj.GetComponent<StarObject>();
-
-        if (star)
-        {
-            star.SkipRegister = true;
-        }
     }
 
     private void RegisterStarCount()

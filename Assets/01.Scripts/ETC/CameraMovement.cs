@@ -60,7 +60,7 @@ public class CameraMovement : MonoBehaviour
 
         // INPUT CAMERA MOVE
 
-        if(Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0))
         {
             rotX = Input.GetAxis("Mouse X");
             rotY = Input.GetAxis("Mouse Y");

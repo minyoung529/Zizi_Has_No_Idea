@@ -10,7 +10,8 @@ public class Destroy : SettingDirection
 
     private const string DESTROY_EFFECT = "DestroyParticle";
     private const string DESTROY_AUDIO = "Destroy";
-    private WaitForSeconds delay01 = new WaitForSeconds(3.5f);
+
+    private WaitForSeconds delay = new WaitForSeconds(3.5f);
 
     private void Awake()
     {
@@ -22,7 +23,7 @@ public class Destroy : SettingDirection
         CharacterRenderer renderer = collision.transform.GetComponent<CharacterRenderer>();
         PutItem putItem = collision.transform.GetComponent<PutItem>();
 
-        if(putItem)
+        if (putItem)
         {
             putItem.PutItemOnCurrentPos();
         }
@@ -32,6 +33,10 @@ public class Destroy : SettingDirection
             SoundManager.Instance.PlayOneShotAudio(AudioType.EffectSound, destroyClip);
             destroyEffect = PoolManager.Pop(DESTROY_EFFECT);
             destroyEffect.transform.position = collision.contacts[0].point;
+
+            Material material = collision.transform.GetComponentInChildren<MeshRenderer>().material;
+            destroyEffect.GetComponent<ParticleSystemRenderer>().material = material;
+
             StartCoroutine(PoolCoroutine());
             renderer.DisabledRenderer();
         }
@@ -39,7 +44,7 @@ public class Destroy : SettingDirection
 
     private IEnumerator PoolCoroutine()
     {
-        yield return  delay01;
+        yield return delay;
         PoolManager.Push(destroyEffect);
     }
 }

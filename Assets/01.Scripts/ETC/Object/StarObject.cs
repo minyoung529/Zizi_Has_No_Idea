@@ -12,16 +12,12 @@ public class StarObject : MonoBehaviour
     [SerializeField] private UnityEvent onGetStar;
 
     private Vector3 originScale;
-    private bool skipRegister;
-    public bool SkipRegister
+
+    private bool isDestroy;
+    public bool IsDestroy
     {
-        get { return skipRegister; }
-        set
-        {
-            skipRegister = value;
-            if (skipRegister == true)
-                GameManager.Instance.StarCount -= 1;
-        }
+        get { return isDestroy; }
+        set { isDestroy = value; }
     }
 
     private void Awake()
@@ -35,27 +31,6 @@ public class StarObject : MonoBehaviour
         originScale = transform.localScale;
     }
 
-    private void OnEnable()
-    {
-        BackPosition backPosition = GetComponent<BackPosition>();
-
-        if (!SkipRegister)
-        {
-            RegisterStarCount();
-
-            if (!backPosition)
-            {
-                gameObject.AddComponent<BackPosition>();
-            }
-        }
-        else
-        {
-            if (backPosition)
-            {
-                Destroy(backPosition);
-            }
-        }
-    }
 
     private void Start()
     {
@@ -82,12 +57,13 @@ public class StarObject : MonoBehaviour
     private void RegisterStarCount()
     {
         if (rigid == null) return;
-
+        SettingBackPosition();
         SetData(true);
         rigid.velocity = Vector3.zero;
         isCollision = false;
 
-        if (skipRegister)
+        // 처음에 안 보이는 별이라면
+        if (isDestroy)
         {
             DestroyObject();
             return;
@@ -111,10 +87,30 @@ public class StarObject : MonoBehaviour
 
     private void DestroyObject()
     {
-        skipRegister = false;
+        Debug.Log("DestroyStar");
         PoolManager.Push(gameObject);
+        isDestroy = false;
     }
 
+    private void SettingBackPosition()
+    {
+        BackPosition backPosition = GetComponent<BackPosition>();
+
+        if (!IsDestroy)
+        {
+            if (!backPosition)
+            {
+                gameObject.AddComponent<BackPosition>();
+            }
+        }
+        else
+        {
+            if (backPosition)
+            {
+                Destroy(backPosition);
+            }
+        }
+    }
     private void OnDestroy()
     {
         EventManager.StopListening(Constant.RESET_GAME_EVENT, RegisterStarCount);

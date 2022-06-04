@@ -13,7 +13,7 @@ public class BackPosition : MonoBehaviour
     public bool isConstantY = true;
     public bool isGrid = true;
 
-    private void Awake()
+    private void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
         collider = GetComponent<Collider>();
@@ -38,7 +38,10 @@ public class BackPosition : MonoBehaviour
 
     private void OnEnable()
     {
-        rigidBody.velocity = Vector3.zero;
+        if (rigidBody)
+        {
+            rigidBody.velocity = Vector3.zero;
+        }
     }
 
     public void ResetObject()
