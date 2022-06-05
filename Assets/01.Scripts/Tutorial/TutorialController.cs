@@ -11,6 +11,7 @@ public class TutorialController : MonoBehaviour
     [SerializeField] private Image tutorialImage;
     private CanvasGroup tutorialCanvas;
     private int curIndex = 0;
+    private bool isStart = false;
 
     private WaitForSeconds tutorialDelay = new WaitForSeconds(4f);
 
@@ -27,7 +28,9 @@ public class TutorialController : MonoBehaviour
     private void PlayTutorial(bool isClear)
     {
         if (curIndex >= tutorials.Length) return;
-        if (isClear && curIndex == 0) return;
+        if (!isClear)
+            isStart = true;
+        else if (isClear && !isStart) return;
 
         if (GameManager.CurrentChapter == tutorials[curIndex].targetChapter &&
             GameManager.CurrentStage == tutorials[curIndex].targetStage)

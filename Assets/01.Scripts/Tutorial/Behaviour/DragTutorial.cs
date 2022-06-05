@@ -8,15 +8,16 @@ public class DragTutorial : MonoBehaviour
     private Transform targetObject;
     private Vector2 targetPosition = new Vector2(133f, 115.5f);
     private Vector2 originalPosition;
+    private const string DRAGGED_OBJECT = "DraggedObject";
 
     private void Start()
     {
-        targetObject = transform.GetChild(0).Find("DraggedObject");
+        targetObject = transform.GetChild(0).Find(DRAGGED_OBJECT);
         targetObject.GetComponent<Image>().enabled = true;
         originalPosition = targetObject.position;
     }
 
-    void Update()
+    private void Update()
     {
         if (Vector2.Distance(targetObject.localPosition, targetPosition) < 0.1f)
         {
