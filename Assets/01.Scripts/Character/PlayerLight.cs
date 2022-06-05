@@ -7,7 +7,6 @@ public class PlayerLight : MonoBehaviour
 {
     new Light light;
     [SerializeField] private float intensity = 1200;
-    [SerializeField] private float duration = 1f;
 
     private void Start()
     {

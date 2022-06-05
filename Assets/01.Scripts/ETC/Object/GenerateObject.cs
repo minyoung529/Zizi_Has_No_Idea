@@ -15,12 +15,5 @@ public class GenerateObject : MonoBehaviour
         GameObject obj = PoolManager.Pop(prefab);
         obj.transform.SetPositionAndRotation(transform.position, transform.rotation);
         obj.transform.SetParent(transform);
-
-        StarObject star = obj.GetComponent<StarObject>();
-
-        if (star)
-        {
-            star.IsDestroy = true;
-        }
     }
 }

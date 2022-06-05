@@ -22,6 +22,12 @@ public class PutItem : MonoBehaviour
         GameObject obj = PoolManager.Pop(item);
         obj.transform.position = transform.position;
         obj.transform.SetParent(transform.parent);
+
+        StarObject star = obj.GetComponent<StarObject>();
+        if(star)
+        {
+            star.IsDestroy = true;
+        }
     }
 
     private void RegisterStarCount()
