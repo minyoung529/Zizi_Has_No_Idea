@@ -65,10 +65,12 @@ public class FlyAway : SettingDirection
 
             if (rigid)
             {
+                rigid.DOKill();
                 rigid.DOMove(position, delayPerCount).SetEase(Ease.Unset);
             }
             else
             {
+                transform.DOKill();
                 transform.DOMove(position, delayPerCount).SetEase(Ease.Unset);
             }
 

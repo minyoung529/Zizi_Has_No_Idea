@@ -12,7 +12,7 @@ public class GameManager : MonoSingleton<GameManager>
 
 
     public static int CurrentChapter { get; set; } = 1;
-    public static int CurrentStage { get; set; } = 0;
+    public static int CurrentStage { get; set; } = 17;
 
     private GameObject currentStagePrefab;
 
@@ -101,6 +101,8 @@ public class GameManager : MonoSingleton<GameManager>
         {
             SoundManager.Instance.PlayClearSound();
         }
+
+        starCount = 0;
 
         StartCoroutine(LoadStage(delay));
     }

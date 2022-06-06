@@ -34,7 +34,7 @@ public class Destroy : SettingDirection
             destroyEffect = PoolManager.Pop(DESTROY_EFFECT);
             destroyEffect.transform.position = collision.contacts[0].point;
 
-            Material material = collision.transform.GetComponentInChildren<MeshRenderer>().material;
+            Material material = collision.transform.GetComponentInChildren<Renderer>().material;
             destroyEffect.GetComponent<ParticleSystemRenderer>().material = material;
 
             StartCoroutine(PoolCoroutine());

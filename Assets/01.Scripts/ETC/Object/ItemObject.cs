@@ -15,7 +15,6 @@ public class ItemObject : MonoBehaviour
     private void RegisterItem()
     {
         GameManager.Instance.CurrentItems.Add(this);
-        Debug.Log($"{item.Name} µî·Ï");
     }
 
     private void OnDestroy()

@@ -5,13 +5,10 @@ using UnityEngine;
 public class PutItem : MonoBehaviour
 {
     [SerializeField] private GameObject item;
-    private GenerateObject generateObject;
 
     private void Awake()
     {
-        generateObject = item.GetComponent<GenerateObject>();
-
-        if (generateObject)
+        if (item.GetComponent<StarObject>())
         {
             EventManager.StartListening(Constant.RESET_GAME_EVENT, RegisterStarCount);
         }
@@ -24,7 +21,7 @@ public class PutItem : MonoBehaviour
         obj.transform.SetParent(transform.parent);
 
         StarObject star = obj.GetComponent<StarObject>();
-        if(star)
+        if (star)
         {
             star.IsDestroy = true;
         }
@@ -33,5 +30,10 @@ public class PutItem : MonoBehaviour
     private void RegisterStarCount()
     {
         GameManager.Instance.StarCount += 1;
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.StopListening(Constant.RESET_GAME_EVENT, RegisterStarCount);
     }
 }

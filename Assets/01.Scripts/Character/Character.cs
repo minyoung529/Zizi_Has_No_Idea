@@ -67,7 +67,6 @@ public class Character : MonoBehaviour
         }
 
         GameManager.Instance.CurrentCharacters.Add(this);
-        Debug.Log($"{characterName} µî·Ï");
     }
 
     private void InstantiatePoint()

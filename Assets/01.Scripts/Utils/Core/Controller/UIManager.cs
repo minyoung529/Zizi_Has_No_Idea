@@ -94,7 +94,6 @@ public class UIManager : MonoBehaviour
                 panel.Init(items[i].Item);
             }
 
-            Debug.Log($"Generate => {items[i].Item.Name}");
             panel.gameObject.SetActive(true);
             panel.SetData(items[i].Item);
         }

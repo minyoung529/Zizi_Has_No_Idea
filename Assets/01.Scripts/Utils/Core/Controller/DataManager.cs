@@ -57,7 +57,6 @@ public class DataManager : MonoBehaviour
 
     public GameObject LoadStage()
     {
-        Debug.Log(GameManager.CurrentChapter);
         List<GameObject> stages = chapterDatas.Find(x => x.chapter == GameManager.CurrentChapter).stages;
 
         if (GameManager.CurrentStage >= stages.Count)
