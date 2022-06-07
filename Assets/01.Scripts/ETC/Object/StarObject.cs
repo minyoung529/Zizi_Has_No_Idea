@@ -29,6 +29,8 @@ public class StarObject : MonoBehaviour
         meshRenderer = GetComponentInChildren<MeshRenderer>();
 
         originScale = transform.localScale;
+
+        rigid.velocity = Vector3.zero;
     }
 
 
