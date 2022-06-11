@@ -42,7 +42,7 @@ public class SettingDirection : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        ChildOnCollisionTrigger();
+        ChildOnCollisionTrigger(collision);
 
         if (!IsActive || target == null) return;
 
@@ -52,5 +52,5 @@ public class SettingDirection : MonoBehaviour
         }
     }
 
-    protected virtual void ChildOnCollisionTrigger() { }
+    protected virtual void ChildOnCollisionTrigger(Collision collision) { }
 }

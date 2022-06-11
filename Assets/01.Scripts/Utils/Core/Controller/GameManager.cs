@@ -12,7 +12,7 @@ public class GameManager : MonoSingleton<GameManager>
 
 
     public static int CurrentChapter { get; set; } = 1;
-    public static int CurrentStage { get; set; } = 17;
+    public static int CurrentStage { get; set; } = 18;
 
     private GameObject currentStagePrefab;
 

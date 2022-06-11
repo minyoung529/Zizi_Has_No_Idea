@@ -446,7 +446,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1709816576029268815, guid: ea1a8589a1b85794d9185356c9432cd4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2085639080183120373, guid: ea1a8589a1b85794d9185356c9432cd4, type: 3}
       propertyPath: m_RootOrder
@@ -454,7 +454,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2085639080183120373, guid: ea1a8589a1b85794d9185356c9432cd4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.69
+      value: -4.03
       objectReference: {fileID: 0}
     - target: {fileID: 2085639080183120373, guid: ea1a8589a1b85794d9185356c9432cd4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -462,7 +462,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2085639080183120373, guid: ea1a8589a1b85794d9185356c9432cd4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.3199997
+      value: 0.96
       objectReference: {fileID: 0}
     - target: {fileID: 2085639080183120373, guid: ea1a8589a1b85794d9185356c9432cd4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -528,6 +528,10 @@ PrefabInstance:
       propertyPath: OnRigidVelocity.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3564336661885145705, guid: ea1a8589a1b85794d9185356c9432cd4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4280733149053657147, guid: ea1a8589a1b85794d9185356c9432cd4, type: 3}
       propertyPath: item.name
       value: "\uBD84\uD64D\uC720\uB839"
@@ -536,7 +540,12 @@ PrefabInstance:
       propertyPath: characterName
       value: "\uBD84\uD64D\uC720\uB839"
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5957736416486303356, guid: ea1a8589a1b85794d9185356c9432cd4, type: 3}
+    - {fileID: 6095139182076227748, guid: ea1a8589a1b85794d9185356c9432cd4, type: 3}
+    - {fileID: 2455669178004443603, guid: ea1a8589a1b85794d9185356c9432cd4, type: 3}
+    - {fileID: 8433292809592917551, guid: ea1a8589a1b85794d9185356c9432cd4, type: 3}
+    - {fileID: 5755363042195648909, guid: ea1a8589a1b85794d9185356c9432cd4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ea1a8589a1b85794d9185356c9432cd4, type: 3}
 --- !u!1 &4957485103458264972 stripped
 GameObject:

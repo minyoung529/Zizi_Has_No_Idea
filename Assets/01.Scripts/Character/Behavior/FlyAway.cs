@@ -63,18 +63,12 @@ public class FlyAway : SettingDirection
             position.x = increment * (endPoint.x - startPoint.x) + startPoint.x;
             position.z = increment * (endPoint.z - startPoint.z) + startPoint.z;
 
-            if (rigid)
-            {
-                rigid.DOKill();
-                rigid.DOMove(position, delayPerCount).SetEase(Ease.Unset);
-            }
-            else
-            {
-                transform.DOKill();
-                transform.DOMove(position, delayPerCount).SetEase(Ease.Unset);
-            }
+            transform.DOKill();
+            transform.DOMove(position, delayPerCount).SetEase(Ease.Unset);
 
             yield return explosionDelay;
+
+            if (i < 30) isCollision = false;
 
             if (isCollision && i > 30)
             {
@@ -92,7 +86,7 @@ public class FlyAway : SettingDirection
         isCollision = false;
     }
 
-    protected override void ChildOnCollisionTrigger()
+    protected override void ChildOnCollisionTrigger(Collision collision)
     {
         if (isStopMovement)
         {
