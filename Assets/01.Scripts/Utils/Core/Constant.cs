@@ -20,10 +20,7 @@ public static class Constant
     #region TAG
     public const string PLAYER_TAG = "Player";
     public const string PLATFORM_TAG = "Platform";
-    #endregion
-
-    #region CONSTANT STRING
-    public const string PLAYER_NAME = "¹Î¿µ";
+    public const string STAR_TAG = "Star";
     #endregion
 
     #region CONSTANT LEVEL

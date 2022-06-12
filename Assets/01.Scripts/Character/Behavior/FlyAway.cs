@@ -46,9 +46,6 @@ public class FlyAway : SettingDirection
 
         for (int i = 0; i < count; i++)
         {
-            Debug.Log(rigid.collisionDetectionMode);
-            Debug.Log(rigid.detectCollisions);
-
             if (GameManager.GameState != GameState.Play)
             {
                 GetComponent<BackPosition>()?.ResetObject();

@@ -10,6 +10,7 @@ public class CharacterAnimation : MonoBehaviour
     private readonly int landingHash = Animator.StringToHash("Landing");
     private readonly int selectedHash = Animator.StringToHash("Selected");
     private readonly int joyHash = Animator.StringToHash("Joy");
+    private readonly int idleHash = Animator.StringToHash("Idle");
 
     private Animator animator;
 
@@ -18,6 +19,7 @@ public class CharacterAnimation : MonoBehaviour
         animator = GetComponent<Animator>();
         EventManager.StartListening(Constant.GET_STAR_EVENT, PlayJoyAnimation);
         EventManager.StartListening(Constant.CLEAR_STAGE_EVENT, StopJoyAnimation);
+        EventManager.StartListening(Constant.START_PLAY_EVENT, ResetAnimation);
     }
 
     public void SetWalkAnimation(Vector3 velocity)
@@ -49,9 +51,15 @@ public class CharacterAnimation : MonoBehaviour
         animator.SetBool(joyHash, false);
     }
 
+    private void ResetAnimation()
+    {
+        animator.SetTrigger(idleHash);
+    }
+
     private void OnDestroy()
     {
         EventManager.StopListening(Constant.GET_STAR_EVENT, PlayJoyAnimation);
         EventManager.StopListening(Constant.CLEAR_STAGE_EVENT, StopJoyAnimation);
+        EventManager.StopListening(Constant.START_PLAY_EVENT, ResetAnimation);
     }
 }

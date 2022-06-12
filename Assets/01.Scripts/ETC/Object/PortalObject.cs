@@ -16,14 +16,22 @@ public class PortalObject : MonoBehaviour
     {
         if (linkedPortal == null) return;
         if (Vector3.Dot(other.transform.position, transform.position) < 0f) return;
+        if (other.CompareTag(Constant.PLATFORM_TAG)) return;
 
         CharacterMovement character = other.gameObject.GetComponent<CharacterMovement>();
 
-        if(character)
+        if (character)
         {
             character.CurrentDirection = linkedPortal.forward;
-            character.transform.localPosition = linkedPortal.transform.position;
-            SoundManager.Instance.PlayOneShotAudio(AudioType.EffectSound, portalClip);
         }
+
+        other.transform.localPosition = linkedPortal.transform.position;
+
+        if(other.CompareTag(Constant.STAR_TAG))
+        {
+            other.transform.localPosition += linkedPortal.forward;
+        }
+
+        SoundManager.Instance.PlayOneShotAudio(AudioType.EffectSound, portalClip);
     }
 }

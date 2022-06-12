@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// 캐릭터의 움직임을 담당하는 클래스
+/// </summary>
 [RequireComponent(typeof(Rigidbody), typeof(Character))]
 public class CharacterMovement : MonoBehaviour
 {
@@ -11,7 +14,6 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private float rotationSpeed = 5f;
 
     [SerializeField] private UnityEvent<Vector3> OnRigidVelocity;
-
 
     private Vector3 currentDirection;
     public Vector3 CurrentDirection
@@ -24,9 +26,12 @@ public class CharacterMovement : MonoBehaviour
 
     private List<SettingDirection> settingDirections = new List<SettingDirection>();
 
+    // 나중에 이벤트를 구독하는 식으로 바꾸면 좋을 듯하다.
     public Character character { get; set; }
 
+    #region Events
     [SerializeField] private UnityEvent onLanding;
+    #endregion
 
     private void Start()
     {
@@ -37,7 +42,7 @@ public class CharacterMovement : MonoBehaviour
         EventManager.StartListening(Constant.RESET_GAME_EVENT, ResetData);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         OnPlay();
         CheckDead();
