@@ -34169,7 +34169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentItems: []
-  skipLobbyScene: 1
+  skipLobbyScene: 0
 --- !u!114 &2044957360
 MonoBehaviour:
   m_ObjectHideFlags: 0

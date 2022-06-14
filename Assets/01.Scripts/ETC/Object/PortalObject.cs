@@ -23,6 +23,11 @@ public class PortalObject : MonoBehaviour
         if (character)
         {
             character.CurrentDirection = linkedPortal.forward;
+            Vector3 angle = character.transform.eulerAngles;
+            angle.x = 0f;
+            angle.z = 0f;
+
+            character.transform.eulerAngles = angle;
         }
 
         other.transform.localPosition = linkedPortal.transform.position;
@@ -31,6 +36,8 @@ public class PortalObject : MonoBehaviour
         {
             other.transform.localPosition += linkedPortal.forward;
         }
+
+        other.GetComponent<Rigidbody>().velocity = Vector3.zero;
 
         SoundManager.Instance.PlayOneShotAudio(AudioType.EffectSound, portalClip);
     }
