@@ -18,23 +18,34 @@ MonoBehaviour:
     verbType: 0
     simulateType: 0
     hasUnit: 0
+    postposition: 
   - verbName: "\uC88B\uC544\uD55C\uB2E4."
     verbSprites: {fileID: 21300000, guid: 34b44b4b35ccaed4d9fd29c9aa47b347, type: 3}
     verbType: 1
     simulateType: 0
     hasUnit: 0
+    postposition: "\uC744"
   - verbName: "\uC2EB\uC5B4\uD55C\uB2E4."
     verbSprites: {fileID: 21300000, guid: 6c98445c6664ead4faf42e51642df389, type: 3}
     verbType: 2
     simulateType: 0
     hasUnit: 0
-  - verbName: "\uB2FF\uC73C\uBA74 \uD3ED\uBC1C\uD55C\uB2E4."
+    postposition: "\uC744"
+  - verbName: "\uAE5C\uC9DD \uB180\uB780\uB2E4."
     verbSprites: {fileID: 21300000, guid: 39f965a14706c0e4e92821fbb1334fc4, type: 3}
     verbType: 3
     simulateType: 1
     hasUnit: 1
+    postposition: "\uC5D0"
   - verbName: "\uBD80\uC234\uBC84\uB9B0\uB2E4."
     verbSprites: {fileID: 21300000, guid: ccaaef7579ae6494b9175aa6073f8d6b, type: 3}
     verbType: 4
     simulateType: 1
     hasUnit: 0
+    postposition: "\uC744"
+  - verbName: "\uCDE8\uD55C\uB2E4."
+    verbSprites: {fileID: 21300000, guid: 41a8c650a6455b6458fd2514faf52edf, type: 3}
+    verbType: 5
+    simulateType: 1
+    hasUnit: 0
+    postposition: "\uC5D0"

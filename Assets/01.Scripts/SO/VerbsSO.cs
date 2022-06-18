@@ -15,6 +15,7 @@ public class Verb
     public VerbType verbType;
     public SimulateType simulateType;
     public bool hasUnit;
+    public string postposition;
 
     public UnitType unitType { get; set; } = UnitType.Middle;
 
@@ -31,5 +32,6 @@ public class Verb
         simulateType = verb.simulateType;
         hasUnit = verb.hasUnit;
         unitType = verb.unitType;
+        postposition = verb.postposition;
     }
 }

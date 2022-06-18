@@ -4,5 +4,6 @@ public enum VerbType
     Like,
     Dislike,
     FlyAway,
-    Destroy
+    Destroy,
+    Drunk
 }

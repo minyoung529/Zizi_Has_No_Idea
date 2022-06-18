@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SettingDirection : MonoBehaviour
+public abstract class SettingDirection : MonoBehaviour
 {
     protected CharacterMovement currentCharacter;
     protected ItemObject target;

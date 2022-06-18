@@ -51,11 +51,28 @@ public class SentencePanel : PanelBase
             return;
         }
 
-        verb = item.verbPairs[VerbSystemController.CurrentCharacter];
+        UpdateUI(param.character);
+    }
 
-        string oPostposition = (item.Name[item.Name.Length - 1] - 0xAC00) % 28 > 0 ? "을" : "를";
-        string sPostposition = (param.character?.characterName[param.character.characterName.Length - 1] - 0xAC00) % 28 > 0 ? "은" : "는";
-        subjectText.text = $"{param.character?.characterName}{sPostposition} {item.Name}{oPostposition} ";
+    private void UpdateUI(Character character)
+    {
+        if (character == null || item == null || character?.characterName == item?.Name)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+
+        verb = item.verbPairs[VerbSystemController.CurrentCharacter];
+        string oPostposition = "을";
+
+        if (verb.postposition == "을" || verb.postposition == "를")
+            oPostposition = (item.Name[item.Name.Length - 1] - 0xAC00) % 28 > 0 ? "을" : "를";
+
+        else if (verb.postposition == "에")
+            oPostposition = verb.postposition;
+
+        string sPostposition = (character?.characterName[character.characterName.Length - 1] - 0xAC00) % 28 > 0 ? "은" : "는";
+        subjectText.text = $"{character?.characterName}{sPostposition} {item.Name}{oPostposition} ";
 
         if (item.verbPairs.ContainsKey(VerbSystemController.CurrentCharacter))
         {
@@ -85,7 +102,8 @@ public class SentencePanel : PanelBase
 
         worldImage.SetSprite(item.verbPairs[VerbSystemController.CurrentCharacter].verbSprites);
 
-        AdjustTextDetail();
+        UpdateUI(VerbSystemController.CurrentCharacter);
+
         onSelected.Invoke();
     }
 
@@ -105,7 +123,7 @@ public class SentencePanel : PanelBase
 
         if (verb == null)
         {
-            Debug.Log("verb: NULL");
+            Debug.LogError("verb: NULL");
             return;
         }
 

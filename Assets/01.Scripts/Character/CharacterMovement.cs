@@ -18,9 +18,17 @@ public class CharacterMovement : MonoBehaviour
     private Vector3 currentDirection;
     public Vector3 CurrentDirection
     {
-        get => currentDirection;
+        get
+        {
+            if (IsReverse)
+                return -currentDirection;
+            else
+                return currentDirection;
+        }
         set => currentDirection = value;
     }
+
+    public bool IsReverse { get; set; } = false;
 
     [SerializeField] LayerMask groundLayer;
 
@@ -58,11 +66,11 @@ public class CharacterMovement : MonoBehaviour
             List<SettingDirection> directions = settingDirections.FindAll(x => x.IsActive);
             directions.ForEach(x => x.SetDirection());
 
-            if (currentDirection.sqrMagnitude < 0.05f)
+            if (CurrentDirection.sqrMagnitude < 0.05f)
             {
                 if (directions.FindAll(x => x.SimulateType == SimulateType.Move).Count == 0)
                 {
-                    currentDirection = transform.forward;
+                    CurrentDirection = transform.forward;
                 }
                 else
                 {
@@ -70,11 +78,11 @@ public class CharacterMovement : MonoBehaviour
                 }
             }
 
-            transform.forward = Vector3.Lerp(transform.forward, currentDirection.normalized, Time.deltaTime * rotationSpeed);
+            transform.forward = Vector3.Lerp(transform.forward, CurrentDirection.normalized, Time.deltaTime * rotationSpeed);
 
             Vector3 velocity = rigid.velocity;
-            velocity.x = currentDirection.normalized.x * speed;
-            velocity.z = currentDirection.normalized.z * speed;
+            velocity.x = CurrentDirection.normalized.x * speed;
+            velocity.z = CurrentDirection.normalized.z * speed;
 
             rigid.velocity = velocity;
         }
@@ -128,6 +136,7 @@ public class CharacterMovement : MonoBehaviour
         currentDirection = Vector3.zero;
         rigid.velocity = Vector3.zero;
         settingDirections.ForEach(x => x.ResetData());
+        IsReverse = false;
     }
 
     private void OnCollisionEnter(Collision collision)
