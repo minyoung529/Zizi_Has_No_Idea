@@ -34624,7 +34624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd43c47b9d319794fb7f8ab13050ee5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dominoDelay: 0.25
+  dominoDelay: 0.1
   changeDelay: 0.3
   startValue: 0
   endValue: 1

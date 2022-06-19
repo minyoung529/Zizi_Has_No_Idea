@@ -20,6 +20,6 @@ public class StagePanel : PanelBase
             return;
 
         GameManager.CurrentStage = transform.GetSiblingIndex();
-        GameManager.Instance.ClearStage();
+        GameManager.Instance.ClearStage(0.1f);
     }
 }
