@@ -22,7 +22,10 @@ public class PortalObject : MonoBehaviour
 
         if (character)
         {
-            character.CurrentDirection = linkedPortal.forward;
+            if (character.IsReverse)
+                character.CurrentDirection = -linkedPortal.forward;
+            else
+                character.CurrentDirection = linkedPortal.forward;
             Vector3 angle = character.transform.eulerAngles;
             angle.x = 0f;
             angle.z = 0f;
@@ -32,7 +35,7 @@ public class PortalObject : MonoBehaviour
 
         other.transform.localPosition = linkedPortal.transform.position;
 
-        if(other.CompareTag(Constant.STAR_TAG))
+        if (other.CompareTag(Constant.STAR_TAG))
         {
             other.transform.localPosition += linkedPortal.forward;
         }
