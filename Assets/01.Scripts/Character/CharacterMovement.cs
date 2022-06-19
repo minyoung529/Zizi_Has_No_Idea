@@ -66,11 +66,11 @@ public class CharacterMovement : MonoBehaviour
             List<SettingDirection> directions = settingDirections.FindAll(x => x.IsActive);
             directions.ForEach(x => x.SetDirection());
 
-            if (CurrentDirection.sqrMagnitude < 0.05f)
+            if (currentDirection.sqrMagnitude < 0.05f)
             {
                 if (directions.FindAll(x => x.SimulateType == SimulateType.Move).Count == 0)
                 {
-                    CurrentDirection = transform.forward;
+                    currentDirection = transform.forward;
                 }
                 else
                 {
