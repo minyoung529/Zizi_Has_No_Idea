@@ -37,7 +37,6 @@ public class SentencePanel : PanelBase
     public void SetData(Item item)
     {
         this.item = item;
-
         verb = GameManager.Instance.Data.Verbs.verbs.Find(x => x.verbType == VerbType.None);
 
         UpdateUI();
@@ -54,7 +53,7 @@ public class SentencePanel : PanelBase
         UpdateUI(param.character);
     }
 
-    private void UpdateUI(Character character)
+    public void UpdateUI(Character character)
     {
         if (character == null || item == null || character?.characterName == item?.Name)
         {
@@ -63,12 +62,9 @@ public class SentencePanel : PanelBase
         }
 
         verb = item.verbPairs[VerbSystemController.CurrentCharacter];
-        string oPostposition = "을";
+        string oPostposition = (item.Name[item.Name.Length - 1] - 0xAC00) % 28 > 0 ? "을" : "를";
 
-        if (verb.postposition == "을" || verb.postposition == "를")
-            oPostposition = (item.Name[item.Name.Length - 1] - 0xAC00) % 28 > 0 ? "을" : "를";
-
-        else if (verb.postposition == "에")
+        if (verb.postposition == "에")
             oPostposition = verb.postposition;
 
         string sPostposition = (character?.characterName[character.characterName.Length - 1] - 0xAC00) % 28 > 0 ? "은" : "는";
@@ -109,7 +105,6 @@ public class SentencePanel : PanelBase
 
     public void SetUnitType(UnitType unitType)
     {
-        Debug.Log(verb.verbName + ", " + unitType);
         verb.unitType = unitType;
         unitText.text = Constant.UNITS_NAME[(int)unitType];
     }
@@ -136,9 +131,15 @@ public class SentencePanel : PanelBase
 
             SetUnitType(verb.unitType);
         }
+        else
+        {
+            panelRect.sizeDelta = originalSizeDelta;
+        }
 
         ArrangeText(startPoint, verbRect, ref nextPos, true);
 
+        gameObject.SetActive(false);
+        gameObject.SetActive(true);
         unitRect.gameObject.SetActive(verb.hasUnit);
     }
 

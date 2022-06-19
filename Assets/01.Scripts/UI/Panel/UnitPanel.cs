@@ -23,6 +23,7 @@ public class UnitPanel : UIButton
     protected override void OnClicked()
     {
         VerbSystemController.CurrentPanel.SetUnitType((UnitType)index);
+        VerbSystemController.CurrentPanel.UpdateUI(VerbSystemController.CurrentCharacter);
         GameManager.Instance.UIManager.ActiveUnitScroll(false);
     }
 }
