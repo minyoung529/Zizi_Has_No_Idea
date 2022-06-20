@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8243762160370363930}
   m_Layer: 0
-  m_Name: Stage24
+  m_Name: Stage25
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -239,7 +239,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1741035487317841875, guid: 06959f8d6e3e1dc4eb288c908388b0f9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.111111134
+      value: 0.11111112
       objectReference: {fileID: 0}
     - target: {fileID: 1741035487317841875, guid: 06959f8d6e3e1dc4eb288c908388b0f9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -267,6 +267,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1741035487317841875, guid: 06959f8d6e3e1dc4eb288c908388b0f9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1741035487317841875, guid: 06959f8d6e3e1dc4eb288c908388b0f9, type: 3}
+      propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5143488916962570376, guid: 06959f8d6e3e1dc4eb288c908388b0f9, type: 3}

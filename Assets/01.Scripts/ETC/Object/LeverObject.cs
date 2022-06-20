@@ -13,12 +13,10 @@ public class LeverObject : MonoBehaviour
     [SerializeField] private Transform lever;
 
     private readonly float offsetZ = -60f;
-    private Rigidbody rigid;
 
     private void Start()
     {
         thornObjects = FindObjectsOfType<ThornObject>();
-        rigid = GetComponent<Rigidbody>();
 
         EventManager.StartListening(Constant.RESET_GAME_EVENT, ResetObject);
     }
@@ -44,15 +42,11 @@ public class LeverObject : MonoBehaviour
 
             if (toggle)
                 lever.DORotate(Vector3.forward * offsetZ, 1f);
-            
+
             else
                 lever.DORotate(Vector3.forward * -offsetZ, 1f);
 
             toggle = !toggle;
-        }
-        else
-        {
-            rigid.isKinematic = true;
         }
     }
 
@@ -60,7 +54,6 @@ public class LeverObject : MonoBehaviour
     {
         lever.eulerAngles = Vector3.forward * offsetZ;
         toggle = false;
-        rigid.isKinematic = false;
     }
 
     private void OnDestroy()
