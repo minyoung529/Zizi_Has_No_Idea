@@ -66,7 +66,7 @@ public class CharacterMovement : MonoBehaviour
             List<SettingDirection> directions = settingDirections.FindAll(x => x.IsActive);
             directions.ForEach(x => x.SetDirection());
 
-            if (currentDirection.sqrMagnitude < 0.05f)
+            if (CurrentDirection.sqrMagnitude < 0.01f)
             {
                 if (directions.FindAll(x => x.SimulateType == SimulateType.Move).Count == 0)
                 {
@@ -78,6 +78,8 @@ public class CharacterMovement : MonoBehaviour
                 }
             }
 
+
+            // TODO: 오류 고치기...
             transform.forward = Vector3.Lerp(transform.forward, CurrentDirection.normalized, Time.deltaTime * rotationSpeed);
 
             Vector3 velocity = rigid.velocity;

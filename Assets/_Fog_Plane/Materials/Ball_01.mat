@@ -212,7 +212,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _HighColor_Power: 0.379
+    - _HighColor_Power: 0.451
     - _Inverse_Clipping: 0
     - _Inverse_MatcapMask: 0
     - _Inverse_Z_Axis_BLD: 1
@@ -261,7 +261,7 @@ Material:
     - _ReceiveShadows: 1
     - _RimLight: 1
     - _RimLight_FeatherOff: 1
-    - _RimLight_InsideMask: 0.499
+    - _RimLight_InsideMask: 0.361
     - _RimLight_Power: 0
     - _Rotate_EmissiveUV: 0
     - _Rotate_MatCapUV: 0
@@ -290,7 +290,7 @@ Material:
     - _Tweak_LightDirection_MaskLevel: 0
     - _Tweak_MatCapUV: 0
     - _Tweak_MatcapMaskLevel: 0
-    - _Tweak_RimLightMaskLevel: 0
+    - _Tweak_RimLightMaskLevel: -0.77
     - _Tweak_ShadingGradeMapLevel: 0
     - _Tweak_SystemShadowsLevel: 0
     - _Tweak_transparency: 0
@@ -308,7 +308,7 @@ Material:
     - _utsVersionZ: 0
     m_Colors:
     - _1st_ShadeColor: {r: 1, g: 0.71132076, b: 0.78965276, a: 1}
-    - _2nd_ShadeColor: {r: 1, g: 1, b: 1, a: 1}
+    - _2nd_ShadeColor: {r: 1, g: 0.7018868, b: 0.7018868, a: 1}
     - _AngelRing_Color: {r: 1, g: 1, b: 1, a: 1}
     - _Ap_RimLightColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColor: {r: 0.9921569, g: 0.28235295, b: 0.38431376, a: 1}
