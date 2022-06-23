@@ -6,10 +6,16 @@ using DG.Tweening;
 public class ThornObject : MonoBehaviour
 {
     private string PARTICLE_PATH = "BloodParticle";
+    [SerializeField] private bool enableAwake = true;
+    private bool isEnable;
 
     private void Start()
     {
         EventManager.StartListening(Constant.RESET_GAME_EVENT, ResetObject);
+        isEnable = enableAwake;
+
+        if (!isEnable)
+            Disable();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -21,6 +27,14 @@ public class ThornObject : MonoBehaviour
 
             GameManager.Instance.ResetStage();
         }
+    }
+
+    public void InterAct()
+    {
+        if (isEnable) Disable();
+        else Enable();
+
+        isEnable = !isEnable;
     }
 
     public void Enable()

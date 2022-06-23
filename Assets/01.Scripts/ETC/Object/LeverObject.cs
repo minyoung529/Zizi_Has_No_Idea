@@ -8,11 +8,10 @@ public class LeverObject : MonoBehaviour
 {
     private ThornObject[] thornObjects;
 
-    public bool toggle = false;
-
     [SerializeField] private Transform lever;
 
     private readonly float offsetZ = -60f;
+    private Vector3 curEulerAngles;
 
     private void Start()
     {
@@ -27,33 +26,22 @@ public class LeverObject : MonoBehaviour
         {
             foreach (ThornObject obj in thornObjects)
             {
-                if (toggle)
-                {
-                    obj.Enable();
-                }
-                else
-                {
-                    obj.Disable();
-                    lever.DORotate(Vector3.forward * offsetZ, 1f);
-                }
+                obj.InterAct();
             }
 
             lever.DOKill();
 
-            if (toggle)
+            if (curEulerAngles.z < 0.1f)
                 lever.DORotate(Vector3.forward * offsetZ, 1f);
 
             else
                 lever.DORotate(Vector3.forward * -offsetZ, 1f);
-
-            toggle = !toggle;
         }
     }
 
     private void ResetObject()
     {
         lever.eulerAngles = Vector3.forward * offsetZ;
-        toggle = false;
     }
 
     private void OnDestroy()
