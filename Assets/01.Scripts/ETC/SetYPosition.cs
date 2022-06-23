@@ -20,7 +20,7 @@ public class SetYPosition : MonoBehaviour
         Vector3 targetPos = transform.position;
         targetPos.y = yPosition;
 
-        transform.DOLocalMoveY(0.5f, 1.4f);
+        transform.DOLocalMoveY(0.5f, 1f);
     }
 
     private void OnDestroy()

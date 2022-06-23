@@ -13,9 +13,7 @@ public class ThornObject : MonoBehaviour
     {
         EventManager.StartListening(Constant.RESET_GAME_EVENT, ResetObject);
         isEnable = enableAwake;
-
-        if (!isEnable)
-            Disable();
+        ResetObject();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -40,17 +38,27 @@ public class ThornObject : MonoBehaviour
     public void Enable()
     {
         gameObject.SetActive(true);
+        transform.DOKill();
+
+        transform.DOMoveY(-1f, 0f);
         transform.DOMoveY(0f, 0.5f);
     }
 
     public void Disable()
     {
+        transform.DOKill();
+
         transform.DOMoveY(-1f, 0.5f).OnComplete(() => gameObject.SetActive(false));
     }
 
     private void ResetObject()
     {
         gameObject.SetActive(true);
+
+        if (enableAwake)
+            Enable();
+        else
+            Disable();
     }
 
     private void OnDestroy()
