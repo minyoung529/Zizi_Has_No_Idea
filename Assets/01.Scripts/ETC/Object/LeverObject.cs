@@ -8,7 +8,7 @@ public class LeverObject : MonoBehaviour
 {
     private ThornObject[] thornObjects;
 
-    private bool toggle = false;
+    public bool toggle = false;
 
     [SerializeField] private Transform lever;
 

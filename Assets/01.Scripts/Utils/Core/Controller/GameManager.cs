@@ -10,9 +10,8 @@ public class GameManager : MonoSingleton<GameManager>
     public UIManager UIManager { get; private set; }
     public DataManager Data { get; private set; }
 
-
     public static int CurrentChapter { get; set; } = 1;
-    public static int CurrentStage { get; set; } = 23;
+    public static int CurrentStage { get; set; } = 0;
 
     private GameObject currentStagePrefab;
 
@@ -30,6 +29,9 @@ public class GameManager : MonoSingleton<GameManager>
 
     [SerializeField] private bool skipLobbyScene = true;
 
+    // LATER: DELETE THIS
+    public int stage;
+
     private void Awake()
     {
         UIManager = FindObjectOfType<UIManager>();
@@ -45,6 +47,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void Start()
     {
+        CurrentStage = stage;
         ClearStage(0f);
 
         if (skipLobbyScene)

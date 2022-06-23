@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class PlayUIMovement : UIMovement
 {
-
     [SerializeField] Ease moveEase = Ease.InBack;
     [SerializeField] Ease reverseEase = Ease.OutBack;
 
@@ -16,11 +15,13 @@ public class PlayUIMovement : UIMovement
 
     protected override void OnMove()
     {
+        rectTransform.DOKill();
         rectTransform.DOAnchorPos(targetPosition, duration).SetEase(moveEase);
     }
 
     protected override void OnMoveReverse()
     {
+        rectTransform.DOKill();
         rectTransform.anchoredPosition = targetPosition;
         rectTransform.DOAnchorPos(originPosition, duration).SetEase(reverseEase);
     }

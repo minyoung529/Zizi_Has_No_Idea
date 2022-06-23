@@ -347,15 +347,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2748536346312632344, guid: 984cd29530217654784551118603f9e7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.04
+      value: -4.11
       objectReference: {fileID: 0}
     - target: {fileID: 2748536346312632344, guid: 984cd29530217654784551118603f9e7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.37000006
+      value: -0.07
       objectReference: {fileID: 0}
     - target: {fileID: 2748536346312632344, guid: 984cd29530217654784551118603f9e7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.08
+      value: -5.91
       objectReference: {fileID: 0}
     - target: {fileID: 2748536346312632344, guid: 984cd29530217654784551118603f9e7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -392,6 +392,10 @@ PrefabInstance:
     - target: {fileID: 3273856971983729314, guid: 984cd29530217654784551118603f9e7, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9041769545218869022, guid: 984cd29530217654784551118603f9e7, type: 3}
+      propertyPath: isGrid
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 984cd29530217654784551118603f9e7, type: 3}
@@ -543,7 +547,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2455669178004443603, guid: ea1a8589a1b85794d9185356c9432cd4, type: 3}
       propertyPath: speed
-      value: 2
+      value: 2.7
       objectReference: {fileID: 0}
     - target: {fileID: 4088828860045858199, guid: ea1a8589a1b85794d9185356c9432cd4, type: 3}
       propertyPath: m_Size.z

@@ -34171,6 +34171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentItems: []
   skipLobbyScene: 0
+  stage: 24
 --- !u!114 &2044957360
 MonoBehaviour:
   m_ObjectHideFlags: 0

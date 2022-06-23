@@ -11,6 +11,7 @@ public class PlayerClickUIMovement : UIMovement
 
     private void OnMove(EventParam param)
     {
+        rectTransform.DOKill();
 
         if (param.boolean)
         {
@@ -20,10 +21,7 @@ public class PlayerClickUIMovement : UIMovement
         else
         {
             rectTransform.DOAnchorPos(originPosition, duration).SetEase(Ease.InOutQuad).
-                OnComplete(() =>
-                {
-                    gameObject.SetActive(param.boolean);
-                });
+                OnComplete(() =>gameObject.SetActive(param.boolean));
         }
     }
 
