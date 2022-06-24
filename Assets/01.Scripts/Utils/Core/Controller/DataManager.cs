@@ -50,6 +50,7 @@ public class DataManager : MonoBehaviour
         }
 
         user = data;
+
         SaveToJson(data);
     }
 

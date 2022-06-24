@@ -16,6 +16,7 @@ public class LeverObject : MonoBehaviour
     private void Start()
     {
         thornObjects = FindObjectsOfType<ThornObject>();
+        curEulerAngles = lever.eulerAngles;
 
         EventManager.StartListening(Constant.RESET_GAME_EVENT, ResetObject);
     }
@@ -31,7 +32,7 @@ public class LeverObject : MonoBehaviour
 
             lever.DOKill();
 
-            if (curEulerAngles.z < 0.1f)
+            if (curEulerAngles.z < 0f)
                 lever.DORotate(Vector3.forward * offsetZ, 1f);
 
             else

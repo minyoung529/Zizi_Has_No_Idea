@@ -69,33 +69,11 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void Update()
     {
+        if (!editorMode) return;
         if (Input.GetKeyDown(KeyCode.Q))
         {
             GameState = GameState.Play;
             ClearStage(0f);
-        }
-
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            List<Verb> verbs = new List<Verb>();
-            foreach (var item in CurrentItems)
-            {
-                string s = "";
-
-                s += item.Item.Name + '\n';
-
-                foreach (var pair in item.Item.verbPairs)
-                {
-                    if (pair.Value.verbType == VerbType.FlyAway)
-                    {
-                        verbs.Add(pair.Value);
-                    }
-                    s += pair.Key + "\t" + pair.Value.unitType + '\n';
-                }
-
-                Debug.Log(s);
-            }
-            Debug.Log(verbs[0] == verbs[1]);
         }
     }
 
