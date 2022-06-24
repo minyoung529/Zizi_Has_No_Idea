@@ -6,7 +6,7 @@ using System.IO;
 public class DataManager : MonoBehaviour
 {
     private User user;
-    public User User { get { return user; } }
+    public User User { get { return user; } set { user = value; } }
 
     private string SAVE_PATH = "";
     private const string SAVE_FILE = "/SaveFile.Json";
@@ -18,7 +18,7 @@ public class DataManager : MonoBehaviour
 
     public ParabolaObject parabolaPrefab;
 
-    void Start()
+    void Awake()
     {
         DontDestroyOnLoad(this);
 
@@ -29,22 +29,27 @@ public class DataManager : MonoBehaviour
             Directory.CreateDirectory(SAVE_PATH);
         }
 
-        LoadFromJson(user);
+        LoadFromJson();
+
+        EventManager.StartListening(Constant.CLEAR_STAGE_EVENT, SaveUser);
     }
 
     #region Json
-    private void LoadFromJson<T>(T data)
+    private void LoadFromJson()
     {
+        User data;
+
         if (File.Exists(SAVE_PATH + SAVE_FILE))
         {
             string stringJson = File.ReadAllText(SAVE_PATH + SAVE_FILE);
-            data = JsonUtility.FromJson<T>(stringJson);
+            data = JsonUtility.FromJson<User>(stringJson);
         }
         else
         {
-            data = default(T);
+            data = new User();
         }
 
+        user = data;
         SaveToJson(data);
     }
 
@@ -72,8 +77,28 @@ public class DataManager : MonoBehaviour
         return stages[GameManager.CurrentStage - 1];
     }
 
+    public bool IsValidStage(int chapter, int stage)
+    {
+        bool isValid = stage < chapterDatas[chapter - 1].stages.Count;
+        return isValid;
+    }
+
+    private void SaveUser()
+    {
+        User newUser = new User();
+        newUser.stage = Mathf.Clamp(GameManager.CurrentStage - 1, 0, chapterDatas[0].stages.Count);
+        newUser.maxStage = Mathf.Max(newUser.stage, user.maxStage);
+
+        SaveToJson(newUser);
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveUser();
+    }
+
     private void OnDestroy()
     {
-        SaveToJson(user);
+        EventManager.StopListening(Constant.CLEAR_STAGE_EVENT, SaveUser);
     }
 }

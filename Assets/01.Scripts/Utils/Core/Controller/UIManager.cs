@@ -24,6 +24,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private CanvasGroup lobbyCanvas;
     [SerializeField] private CanvasGroup gameCanvas;
     [SerializeField] private CanvasGroup settingCanvas;
+    [SerializeField] private CanvasGroup endCanvas;
 
     void Awake()
     {
@@ -138,7 +139,17 @@ public class UIManager : MonoBehaviour
         settingCanvas.alpha = 0;
         settingCanvas.gameObject.SetActive(true);
         settingCanvas.DOFade(1f, 1f);
+    }
 
+    public void EndStage()
+    {
+        Debug.Log("EndStage");
+        Sequence sequence = DOTween.Sequence();
+        sequence.Append(endCanvas.DOFade(1f, 1f));
+        sequence.AppendInterval(3f);
+        sequence.Append(endCanvas.DOFade(0f, 1f));
+        sequence.AppendCallback(() => GameManager.Instance.ClearStage(0));
+        sequence.AppendCallback(ActiveLobby);
     }
 
     private void OnDestroy()

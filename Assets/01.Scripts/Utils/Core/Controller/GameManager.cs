@@ -17,6 +17,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     public List<ItemObject> CurrentItems = new List<ItemObject>();
     public List<Character> CurrentCharacters { get; set; } = new List<Character>();
+    public List<VerbType> CurrentVerbs { get; set; }
 
     private int starCount = 0;
     public int StarCount
@@ -30,6 +31,7 @@ public class GameManager : MonoSingleton<GameManager>
     [SerializeField] private bool skipLobbyScene = true;
 
     // LATER: DELETE THIS
+    public bool editorMode = false;
     public int stage;
 
     private void Awake()
@@ -47,7 +49,11 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void Start()
     {
-        CurrentStage = stage;
+        if (editorMode)
+            CurrentStage = stage;
+        else
+            CurrentStage = Data.User.stage;
+
         ClearStage(0f);
 
         if (skipLobbyScene)
@@ -105,9 +111,18 @@ public class GameManager : MonoSingleton<GameManager>
             SoundManager.Instance.PlayClearSound();
         }
 
+        CurrentVerbs?.Clear();
         starCount = 0;
 
-        StartCoroutine(LoadStage(delay));
+        if (Data.IsValidStage(CurrentChapter, CurrentStage))
+        {
+            StartCoroutine(LoadStage(delay));
+        }
+        else
+        {
+            CurrentStage = 0;
+            UIManager.EndStage();
+        }
     }
 
     private IEnumerator LoadStage(float delay)

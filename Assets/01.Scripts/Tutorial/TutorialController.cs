@@ -15,6 +15,8 @@ public class TutorialController : MonoBehaviour
 
     private WaitForSeconds tutorialDelay = new WaitForSeconds(4f);
 
+    [SerializeField] private Slider timer;
+
     void Start()
     {
         tutorialCanvas = GetComponent<CanvasGroup>();
@@ -28,13 +30,14 @@ public class TutorialController : MonoBehaviour
     private void PlayTutorial(bool isClear)
     {
         if (curIndex >= tutorials.Length) return;
-        if (!isClear)
-            isStart = true;
+        if (!isClear) isStart = true;
         else if (isClear && !isStart) return;
 
         if (GameManager.CurrentChapter == tutorials[curIndex].targetChapter &&
             GameManager.CurrentStage == tutorials[curIndex].targetStage)
         {
+            if (!GameManager.Instance.Data.User.IsTutorial(GameManager.CurrentChapter)) return;
+
             tutorialCanvas.gameObject.SetActive(true);
             StartCoroutine(TutorialCoroutine());
         }
@@ -50,6 +53,8 @@ public class TutorialController : MonoBehaviour
         Sprite[] sprites = tutorials[curIndex].tutorialImages;
         for (int i = 0; i < sprites.Length; i++)
         {
+            timer.value = 0f;
+            timer.DOValue(1f, 4f).SetEase(Ease.Unset);
             tutorialImage.sprite = sprites[i];
 
             TutorialAction action = tutorials[curIndex].tutorialActions.Find(x => x.order == i + 1);

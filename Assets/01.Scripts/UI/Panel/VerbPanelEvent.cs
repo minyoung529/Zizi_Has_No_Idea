@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine;
 using DG.Tweening;
+using System;
 
 public class VerbPanelEvent : PanelBase, IPointerEnterHandler, IPointerExitHandler
 {
@@ -13,6 +14,13 @@ public class VerbPanelEvent : PanelBase, IPointerEnterHandler, IPointerExitHandl
     private void Awake()
     {
         image ??= GetComponent<Image>();
+        EventManager.StartListening(Constant.CLEAR_STAGE_EVENT, CheckActive);
+    }
+
+    private void CheckActive()
+    {
+        bool isActive = GameManager.Instance.CurrentVerbs.Contains(verb.verbType);
+        gameObject.SetActive(isActive);
     }
 
     public void Initialize(Verb verb)

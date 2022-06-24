@@ -4,4 +4,10 @@ using System.Collections.Generic;
 public class User
 {
     public int stage;
+    public int maxStage;
+
+    public bool IsTutorial(int stage)
+    {
+        return (stage >= maxStage);
+    }
 }

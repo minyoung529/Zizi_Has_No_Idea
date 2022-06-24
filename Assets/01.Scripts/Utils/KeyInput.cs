@@ -17,6 +17,7 @@ public class KeyInput : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            GameManager.Instance.UIManager.ActiveLobby();
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -49,6 +50,8 @@ public class KeyInput : MonoBehaviour
             if (character == null) return false;
 
             if (character.IsPlayer && character.IsInactive)
+                return false;
+            else if (!character.IsPlayer && GameManager.Instance.CurrentItems.Count == 1)
                 return false;
             else
                 VerbSystemController.CurrentCharacter = character;
