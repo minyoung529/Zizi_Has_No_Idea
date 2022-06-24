@@ -51,7 +51,7 @@ public class KeyInput : MonoBehaviour
 
             if (character.IsPlayer && character.IsInactive)
                 return false;
-            else if (!character.IsPlayer && GameManager.Instance.CurrentItems.Count == 1)
+            else if (character.GetComponent<ItemObject>() && GameManager.Instance.CurrentItems.Count == 1)
                 return false;
             else
                 VerbSystemController.CurrentCharacter = character;
