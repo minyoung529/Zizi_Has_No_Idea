@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: "\uC9C0\uC9C0\uB294 \uC544\uBB34 \uC0DD\uAC01\uC774 \uC5C6\uB2E4"
-  productName: minzero
+  companyName: minzero
+  productName: "\uC9C0\uC9C0\uB294 \uC544\uBB34 \uC0DD\uAC01\uC774 \uC5C6\uB2E4"
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
