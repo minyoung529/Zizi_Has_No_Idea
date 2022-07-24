@@ -5,7 +5,7 @@
 
 [![Video Label](http://img.youtube.com/vi/LqXwal0e7jc/0.jpg)](https://youtu.be/LqXwal0e7jc)
 <br>
-클릭하면 플레이 영상으로 이동합니다.,
+클릭하면 플레이 영상으로 이동합니다.
 
 <br>
 
