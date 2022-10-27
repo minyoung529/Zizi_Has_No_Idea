@@ -11304,7 +11304,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2044957359}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: ResetStage
+        m_MethodName: ResetStageButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -30340,7 +30340,6 @@ GameObject:
   - component: {fileID: 2086115629}
   - component: {fileID: 2086115628}
   - component: {fileID: 2086115627}
-  - component: {fileID: 2086115631}
   m_Layer: 5
   m_Name: StageButton
   m_TagString: Untagged
@@ -30475,24 +30474,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2086115625}
   m_CullTransparentMesh: 1
---- !u!114 &2086115631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2086115625}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd43c47b9d319794fb7f8ab13050ee5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dominoDelay: 0.1
-  changeDelay: 0.3
-  startValue: 0
-  endValue: 1
-  dotweenEase: 7
-  onAwake: 0
 --- !u!1 &2089081276
 GameObject:
   m_ObjectHideFlags: 0

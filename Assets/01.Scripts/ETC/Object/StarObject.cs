@@ -72,7 +72,7 @@ public class StarObject : MonoBehaviour
         }
 
         GameManager.Instance.StarCount += 1;
-        Debug.Log($"Star Count = {GameManager.Instance.StarCount}");
+        //Debug.Log($"Star Count = {GameManager.Instance.StarCount}");
     }
 
     private void SetData(bool isEnabled)
@@ -89,7 +89,7 @@ public class StarObject : MonoBehaviour
 
     private void DestroyObject()
     {
-        Debug.Log("DestroyStar");
+        //Debug.Log("DestroyStar");
         PoolManager.Push(gameObject);
         isDestroy = false;
     }

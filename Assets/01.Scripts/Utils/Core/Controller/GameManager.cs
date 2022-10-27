@@ -52,7 +52,10 @@ public class GameManager : MonoSingleton<GameManager>
         if (editorMode)
             CurrentStage = stage;
         else
+        {
             CurrentStage = Data.User.stage;
+            Data.User.maxStage = Mathf.Max(Data.User.maxStage, CurrentStage);
+        }
 
         ClearStage(0f);
 
@@ -84,6 +87,8 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void ClearStage(float delay = 3f)
     {
+        GameState = GameState.Ready;
+
         if (delay >= 0.01f)
         {
             SoundManager.Instance.PlayClearSound();
@@ -130,14 +135,20 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void ResetStage()
     {
+
         starCount = 0;
-        Debug.Log("Reset Stage");
         EventManager.TriggerEvent(Constant.RESET_GAME_EVENT);
 
         if (GameState != GameState.NotGame)
         {
             GameState = GameState.Ready;
         }
+    }
+
+    public void ResetStageButton()
+    {
+        if (GameState != GameState.Play) return;
+        ResetStage();
     }
 
     public void RegisterCurrentItem()
