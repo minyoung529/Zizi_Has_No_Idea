@@ -33,7 +33,6 @@ public class StarObject : MonoBehaviour
         rigid.velocity = Vector3.zero;
     }
 
-
     private void Start()
     {
         EventManager.StartListening(Constant.CLEAR_STAGE_EVENT, DestroyObject);

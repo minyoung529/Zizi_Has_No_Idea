@@ -32,7 +32,7 @@ public class CharacterMovement : MonoBehaviour
 
     [SerializeField] LayerMask groundLayer;
 
-    private List<SettingDirection> settingDirections = new List<SettingDirection>();
+    private List<CharacterBehavior> behaviors = new List<CharacterBehavior>();
 
     // 나중에 이벤트를 구독하는 식으로 바꾸면 좋을 듯하다.
     public Character character { get; set; }
@@ -63,7 +63,7 @@ public class CharacterMovement : MonoBehaviour
         if (GameManager.GameState == GameState.Play)
         {
             if (character.IsInactive) return;
-            List<SettingDirection> directions = settingDirections.FindAll(x => x.IsActive);
+            List<CharacterBehavior> directions = behaviors.FindAll(x => x.IsActive);
             directions.ForEach(x => x.SetDirection());
 
             if (CurrentDirection.sqrMagnitude < 0.01f)
@@ -77,7 +77,6 @@ public class CharacterMovement : MonoBehaviour
                     return;
                 }
             }
-
 
             // TODO: 오류 고치기...
             transform.forward = Vector3.Lerp(transform.forward, CurrentDirection.normalized, Time.deltaTime * rotationSpeed);
@@ -96,7 +95,7 @@ public class CharacterMovement : MonoBehaviour
     {
         if (character.IsInactive) return;
 
-        settingDirections.ForEach(x => x.ResetData());
+        behaviors.ForEach(x => x.ResetData());
 
         foreach (ItemObject item in GameManager.Instance.CurrentItems)
         {
@@ -106,23 +105,25 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 행동 타입에 맞는 컴포넌트를 넣어주는 함수
+    /// </summary>
+    /// <param name="type">행동 타입</param>
+    /// <param name="item">대상 (아이템)</param>
     private void AddSettingDirection(VerbType type, ItemObject item)
     {
         Type scriptType = Type.GetType(type.ToString());
 
-        SettingDirection settingDirection = GetComponent(scriptType) as SettingDirection;
+        CharacterBehavior behavior = GetComponent(scriptType) as CharacterBehavior;
 
-        if (settingDirection == null || settingDirection.IsActive)
+        // 해당 행동이 없거나 있지만 대상이 다를 때는 새로 넣어준다
+        if (behavior == null || behavior.IsActive)
         {
-            settingDirection = gameObject.AddComponent(scriptType) as SettingDirection;
+            behavior = gameObject.AddComponent(scriptType) as CharacterBehavior;
+            behaviors.Add(behavior);
         }
 
-        settingDirection.Init(item);
-
-        if (!settingDirections.Contains(settingDirection))
-        {
-            settingDirections.Add(settingDirection);
-        }
+        behavior.Init(item);
     }
 
     private void CheckDead()
@@ -137,7 +138,7 @@ public class CharacterMovement : MonoBehaviour
     {
         currentDirection = Vector3.zero;
         rigid.velocity = Vector3.zero;
-        settingDirections.ForEach(x => x.ResetData());
+        behaviors.ForEach(x => x.ResetData());
         IsReverse = false;
     }
 

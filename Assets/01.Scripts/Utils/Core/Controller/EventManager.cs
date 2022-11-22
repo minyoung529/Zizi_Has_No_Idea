@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventManager
+public static class EventManager
 {
     private static Dictionary<short, Action> eventDictionary = new Dictionary<short, Action>();
 
@@ -49,7 +49,7 @@ public class EventManager
     }
 }
 
-public class EventManager<T>
+public static class EventManager<T>
 {
     private static Dictionary<short, Action<T>> eventDictionary = new Dictionary<short, Action<T>>();
 

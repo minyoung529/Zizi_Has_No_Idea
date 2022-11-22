@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Drunk : SettingDirection
+public class Drunk : CharacterBehavior
 {
     private CharacterMovement characterMovement;
     private const string PARTICLE_PATH = "DrunkParticle";
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         characterMovement = GetComponent<CharacterMovement>();
     }
 

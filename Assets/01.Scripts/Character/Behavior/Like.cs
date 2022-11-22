@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Like : SettingDirection
+public class Like : CharacterBehavior
 {
     public override void SetDirection()
     {

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CharacterBehavior" Collapsed="true">
+    <Position X="8.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAggAACAIAAMAAAAAAAAAAAAAAIAACCAAWCCEA=</HashCode>
+      <FileName>Assets\01.Scripts\Character\Behavior\CharacterBehavior.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Destroy" Collapsed="true">
+    <Position X="6.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAEABAAAAAACAAAAAgAAAAAAAAAAAAAAAABCEA=</HashCode>
+      <FileName>Assets\01.Scripts\Character\Behavior\Destroy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dislike" Collapsed="true">
+    <Position X="11" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>Assets\01.Scripts\Character\Behavior\Dislike.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Drunk" Collapsed="true">
+    <Position X="4.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAIACEA=</HashCode>
+      <FileName>Assets\01.Scripts\Character\Behavior\Drunk.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlyAway" Collapsed="true">
+    <Position X="8.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAwAAAAACgCAAAABAABAAgAAEBAAAAAAAAAAAAACAE=</HashCode>
+      <FileName>Assets\01.Scripts\Character\Behavior\FlyAway.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Like" Collapsed="true">
+    <Position X="13.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>Assets\01.Scripts\Character\Behavior\Like.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>

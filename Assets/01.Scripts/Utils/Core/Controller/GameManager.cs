@@ -38,6 +38,7 @@ public class GameManager : MonoSingleton<GameManager>
     {
         UIManager = FindObjectOfType<UIManager>();
         Data = FindObjectOfType<DataManager>();
+        PoolManager.Awake();
 
         EventManager.StartListening(Constant.START_PLAY_EVENT, StartPlay);
         EventManager.StartListening(Constant.GET_STAR_EVENT, () => ClearStage());

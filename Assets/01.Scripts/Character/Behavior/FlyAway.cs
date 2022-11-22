@@ -5,7 +5,7 @@ using UnityEngine.Events;
 using DG.Tweening;
 using System;
 
-public class FlyAway : SettingDirection
+public class FlyAway : CharacterBehavior
 {
     private float maxHeight = 3.5f;
     private readonly float[] distances = { 7f, 12f, 17f };

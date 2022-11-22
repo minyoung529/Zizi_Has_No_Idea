@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoolManager : MonoBehaviour
+public static class PoolManager
 {
     private static Dictionary<string, Stack<GameObject>> pools = new Dictionary<string, Stack<GameObject>>();
     private static Transform poolTransform;
 
-    private void Awake()
+    public static void Awake()
     {
-        poolTransform = transform;
+        poolTransform = new GameObject("@Pool").transform;
     }
 
     public static void Push(GameObject obj)
@@ -54,10 +54,9 @@ public class PoolManager : MonoBehaviour
                 value = pools[item].Pop();
         }
 
-        value ??= Instantiate(Resources.Load<GameObject>(item));
+        value ??= Object.Instantiate(Resources.Load<GameObject>(item));
         value.name = item;
         value.SetActive(true);
         return value;
     }
-
 }

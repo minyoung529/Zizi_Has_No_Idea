@@ -2,16 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dislike : SettingDirection
+public class Dislike : CharacterBehavior
 {
-    private Rigidbody rigid;
-
-    public override void SetupDirection()
-    {
-        //currentCharacter.CurrentDirection += -(target.transform.position - transform.position).normalized;
-        //rigid = target.transform.GetComponent<Rigidbody>();
-    }
-
     public override void SetDirection()
     {
         if (target != null && GameManager.GameState == GameState.Play)

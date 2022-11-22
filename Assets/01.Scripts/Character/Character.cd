@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Character">
+    <Position X="1.5" Y="2" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AEABAACAAAAAAAAAAAAIAMQCEAAEAgAIAAAAAAAAIEE=</HashCode>
+      <FileName>Assets\01.Scripts\Character\Character.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CharacterAnimation">
+    <Position X="5.25" Y="2" Width="2" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>BAABDAAAACAAAAEAACAAAAAAAABAAAiAEAAAQAAAIAA=</HashCode>
+      <FileName>Assets\01.Scripts\Character\CharacterAnimation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CharacterMovement">
+    <Position X="3.25" Y="2" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAJAAAgAiCAAAACAAAAAogBAQBAAQAIAADACAgAAAA=</HashCode>
+      <FileName>Assets\01.Scripts\Character\CharacterMovement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CharacterParticle">
+    <Position X="9.5" Y="2" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAEAAAAAAAEAAAAAAAAAAAAAAAQEA=</HashCode>
+      <FileName>Assets\01.Scripts\Character\CharacterParticle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CharacterRenderer">
+    <Position X="7.5" Y="2" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAQAAAAAAAAAAAAAAAABAAAAACAAAgEA=</HashCode>
+      <FileName>Assets\01.Scripts\Character\CharacterRenderer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>

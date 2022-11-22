@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class Destroy : SettingDirection
+public class Destroy : CharacterBehavior
 {
     private AudioClip destroyClip;
     private GameObject destroyEffect;
@@ -13,8 +13,9 @@ public class Destroy : SettingDirection
 
     private WaitForSeconds delay = new WaitForSeconds(3.5f);
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         destroyClip = Resources.Load<AudioClip>(DESTROY_AUDIO);
     }
 
